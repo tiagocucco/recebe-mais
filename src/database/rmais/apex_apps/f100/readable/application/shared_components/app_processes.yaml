@@ -1,0 +1,79 @@
+---
+- # ====== Application Process: OpenMinPDF_BOL =================
+  id: 637323145644891620
+  identification: 
+    name: OpenMinPDF_BOL
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          bBlob blob;
+          vMimeType varchar2(50);
+      begin
+          select  BLOB_FILE, MIME_TYPE
+          into    bBlob, vMimeType
+          from    RMAIS_ATTACHMENTS_BOL
+          where   EFD_HEADER_ID = V('P7_ID');
+      
+          owa_util.mime_header(vMimeType,false);
+          htp.p('Content-Length: ' || dbms_lob.getlength(bBlob));
+          owa_util.http_header_close;
+          wpg_docload.download_file(bBlob);
+      
+      exception
+          when no_data_found then
+              null;
+      end;
+
+  execution: 
+    sequence: 1
+    point: Ajax Callback
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Process: OpenMinPDF_HEADER ==============
+  id: 639622243034446262
+  identification: 
+    name: OpenMinPDF_HEADER
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          bBlob blob;
+          vMimeType varchar2(50);
+      begin
+          select  nvl(BLOB_FILE,PDF_FILE),'application/pdf'
+          into    bBlob, vMimeType
+          from    RMAIS_EFD_HEADERS
+          where   EFD_HEADER_ID = V('P14_ID');
+      
+          owa_util.mime_header(vMimeType,false);
+          htp.p('Content-Length: ' || dbms_lob.getlength(bBlob));
+          owa_util.http_header_close;
+          wpg_docload.download_file(bBlob);
+          
+      exception
+          when no_data_found then
+              null;
+      end;
+
+  execution: 
+    sequence: 1
+    point: Ajax Callback
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
+

@@ -1,0 +1,676 @@
+---
+- # ====== List: Desktop Navigation Menu =======================
+  id: 1778840279170770311
+  identification: 
+    name: Desktop Navigation Menu
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Gerenciar Grupos Usuários ====================
+    id: 1650804443112814
+    label: 
+      label: Gerenciar Grupos Usuários
+
+    icon: 
+      image/icon-css-classes: fa-users-alt
+
+    layout: 
+      sequence: 200
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 11000
+      - 11001
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:11000:&APP_SESSION.::&DEBUG.:::'
+        page: 11000 # Gerenciar Grupos Usuários
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: NF´s com divergência de impostos =============
+    id: 245403946757890840
+    label: 
+      label: NF´s com divergência de impostos
+
+    layout: 
+      sequence: 170
+      parent-entry: Home # 1778989827025770472
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 41
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:41:&APP_SESSION.::&DEBUG.:::'
+        page: 41 # NF´s com divergência de impostos
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Mapeamento de Erros ==========================
+    id: 385436443496664085
+    label: 
+      label: Mapeamento de Erros
+
+    layout: 
+      sequence: 160
+      parent-entry: Home # 1778989827025770472
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 38
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:38:&APP_SESSION.::&DEBUG.:::'
+        page: 38 # Localização de Erros
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: WORKFLOW =====================================
+    id: 604458981545373803
+    label: 
+      label: WORKFLOW
+
+    icon: 
+      image/icon-css-classes: fa-table
+
+    layout: 
+      sequence: 180
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 42
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:42:&SESSION.::&DEBUG.::::'
+        page: 42 # WORKFLOW
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Grupos de Pagamentos para envio ==============
+    id: 679814684868040559
+    label: 
+      label: Grupos de Pagamentos para envio
+
+    icon: 
+      image/icon-css-classes: fa-clipboard-bookmark
+
+    layout: 
+      sequence: 190
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 40
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:40:&APP_SESSION.::&DEBUG.:::'
+        page: 40 # Grupos de Pagamentos para Envio
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Setup de definição (PO/NA) ===================
+    id: 811771012092310374
+    label: 
+      label: Setup de definição (PO/NA)
+
+    icon: 
+      image/icon-css-classes: fa-clipboard-list
+
+    layout: 
+      sequence: 140
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 36
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:36:&SESSION.::&DEBUG.::::'
+        page: 36 # Setup de definição (PO/NA)
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Cadastro Hold ================================
+    id: 812971953755062472
+    label: 
+      label: Cadastro Hold
+
+    icon: 
+      image/icon-css-classes: fa-file-o
+
+    layout: 
+      sequence: 150
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 37
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:37:&APP_SESSION.::&DEBUG.:::'
+        page: 37 # Cadastro Hold
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Az ===========================================
+    id: 1763937453995743482
+    label: 
+      label: Az
+
+    layout: 
+      sequence: 130
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 34
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:34:&APP_SESSION.::&DEBUG.:::'
+        page: 34 # Az
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Home =========================================
+    id: 1778989827025770472
+    label: 
+      label: Home
+
+    icon: 
+      image/icon-css-classes: fa-home
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Cadastro Clientes ============================
+    id: 1779637587652850583
+    label: 
+      label: Cadastro Clientes
+
+    layout: 
+      sequence: 20
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&SESSION.::&DEBUG.:RP:::'
+        page: 2 # Clientes_report
+        clear-cache: RP
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Cadastro CNPJ ================================
+    id: 1782046843135895394
+    label: 
+      label: Cadastro CNPJ
+
+    layout: 
+      sequence: 30
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 4
+      - 5
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:4:&SESSION.::&DEBUG.::::'
+        page: 4 # cnpj_org_report
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Nf´s =========================================
+    id: 1783648113305575696
+    label: 
+      label: Nf´s
+
+    layout: 
+      sequence: 40
+      parent-entry: Home # 1778989827025770472
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 6
+      - 7
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&SESSION.::&DEBUG.::::'
+        page: 6 # Nf´s
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: user # 1780036942727925659
+
+  - # ====== Entry: Administração Admin ==========================
+    id: 1786942968798629020
+    label: 
+      label: Administração Admin
+
+    icon: 
+      image/icon-css-classes: fa-key
+
+    layout: 
+      sequence: 15
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&SESSION.::&DEBUG.::::'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Período de entrada ===========================
+    id: 1787035276990367660
+    label: 
+      label: Período de entrada
+
+    layout: 
+      sequence: 110
+      parent-entry: Administração # 1869104886050368267
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 25
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:25:&SESSION.::&DEBUG.::::'
+        page: 25 # Período de entrada
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Dashboards ===================================
+    id: 1796328310782055765
+    label: 
+      label: Dashboards
+
+    layout: 
+      sequence: 120
+      parent-entry: Home # 1778989827025770472
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:31:&SESSION.::&DEBUG.:RP:::'
+        page: 31 # Dashboards
+        clear-cache: RP
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Lançamentos NFs ==============================
+    id: 1797979583813140037
+    label: 
+      label: Lançamentos NFs
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 10
+      - 11
+      - 12
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.::::'
+        page: 10 # Emissão
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Cadastro cod. Serviço ========================
+    id: 1801150699438703120
+    label: 
+      label: Cadastro cod. Serviço
+
+    layout: 
+      sequence: 60
+      parent-entry: Lançamentos NFs # 1797979583813140037
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 12
+      - 13
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
+        page: 12 # Cod_serv_report
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: admin # 1780037118165928608
+
+  - # ====== Entry: Cfops Cadastrados ============================
+    id: 1820825495563119378
+    label: 
+      label: Cfops Cadastrados
+
+    layout: 
+      sequence: 70
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:16:&SESSION.::&DEBUG.::::'
+        page: 16 # Cfops cadastrados
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Administração ================================
+    id: 1869104886050368267
+    label: 
+      label: Administração
+
+    layout: 
+      sequence: 12
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:28:&SESSION.::&DEBUG.::::'
+        page: 28 # Administração / Setups
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: user_admin # 1869103764130334031
+
+  - # ====== Entry: Cfop X Utilização ============================
+    id: 1873905692452941988
+    label: 
+      label: Cfop X Utilização
+
+    layout: 
+      sequence: 100
+      parent-entry: Administração # 1869104886050368267
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:21:&SESSION.::&DEBUG.::::'
+        page: 21 # Cfop X Utilizacao
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Associação CNPJ / BU =========================
+    id: 1877201850754883698
+    label: 
+      label: Associação CNPJ / BU
+
+    layout: 
+      sequence: 90
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 20
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:20:&APP_SESSION.::&DEBUG.:::'
+        page: 20 # Associação CNPJ / BU
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Parâmetros ===================================
+    id: 1891483302082954593
+    label: 
+      label: Parâmetros
+
+    layout: 
+      sequence: 80
+      parent-entry: Administração Admin # 1786942968798629020
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 18
+      - 19
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:18:&APP_SESSION.::&DEBUG.:::'
+        page: 18 # Parâmetros
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Desktop Navigation Bar ========================
+  id: 1778979690387770412
+  identification: 
+    name: Desktop Navigation Bar
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: &APP_USER. ===================================
+    id: 1778991365263770484
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 1778991828161770484
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 20
+      parent-entry: '&APP_USER.' # 1778991365263770484
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Sign Out =====================================
+    id: 1778992211085770485
+    label: 
+      label: Sign Out
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 1778991365263770484
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+

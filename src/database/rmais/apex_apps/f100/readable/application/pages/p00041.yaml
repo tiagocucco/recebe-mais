@@ -1,0 +1,1577 @@
+---
+# ====== Page: NF´s com divergência de impostos ==============
+id: 41
+identification: 
+  name: NF´s com divergência de impostos
+  alias: NF-S-COM-DIVERGÊNCIA-DE-IMPOSTOS
+  title: NF´s com divergência de impostos
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: '.barra-top .a-GV-w-hdr {overflow-x: auto!important;}'
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 245415771402890863
+  identification: 
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 1778839847114770310
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 1778904192380770343
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 1778958687565770373
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: NF´s com divergência de impostos ============
+  id: 1311469477138789874
+  identification: 
+    title: NF´s com divergência de impostos
+    type: Interactive Grid
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select '<a href="'||apex_util.prepare_url('f?p='||:APP_ID||':7:'||:APP_SESSION||'::'||:DEBUG||':7:P7_PAGE_RETURN,P7_EFD_HEADER_ID:41,'||rmv.efd_header_id)||'"><span title="Visualizar/Editar" aria-hidden="true" class="fa fa-search"></span></a>' LINKS,
+             rmv.ACCESS_KEY_NUMBER,
+             rmv.LINE_NUMBER,
+             rmv.VALOR,
+             rmv.IMPOSTO,
+             rmv.EFD_LINE_ID,
+             rmv.EFD_HEADER_ID,
+             rmv.GRUPO_CONDICAO,
+             rmv.CODIGO_IMPOSTO,
+             rmv.CODIGO_REGIME,
+             rmv.TIPO_TAXA,
+             rmv.BASE,
+             rmv.TAXA,
+             rmv.VALOR_IMP,
+             rmv.VALOR_NF,
+             rmh.document_number,
+             rmh.issue_date,
+             rmh.receiver_name,
+             rmh.receiver_document_number,
+             rmh.issuer_name,
+             rmh.issuer_document_number,
+             rmh.total_amount,
+             decode(rmh.document_status,'N','A Receber','V','Válido','I','Inválido','E','Erro','T','Enviado ERP','C','Cancelada','M','Manual','X','Cancelada Após Integração','R','Rejeitado','RW','Rejeitado','W','Cancelada ERP','Status Desconhecido')  document_status,
+             rmh.operation_nature natureza_operacao,
+             decode(rmh.model,'55','NFe','00','NFse','NF','NF','57','Cte','67','CTEos','06','Energia','21','Comunicação','22','Telecomunicação','Modelo Não suportado')  as model
+           
+        from RMAIS_TAXES_ERRORS_V rmv,
+             rmais_efd_headers rmh
+        where rmv.efd_header_id = rmh.efd_header_id
+        and     nvl(rmv.valor,0) not between nvl(rmv.valor_imp,0) - 0.1 and nvl(rmv.valor_imp,0) + 0.1
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 1778892953883770340
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - barra-top
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1308418375087932548
+    edit: 
+      enabled: false
+
+    performance: 
+      lazy-loading: false
+
+    appearance: 
+      select-first-row: true
+      fixed-row-height: true
+
+    pagination: 
+      type: Scroll
+      show-total-count: true
+
+    toolbar: 
+      show: true
+      controls: 
+      - Search Column Selection
+      - Search Field
+      - Actions Menu
+      - Reset Button
+      - Save Button
+
+    enable-users-to: 
+      save-public-report: false
+      flashback: true
+      define-chart-view: true
+      download: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 1311488389522162694
+      identification: 
+        name: Primary Report
+        alias: 843501
+
+  columns: 
+  - # ====== Column: LINKS =======================================
+    id: 223962202534276614
+    identification: 
+      column-name: LINKS
+      type: Display Only
+
+    heading: 
+      alignment: center
+
+    settings: 
+      format: HTML
+
+    layout: 
+      sequence: 260
+      column-alignment: center
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: LINKS
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: ACCESS_KEY_NUMBER ===========================
+    id: 1308418465172932549
+    identification: 
+      column-name: ACCESS_KEY_NUMBER
+      type: Text Field
+
+    heading: 
+      heading: NF
+      alignment: center
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 211
+
+    source: 
+      type: Database Column
+      database-column: ACCESS_KEY_NUMBER
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: false
+
+  - # ====== Column: LINE_NUMBER =================================
+    id: 1308418592384932550
+    identification: 
+      column-name: LINE_NUMBER
+      type: Display Only
+
+    heading: 
+      heading: Linha
+      alignment: center
+
+    settings: 
+      format: HTML
+
+    layout: 
+      sequence: 50
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:7:&SESSION.::&DEBUG.:7:P7_EFD_HEADER_ID,P7_PAGE_RETURN:&EFD_HEADER_ID.,41'
+        page: 7 # Detalhes NF
+        clear-cache: 7
+        values: 
+          p7_efd_header_id: '&EFD_HEADER_ID.'
+          p7_page_return: 41
+
+      link-text: '&LINE_NUMBER.'
+
+    source: 
+      type: Database Column
+      database-column: LINE_NUMBER
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: VALOR =======================================
+    id: 1308418682337932551
+    identification: 
+      column-name: VALOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 30
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: VALOR
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: IMPOSTO =====================================
+    id: 1308418790128932552
+    identification: 
+      column-name: IMPOSTO
+      type: Text Field
+
+    heading: 
+      heading: Imposto
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 7
+
+    source: 
+      type: Database Column
+      database-column: IMPOSTO
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: EFD_LINE_ID =================================
+    id: 1308418879301932553
+    identification: 
+      column-name: EFD_LINE_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 20
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: EFD_LINE_ID
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: EFD_HEADER_ID ===============================
+    id: 1308418987451932554
+    identification: 
+      column-name: EFD_HEADER_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 10
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: EFD_HEADER_ID
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: GRUPO_CONDICAO ==============================
+    id: 1308419149954932556
+    identification: 
+      column-name: GRUPO_CONDICAO
+      type: Textarea
+
+    heading: 
+      heading: Grupo Condicao
+      alignment: start
+
+    settings: 
+      resizable: true
+      auto-height: false
+      character-counter: false
+      trim-spaces: Leading and Trailing
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 100
+
+    source: 
+      type: Database Column
+      database-column: GRUPO_CONDICAO
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: CODIGO_IMPOSTO ==============================
+    id: 1308419205359932557
+    identification: 
+      column-name: CODIGO_IMPOSTO
+      type: Textarea
+
+    heading: 
+      heading: Codigo Imposto
+      alignment: start
+
+    settings: 
+      resizable: true
+      auto-height: false
+      character-counter: false
+      trim-spaces: Leading and Trailing
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 100
+
+    source: 
+      type: Database Column
+      database-column: CODIGO_IMPOSTO
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: CODIGO_REGIME ===============================
+    id: 1308419297937932558
+    identification: 
+      column-name: CODIGO_REGIME
+      type: Textarea
+
+    heading: 
+      heading: Codigo Regime
+      alignment: start
+
+    settings: 
+      resizable: true
+      auto-height: false
+      character-counter: false
+      trim-spaces: Leading and Trailing
+
+    layout: 
+      sequence: 110
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 100
+
+    source: 
+      type: Database Column
+      database-column: CODIGO_REGIME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: TIPO_TAXA ===================================
+    id: 1308419429209932559
+    identification: 
+      column-name: TIPO_TAXA
+      type: Textarea
+
+    heading: 
+      heading: Tipo Taxa
+      alignment: start
+
+    settings: 
+      resizable: true
+      auto-height: false
+      character-counter: false
+      trim-spaces: Leading and Trailing
+
+    layout: 
+      sequence: 120
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 100
+
+    source: 
+      type: Database Column
+      database-column: TIPO_TAXA
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: BASE ========================================
+    id: 1308419584649932560
+    identification: 
+      column-name: BASE
+      type: Number Field
+
+    heading: 
+      heading: Base
+      alignment: end
+
+    settings: 
+      number-alignment: End
+      virtual-keyboard: Text
+
+    layout: 
+      sequence: 130
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: 999G999G999G999G990D00
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: BASE
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: TAXA ========================================
+    id: 1308419669617932561
+    identification: 
+      column-name: TAXA
+      type: Number Field
+
+    heading: 
+      heading: Taxa
+      alignment: center
+
+    settings: 
+      number-alignment: End
+      virtual-keyboard: Text
+
+    layout: 
+      sequence: 140
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: TAXA
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: VALOR_IMP ===================================
+    id: 1308419699511932562
+    identification: 
+      column-name: VALOR_IMP
+      type: Number Field
+
+    heading: 
+      heading: Valor Calculado
+      alignment: center
+
+    settings: 
+      number-alignment: End
+      virtual-keyboard: Text
+
+    layout: 
+      sequence: 150
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: 999G999G999G999G990D00
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: VALOR_IMP
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: VALOR_NF ====================================
+    id: 1308419810863932563
+    identification: 
+      column-name: VALOR_NF
+      type: Number Field
+
+    heading: 
+      heading: Valor Nf.
+      alignment: center
+
+    settings: 
+      number-alignment: End
+      virtual-keyboard: Text
+
+    layout: 
+      sequence: 160
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: 999G999G999G999G990D00
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: VALOR_NF
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: DOCUMENT_NUMBER =============================
+    id: 1312274017685632834
+    identification: 
+      column-name: DOCUMENT_NUMBER
+      type: Number Field
+
+    heading: 
+      heading: Número
+      alignment: center
+
+    settings: 
+      number-alignment: End
+      virtual-keyboard: Text
+
+    layout: 
+      sequence: 170
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: DOCUMENT_NUMBER
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ISSUE_DATE ==================================
+    id: 1312274129621632835
+    identification: 
+      column-name: ISSUE_DATE
+      type: Date Picker
+
+    heading: 
+      heading: Emissão
+      alignment: center
+
+    settings: 
+      show-time: false
+      display-as: Popup
+      minimum-date: None
+      maximum-date: None
+      multiple-months: No
+      use-defaults: true
+
+    layout: 
+      sequence: 180
+      column-alignment: center
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: ISSUE_DATE
+      data-type: DATE
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+      date-ranges: All
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: RECEIVER_NAME ===============================
+    id: 1312274239323632836
+    identification: 
+      column-name: RECEIVER_NAME
+      type: Textarea
+
+    heading: 
+      heading: Tomador
+      alignment: center
+
+    settings: 
+      resizable: true
+      auto-height: false
+      character-counter: false
+      trim-spaces: Leading and Trailing
+
+    layout: 
+      sequence: 190
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 60
+
+    source: 
+      type: Database Column
+      database-column: RECEIVER_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: RECEIVER_DOCUMENT_NUMBER ====================
+    id: 1312274359114632837
+    identification: 
+      column-name: RECEIVER_DOCUMENT_NUMBER
+      type: Text Field
+
+    heading: 
+      heading: Cnpj Tomador
+      alignment: center
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 200
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 15
+
+    source: 
+      type: Database Column
+      database-column: RECEIVER_DOCUMENT_NUMBER
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ISSUER_NAME =================================
+    id: 1312274476755632838
+    identification: 
+      column-name: ISSUER_NAME
+      type: Textarea
+
+    heading: 
+      heading: Fornecedor
+      alignment: center
+
+    settings: 
+      resizable: true
+      auto-height: false
+      character-counter: false
+      trim-spaces: Leading and Trailing
+
+    layout: 
+      sequence: 210
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 120
+
+    source: 
+      type: Database Column
+      database-column: ISSUER_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: ISSUER_DOCUMENT_NUMBER ======================
+    id: 1312274552226632839
+    identification: 
+      column-name: ISSUER_DOCUMENT_NUMBER
+      type: Text Field
+
+    heading: 
+      heading: Cnpj / Fornecedor
+      alignment: center
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 220
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 15
+
+    source: 
+      type: Database Column
+      database-column: ISSUER_DOCUMENT_NUMBER
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: TOTAL_AMOUNT ================================
+    id: 1312274595642632840
+    identification: 
+      column-name: TOTAL_AMOUNT
+      type: Number Field
+
+    heading: 
+      heading: Valor
+      alignment: center
+
+    settings: 
+      number-alignment: End
+      virtual-keyboard: Text
+
+    layout: 
+      sequence: 230
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: 999G999G999G999G990D00
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: TOTAL_AMOUNT
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: DOCUMENT_STATUS =============================
+    id: 1314826355529463943
+    identification: 
+      column-name: DOCUMENT_STATUS
+      type: Text Field
+
+    heading: 
+      heading: Status Nf.
+      alignment: center
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 28
+
+    source: 
+      type: Database Column
+      database-column: DOCUMENT_STATUS
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: NATUREZA_OPERACAO ===========================
+    id: 1314829482877463974
+    identification: 
+      column-name: NATUREZA_OPERACAO
+      type: Text Field
+
+    heading: 
+      heading: Natureza Operacao
+      alignment: center
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 240
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 60
+
+    source: 
+      type: Database Column
+      database-column: NATUREZA_OPERACAO
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: MODEL =======================================
+    id: 1314829547662463975
+    identification: 
+      column-name: MODEL
+      type: Text Field
+
+    heading: 
+      heading: Model
+      alignment: center
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 250
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 21
+
+    source: 
+      type: Database Column
+      database-column: MODEL
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  printing: 
+    page: 
+      size: A4
+      orientation: Landscape
+      units: Millimeters
+      width: 297
+      height: 210
+      border-width: 0.5
+      border-color: '#666666'
+
+    page-header: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+      page-header-text: NF´s com divergência de impostos
+
+    column-headings: 
+      font: Helvetica
+      font-weight: Bold
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#EEEEEE'
+
+    columns: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#FFFFFF'
+
+    page-footer: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+
+- # ====== Region: NF´s com divergência de impostos ============
+  id: 1321902766415483276
+  identification: 
+    title: NF´s com divergência de impostos
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+

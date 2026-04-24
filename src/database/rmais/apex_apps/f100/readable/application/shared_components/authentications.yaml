@@ -1,0 +1,18 @@
+---
+- # ====== Authentication: Application Express Accounts ========
+  id: 1778839506573770309
+  identification: 
+    name: Application Express Accounts
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
