@@ -1,0 +1,56 @@
+---
+- # ====== Role: DEVELOPER =====================================
+  id: 234146583293829196
+  identification: 
+    name: DEVELOPER
+
+  advanced: 
+    static-id: DEVELOPER
+
+  subscription: 
+    version-number: 1
+
+- # ====== Role: user ==========================================
+  id: 1779137232784784038
+  identification: 
+    name: user
+
+  advanced: 
+    static-id: USER
+
+  subscription: 
+    version-number: 1
+
+- # ====== Role: admin =========================================
+  id: 1779137310890785111
+  identification: 
+    name: admin
+
+  advanced: 
+    static-id: ADMIN
+
+  subscription: 
+    version-number: 1
+
+- # ====== Role: lancamento ====================================
+  id: 1800437209830992642
+  identification: 
+    name: lancamento
+
+  advanced: 
+    static-id: LANCAMENTO
+
+  subscription: 
+    version-number: 1
+
+- # ====== Role: user_admin ====================================
+  id: 1869105974800379472
+  identification: 
+    name: user_admin
+
+  advanced: 
+    static-id: USER_ADMIN
+
+  subscription: 
+    version-number: 1
+

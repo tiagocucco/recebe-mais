@@ -1,0 +1,6559 @@
+---
+# ====== Page: Lancamento ====================================
+id: 11
+identification: 
+  name: Lancamento
+  alias: FORMS-NFS-MANUAIS
+  title: Forms_Nfs_Manuais
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: sub_impostos ================================
+  id: 484656272353453417
+  identification: 
+    title: sub_impostos
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Impostos # 1798041894193178502
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Boleto ======================================
+  id: 847602183925483553
+  identification: 
+    title: Boleto
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Forms_Nfs_Manuais # 1797940575789139926
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Excluir Linha ===============================
+  id: 1779737932768863489
+  identification: 
+    title: Excluir Linha
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Linhas # 1798043178398178515
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Collapsible # 1778877869770770335
+    template-options: 
+    - '#DEFAULT#'
+    - is-collapsed
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Forms_Nfs_Manuais ===========================
+  id: 1797940575789139926
+  identification: 
+    title: Forms_Nfs_Manuais
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: RMAIS_EFD_HEADERS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Tomador =====================================
+  id: 1798041632910178499
+  identification: 
+    title: Tomador
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Forms_Nfs_Manuais # 1797940575789139926
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Fornecedor ==================================
+  id: 1798041689207178500
+  identification: 
+    title: Fornecedor
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: Forms_Nfs_Manuais # 1797940575789139926
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Impostos ====================================
+  id: 1798041894193178502
+  identification: 
+    title: Impostos
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: Forms_Nfs_Manuais # 1797940575789139926
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Linhas ======================================
+  id: 1798043178398178515
+  identification: 
+    title: Linhas
+    type: Static Content
+
+  layout: 
+    sequence: 50
+    parent-region: Forms_Nfs_Manuais # 1797940575789139926
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Linhas ======================================
+  id: 1799862362978569124
+  identification: 
+    title: Linhas
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select n001 efd_header_id,
+             n002 efd_line_id,
+             seq_id line_number,
+             c002 fiscal_classification,
+             n003 line_quantity,
+             n004 unit_price,
+             n005 line_amount,
+             c003 item_description
+      from apex_collections 
+      where collection_name = 'RMAIS_LINHAS'
+
+  layout: 
+    sequence: 10
+    parent-region: Linhas # 1798043178398178515
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 1778923706017770352
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--altRowsDefault
+      - t-Report--rowHighlight
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: EFD_HEADER_ID ===============================
+    id: 1799862387713569125
+    identification: 
+      column-name: EFD_HEADER_ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 10
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: EFD_LINE_ID =================================
+    id: 1799862536189569126
+    identification: 
+      column-name: EFD_LINE_ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 20
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: LINE_NUMBER =================================
+    id: 1799862599190569127
+    identification: 
+      column-name: LINE_NUMBER
+      type: Plain Text
+
+    heading: 
+      heading: Linha
+      alignment: center
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: FISCAL_CLASSIFICATION =======================
+    id: 1799862735619569128
+    identification: 
+      column-name: FISCAL_CLASSIFICATION
+      type: Plain Text
+
+    heading: 
+      heading: Código Serviço
+      alignment: center
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: LINE_QUANTITY ===============================
+    id: 1799862846504569129
+    identification: 
+      column-name: LINE_QUANTITY
+      type: Plain Text
+
+    heading: 
+      heading: Quantidade
+      alignment: center
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: UNIT_PRICE ==================================
+    id: 1799862875367569130
+    identification: 
+      column-name: UNIT_PRICE
+      type: Plain Text
+
+    heading: 
+      heading: Valor Unitário
+      alignment: center
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: FML999G999G999G999G990D00
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: LINE_AMOUNT =================================
+    id: 1799863025297569131
+    identification: 
+      column-name: LINE_AMOUNT
+      type: Plain Text
+
+    heading: 
+      heading: Total
+      alignment: center
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: FML999G999G999G999G990D00
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ITEM_DESCRIPTION ============================
+    id: 1800052144529878091
+    identification: 
+      column-name: ITEM_DESCRIPTION
+      type: Plain Text
+
+    heading: 
+      heading: Item Desc.
+      alignment: center
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Inf. Tributos ===============================
+  id: 1800053379850878104
+  identification: 
+    title: Inf. Tributos
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Impostos # 1798041894193178502
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Anexos ======================================
+  id: 1835250757182207202
+  identification: 
+    title: Anexos
+    type: Static Content
+
+  layout: 
+    sequence: 60
+    parent-region: Forms_Nfs_Manuais # 1797940575789139926
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1778894801344770340
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P11_TIPO_ENTRADA =========================
+  id: 187597601331729207
+  identification: 
+    name: P11_TIPO_ENTRADA
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 220
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: DEFINE_DET_ENTRY_TYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_LANC_COM_IMPOSTO =====================
+  id: 484656364099453418
+  identification: 
+    name: P11_LANC_COM_IMPOSTO
+    type: Select List
+
+  label: 
+    label: Lançamento com Imposto
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 10
+    region: Impostos # 1798041894193178502
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Sim;S,Não;N'
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: LANC_COM_IMPOSTO
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_IMAGE ================================
+  id: 794948440686143689
+  identification: 
+    name: P11_IMAGE
+    type: File Upload
+
+  label: 
+    label: Image
+    alignment: Left
+
+  display: 
+    display-as: Inline File Browse
+    display-download-link: true
+    content-disposition: Attachment
+    capture-using: NONE
+
+  storage:: 
+    type: BLOB column specified in Item Source attribute
+    mime-type-column: BLOB_MIME_TYPE
+    filename-column: BLOB_FILENAME
+
+  layout: 
+    sequence: 40
+    region: Anexos # 1835250757182207202
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: BLOB_FILE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISS_RET ==============================
+  id: 794948624550143691
+  identification: 
+    name: P11_ISS_RET
+    type: Select List
+
+  label: 
+    label: Iss Retido
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 170
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Sim;Y,Não;N'
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISS_RET_FLAG
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BOLETO_COD ===========================
+  id: 847601505270483546
+  identification: 
+    name: P11_BOLETO_COD
+    type: Text Field
+
+  label: 
+    label: Código de Barra
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 120
+    region: Boleto # 847602183925483553
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1778956480210770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: BOLETO_COD
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_FIRST_DUE_DATE =======================
+  id: 847601524063483547
+  identification: 
+    name: P11_FIRST_DUE_DATE
+    type: Date Picker
+
+  label: 
+    label: Data Vencimento
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: Item
+    minimum-item: P11_ISSUE_DATE
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 130
+    region: Boleto # 847602183925483553
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1778956480210770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: FIRST_DUE_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_LINHA ================================
+  id: 1779737992175863490
+  identification: 
+    name: P11_LINHA
+    type: Text Field
+
+  label: 
+    label: Linha
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Excluir Linha # 1779737932768863489
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_EFD_HEADER_ID ========================
+  id: 1797941072572139929
+  identification: 
+    name: P11_EFD_HEADER_ID
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: EFD_HEADER_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_DOCUMENT_NUMBER ======================
+  id: 1797941379423139936
+  identification: 
+    name: P11_DOCUMENT_NUMBER
+    type: Number Field
+
+  label: 
+    label: Número
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 80
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: DOCUMENT_NUMBER
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUE_DATE ===========================
+  id: 1797941835457139939
+  identification: 
+    name: P11_ISSUE_DATE
+    type: Date Picker
+
+  label: 
+    label: Data Emissão
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: Static
+    maximum-static: +0d
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 90
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUE_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_TOTAL_AMOUNT =========================
+  id: 1797942194257139941
+  identification: 
+    name: P11_TOTAL_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Total
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 100
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: TOTAL_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_DOCUMENT_STATUS ======================
+  id: 1797942674208139943
+  identification: 
+    name: P11_DOCUMENT_STATUS
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 150
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: DOCUMENT_STATUS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: N
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_NAME ==========================
+  id: 1797943032835139944
+  identification: 
+    name: P11_ISSUER_NAME
+    type: Text Field
+
+  label: 
+    label: Fornecedor
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 8
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_DOCUMENT_NUMBER ===============
+  id: 1797943437226139946
+  identification: 
+    name: P11_ISSUER_DOCUMENT_NUMBER
+    type: Text Field
+
+  label: 
+    label: Cnpj
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 18
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_DOCUMENT_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS =======================
+  id: 1797943802690139947
+  identification: 
+    name: P11_ISSUER_ADDRESS
+    type: Text Field
+
+  label: 
+    label: Rua
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS_NUMBER ================
+  id: 1797944176699139948
+  identification: 
+    name: P11_ISSUER_ADDRESS_NUMBER
+    type: Text Field
+
+  label: 
+    label: Numero
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS_STATE =================
+  id: 1797944501165139949
+  identification: 
+    name: P11_ISSUER_ADDRESS_STATE
+    type: Text Field
+
+  label: 
+    label: Estado
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 60
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 2
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS_STATE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS_COMPLEMENT ============
+  id: 1797944910792139951
+  identification: 
+    name: P11_ISSUER_ADDRESS_COMPLEMENT
+    type: Text Field
+
+  label: 
+    label: Complemento
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS_COMPLEMENT
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS_ZIP_CODE ==============
+  id: 1797945302503139952
+  identification: 
+    name: P11_ISSUER_ADDRESS_ZIP_CODE
+    type: Text Field
+
+  label: 
+    label: Cep
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 80
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 00000000
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS_ZIP_CODE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS_CITY_CODE =============
+  id: 1797946096950139955
+  identification: 
+    name: P11_ISSUER_ADDRESS_CITY_CODE
+    type: Text Field
+
+  label: 
+    label: Bairro
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 30
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS_CITY_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISSUER_ADDRESS_CITY_NAME =============
+  id: 1797946480575139956
+  identification: 
+    name: P11_ISSUER_ADDRESS_CITY_NAME
+    type: Text Field
+
+  label: 
+    label: Cidade
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 100
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISSUER_ADDRESS_CITY_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_NAME ========================
+  id: 1797946952708139958
+  identification: 
+    name: P11_RECEIVER_NAME
+    type: Text Field
+
+  label: 
+    label: Tomador
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_DOCUMENT_NUMBER =============
+  id: 1797947343990139959
+  identification: 
+    name: P11_RECEIVER_DOCUMENT_NUMBER
+    type: Popup LOV
+
+  label: 
+    label: Cnpj Tomador
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: false
+    manual-entry: false
+    search-as-you-type: false
+
+  layout: 
+    sequence: 10
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: select cnpj||' - '||nome d, cnpj r from RMAIS_ORGANIZATIONS
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_DOCUMENT_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS =====================
+  id: 1797947768888139960
+  identification: 
+    name: P11_RECEIVER_ADDRESS
+    type: Text Field
+
+  label: 
+    label: Rua
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS_NUMBER ==============
+  id: 1797948125864139962
+  identification: 
+    name: P11_RECEIVER_ADDRESS_NUMBER
+    type: Text Field
+
+  label: 
+    label: Número
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS_CITY_CODE ===========
+  id: 1797948933537139966
+  identification: 
+    name: P11_RECEIVER_ADDRESS_CITY_CODE
+    type: Text Field
+
+  label: 
+    label: Bairro
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 30
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS_CITY_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS_CITY_NAME ===========
+  id: 1797949359544139967
+  identification: 
+    name: P11_RECEIVER_ADDRESS_CITY_NAME
+    type: Text Field
+
+  label: 
+    label: Cidade
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 60
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS_CITY_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS_STATE ===============
+  id: 1797949745546139968
+  identification: 
+    name: P11_RECEIVER_ADDRESS_STATE
+    type: Text Field
+
+  label: 
+    label: Estado
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 2
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS_STATE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS_COMPLEMENT ==========
+  id: 1797950095087139970
+  identification: 
+    name: P11_RECEIVER_ADDRESS_COMPLEMENT
+    type: Text Field
+
+  label: 
+    label: Complemento
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 80
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS_COMPLEMENT
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_RECEIVER_ADDRESS_ZIP_CODE ============
+  id: 1797950517557139972
+  identification: 
+    name: P11_RECEIVER_ADDRESS_ZIP_CODE
+    type: Text Field
+
+  label: 
+    label: Cep
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: Tomador # 1798041632910178499
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 00000000
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: RECEIVER_ADDRESS_ZIP_CODE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_OTHER_EXPENSES_AMOUNT ================
+  id: 1797950959589139973
+  identification: 
+    name: P11_OTHER_EXPENSES_AMOUNT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 150
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: OTHER_EXPENSES_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_DISCOUNT_AMOUNT ======================
+  id: 1797951330480139974
+  identification: 
+    name: P11_DISCOUNT_AMOUNT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 160
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: DISCOUNT_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_PIS_AMOUNT ===========================
+  id: 1797951710992139976
+  identification: 
+    name: P11_PIS_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Pis
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 30
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: PIS_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_COFINS_AMOUNT ========================
+  id: 1797952127302139977
+  identification: 
+    name: P11_COFINS_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Cofins
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 40
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: COFINS_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_INSS_BASE ============================
+  id: 1797952942163139981
+  identification: 
+    name: P11_INSS_BASE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: INSS_BASE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_INSS_TAX =============================
+  id: 1797953318894139982
+  identification: 
+    name: P11_INSS_TAX
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: INSS_TAX
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_INSS_AMOUNT ==========================
+  id: 1797953706782139983
+  identification: 
+    name: P11_INSS_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Inss
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 80
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: INSS_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_NET_AMOUNT ===========================
+  id: 1797954146031139985
+  identification: 
+    name: P11_NET_AMOUNT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 140
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: NET_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_IR_AMOUNT ============================
+  id: 1797954536606139987
+  identification: 
+    name: P11_IR_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Ir
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 100
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: IR_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_IR_BASE ==============================
+  id: 1797954884567139989
+  identification: 
+    name: P11_IR_BASE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 90
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: IR_BASE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISS_AMOUNT ===========================
+  id: 1797955372440139990
+  identification: 
+    name: P11_ISS_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Iss
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 120
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISS_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISS_TAX ==============================
+  id: 1797955700058139992
+  identification: 
+    name: P11_ISS_TAX
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 130
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISS_TAX
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ISS_BASE =============================
+  id: 1797956153949139993
+  identification: 
+    name: P11_ISS_BASE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: sub_impostos # 484656272353453417
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ISS_BASE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_CSLL_AMOUNT ==========================
+  id: 1797956504360139995
+  identification: 
+    name: P11_CSLL_AMOUNT
+    type: Number Field
+
+  label: 
+    label: Csll
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 140
+    region: sub_impostos # 484656272353453417
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: CSLL_AMOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_MUNICIPIO_INCIDENCIA =================
+  id: 1797956909275139996
+  identification: 
+    name: P11_MUNICIPIO_INCIDENCIA
+    type: Text Field
+
+  label: 
+    label: Municipio Incidência
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Inf. Tributos # 1800053379850878104
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 50
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: MUNICIPIO_INCIDENCIA
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_INCRICAO_OBRA ========================
+  id: 1797957289524139997
+  identification: 
+    name: P11_INCRICAO_OBRA
+    type: Number Field
+
+  label: 
+    label: Incrição Obra
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 20
+    region: Inf. Tributos # 1800053379850878104
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: INCRICAO_OBRA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_TRIBUTOS_APROXIMADOS =================
+  id: 1797957698298139999
+  identification: 
+    name: P11_TRIBUTOS_APROXIMADOS
+    type: Text Field
+
+  label: 
+    label: Tributos Aproximados
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Inf. Tributos # 1800053379850878104
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: TRIBUTOS_APROXIMADOS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_FONTE ================================
+  id: 1797958129479140000
+  identification: 
+    name: P11_FONTE
+    type: Text Field
+
+  label: 
+    label: Fonte
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Inf. Tributos # 1800053379850878104
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: FONTE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ACCESS_KEY_NUMBER ====================
+  id: 1798040543737178488
+  identification: 
+    name: P11_ACCESS_KEY_NUMBER
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: ACCESS_KEY_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_CREATION_DATE ========================
+  id: 1798040707027178490
+  identification: 
+    name: P11_CREATION_DATE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: CREATION_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_CREATE_BY ============================
+  id: 1798040942965178492
+  identification: 
+    name: P11_CREATE_BY
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: CREATED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_LAST_UPDATE_DATE =====================
+  id: 1798041137402178494
+  identification: 
+    name: P11_LAST_UPDATE_DATE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: LAST_UPDATE_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_LAST_UPDATED_BY ======================
+  id: 1798041277069178496
+  identification: 
+    name: P11_LAST_UPDATED_BY
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 70
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: LAST_UPDATED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_MODEL ================================
+  id: 1798043108174178514
+  identification: 
+    name: P11_MODEL
+    type: Popup LOV
+
+  label: 
+    label: Modelo
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: false
+    manual-entry: false
+    search-as-you-type: false
+
+  layout: 
+    sequence: 20
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1778956480210770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: MODELOS_FISCAIS # 794759926124153261
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: MODEL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_DESCRICAO ============================
+  id: 1798043285341178516
+  identification: 
+    name: P11_DESCRICAO
+    type: Text Field
+
+  label: 
+    label: Descrição
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Linhas # 1798043178398178515
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_QTD ==================================
+  id: 1798043545945178518
+  identification: 
+    name: P11_QTD
+    type: Text Field
+
+  label: 
+    label: Qtd
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Linhas # 1798043178398178515
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 1
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 1
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_VALOR_UNIT ===========================
+  id: 1798043619884178519
+  identification: 
+    name: P11_VALOR_UNIT
+    type: Text Field
+
+  label: 
+    label: Valor Unit
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Linhas # 1798043178398178515
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_VALOR_TOTAL_LIN ======================
+  id: 1798043714554178520
+  identification: 
+    name: P11_VALOR_TOTAL_LIN
+    type: Text Field
+
+  label: 
+    label: Valor Total
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Linhas # 1798043178398178515
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: 9
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: FML999G999G999G999G990D00
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_USER =================================
+  id: 1798044000027178523
+  identification: 
+    name: P11_USER
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 160
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: USER_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: SQL Query
+    sql-query: 'select :APP_USER from dual'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_SERV_CODE ============================
+  id: 1799863374958569135
+  identification: 
+    name: P11_SERV_CODE
+    type: Popup LOV
+
+  label: 
+    label: Código Serviço
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    multiple-values: false
+    manual-entry: false
+    search-as-you-type: false
+
+  layout: 
+    sequence: 20
+    region: Linhas # 1798043178398178515
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: SELECT codigo_servico||' - '||descricao d , codigo_servico r FROM RMAIS_LISTA_SERVICOS
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: G_RETCODE ================================
+  id: 1800053123269878101
+  identification: 
+    name: G_RETCODE
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 170
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: return '';
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_DOCUMENT_TYPE ========================
+  id: 1800054524575878115
+  identification: 
+    name: P11_DOCUMENT_TYPE
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 180
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: DOCUMENT_TYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: MANUAL
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_VAL_LIQ ==============================
+  id: 1829005225402923598
+  identification: 
+    name: P11_VAL_LIQ
+    type: Number Field
+
+  label: 
+    label: Valor Líquido
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Text
+
+  layout: 
+    sequence: 110
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_XML_FILENAME =========================
+  id: 1829033984373529890
+  identification: 
+    name: P11_XML_FILENAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 200
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: XML_FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_PDF_FILENAME =========================
+  id: 1829034030430529891
+  identification: 
+    name: P11_PDF_FILENAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 190
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: PDF_FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_XML_FILE =============================
+  id: 1835250581291207200
+  identification: 
+    name: P11_XML_FILE
+    type: File Upload
+
+  label: 
+    label: Arquivo XML
+    alignment: Left
+
+  display: 
+    display-as: Inline File Browse
+    display-download-link: true
+    download-link-text: '&P11_XML_FILENAME.'
+    content-disposition: Attachment
+    capture-using: NONE
+
+  storage:: 
+    type: BLOB column specified in Item Source attribute
+    filename-column: XML_FILENAME
+    file-types: text/xml
+
+  layout: 
+    sequence: 30
+    region: Anexos # 1835250757182207202
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: XML_FILE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_PDF_FILE =============================
+  id: 1835250692317207201
+  identification: 
+    name: P11_PDF_FILE
+    type: File Upload
+
+  label: 
+    label: Arquivo PDF
+    alignment: Left
+
+  display: 
+    display-as: Inline File Browse
+    display-download-link: true
+    download-link-text: '&P11_PDF_FILENAME.'
+    content-disposition: Attachment
+    capture-using: NONE
+
+  storage:: 
+    type: BLOB column specified in Item Source attribute
+    filename-column: PDF_FILENAME
+    file-types: application/pdf
+
+  layout: 
+    sequence: 10
+    region: Anexos # 1835250757182207202
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1778956221666770370
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+    column: PDF_FILE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BU_NAME ==============================
+  id: 1856662504763546980
+  identification: 
+    name: P11_BU_NAME
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 210
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: Excluir =====================================
+  id: 1779738075544863491
+  identification: 
+    button-name: Excluir
+    label: Excluir
+
+  layout: 
+    sequence: 20
+    region: Excluir Linha # 1779737932768863489
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Right
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: CANCEL ======================================
+  id: 1797971698599140008
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.:::'
+      page: 10 # Emissão
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DELETE ======================================
+  id: 1797972493742140010
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Default
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P11_EFD_HEADER_ID
+
+- # ====== Button: SAVE ========================================
+  id: 1797972878527140011
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P11_EFD_HEADER_ID
+
+- # ====== Button: CREATE ======================================
+  id: 1797973305111140011
+  identification: 
+    button-name: CREATE
+    label: Submeter
+
+  layout: 
+    sequence: 40
+    region: Forms_Nfs_Manuais # 1797940575789139926
+    position: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P11_EFD_HEADER_ID
+
+- # ====== Button: Inserir_linha ===============================
+  id: 1798043852664178521
+  identification: 
+    button-name: Inserir_linha
+    label: Inserir Linha
+
+  layout: 
+    sequence: 60
+    region: Linhas # 1798043178398178515
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: 11
+    new-column: true
+    column-span: 1
+    alignment: Right
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: Buscar ======================================
+  id: 1800052558894878095
+  identification: 
+    button-name: Buscar
+    label: Buscar
+
+  layout: 
+    sequence: 20
+    region: Fornecedor # 1798041689207178500
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: 4
+    new-column: true
+    column-span: 1
+    alignment: Right
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: Inserir_linha_excel =========================
+  id: 1892107933960622489
+  identification: 
+    button-name: Inserir_linha_excel
+    label: Inserir Linha Excel
+
+  layout: 
+    sequence: 70
+    region: Linhas # 1798043178398178515
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Right
+
+  appearance: 
+    button-template: Text # 1778957344896770372
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapTop
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:26:&SESSION.::&DEBUG.:RP,26::'
+      page: 26 # ADD_LINES_EXCEL
+      clear-cache: RP,26
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: aviso_prefeitura ====================
+  id: 484654827811453403
+  identification: 
+    name: aviso_prefeitura
+
+  execution: 
+    sequence: 160
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_ISSUER_ADDRESS_CITY_NAME
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: (apex.item('P11_ISSUER_NAME').getValue().toUpperCase()).includes("PREFEITURA")//PREFEITURA
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 484654964292453404
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var result = confirm("Esse CNPJ refere-se a uma Prefeitura. Deseja continuar?");
+        if (!result){
+            apex.item('P11_ISSUER_DOCUMENT_NUMBER').setValue()    
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: aviso_prefeitura # 484654827811453403
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: clear_itens =========================
+  id: 484655095147453405
+  identification: 
+    name: clear_itens
+
+  execution: 
+    sequence: 170
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_ISSUER_DOCUMENT_NUMBER
+
+  client-side-condition: 
+    type: Item is null
+    item: P11_ISSUER_DOCUMENT_NUMBER
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 484655137978453406
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_ISSUER_NAME
+      - P11_ISSUER_ADDRESS
+      - P11_ISSUER_ADDRESS_NUMBER
+      - P11_ISSUER_ADDRESS_STATE
+      - P11_ISSUER_ADDRESS_COMPLEMENT
+      - P11_ISSUER_ADDRESS_ZIP_CODE
+      - P11_ISSUER_ADDRESS_CITY_CODE
+      - P11_ISSUER_ADDRESS_CITY_NAME
+
+    execution: 
+      sequence: 10
+      event: clear_itens # 484655095147453405
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: permitir_lancar_impostos ============
+  id: 484656640818453421
+  identification: 
+    name: permitir_lancar_impostos
+
+  execution: 
+    sequence: 180
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_LANC_COM_IMPOSTO
+
+  client-side-condition: 
+    type: Item is not null
+    item: P11_LANC_COM_IMPOSTO
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 484656735446453422
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: sub_impostos # 484656272353453417
+
+    execution: 
+      sequence: 10
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+    client-side-condition: 
+      type: Item = Value
+      item: P11_LANC_COM_IMPOSTO
+      value: S
+
+  - # ====== Action: Hide ========================================
+    id: 484656864087453423
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: sub_impostos # 484656272353453417
+
+    execution: 
+      sequence: 20
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+    client-side-condition: 
+      type: Item = Value
+      item: P11_LANC_COM_IMPOSTO
+      value: N
+
+  - # ====== Action: Hide ========================================
+    id: 484656903357453424
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: sub_impostos # 484656272353453417
+
+    execution: 
+      sequence: 20
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: Set Value ===================================
+    id: 484657092261453425
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: 0
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - 'P11_PIS_AMOUNT '
+      - 'P11_COFINS_AMOUNT '
+      - 'P11_CSLL_AMOUNT '
+      - 'P11_INSS_AMOUNT '
+      - 'P11_IR_AMOUNT '
+      - P11_ISS_AMOUNT
+
+    execution: 
+      sequence: 30
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+    client-side-condition: 
+      type: Item = Value
+      item: P11_LANC_COM_IMPOSTO
+      value: N
+
+  - # ====== Action: Show ========================================
+    id: 484657382174453428
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Linhas # 1798043178398178515
+
+    execution: 
+      sequence: 60
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Hide ========================================
+    id: 484657404051453429
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Linhas # 1798043178398178515
+
+    execution: 
+      sequence: 10
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: Set Value ===================================
+    id: 484657644658453431
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: N
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_ISS_RET
+
+    execution: 
+      sequence: 40
+      event: permitir_lancar_impostos # 484656640818453421
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+    client-side-condition: 
+      type: Item = Value
+      item: P11_LANC_COM_IMPOSTO
+      value: N
+
+- # ====== Dynamic Action: setar_qtd ===========================
+  id: 484658402460453439
+  identification: 
+    name: setar_qtd
+
+  execution: 
+    sequence: 190
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_MODEL
+
+  client-side-condition: 
+    type: Item = Value
+    item: P11_MODEL
+    value: 00
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 484658586135453440
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: 1
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_QTD
+
+    execution: 
+      sequence: 10
+      event: setar_qtd # 484658402460453439
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Disable =====================================
+    id: 484658725582453442
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_QTD
+
+    execution: 
+      sequence: 10
+      event: setar_qtd # 484658402460453439
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Clear =======================================
+    id: 484658835968453443
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_QTD
+
+    execution: 
+      sequence: 10
+      event: setar_qtd # 484658402460453439
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Enable ======================================
+    id: 484658925142453444
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_QTD
+
+    execution: 
+      sequence: 20
+      event: setar_qtd # 484658402460453439
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: alt_P11_MODEL =======================
+  id: 847601613278483548
+  identification: 
+    name: alt_P11_MODEL
+
+  execution: 
+    sequence: 150
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_MODEL
+
+  client-side-condition: 
+    type: Item is in list
+    item: P11_MODEL
+    list: 
+    - 06
+    - 21
+    - 22
+    - 28
+    - 29
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 847601756920483549
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Boleto # 847602183925483553
+
+    execution: 
+      sequence: 10
+      event: alt_P11_MODEL # 847601613278483548
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Hide ========================================
+    id: 847601863841483550
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Boleto # 847602183925483553
+
+    execution: 
+      sequence: 20
+      event: alt_P11_MODEL # 847601613278483548
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: Clear =======================================
+    id: 847601979243483551
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_BOLETO_COD
+      - P11_FIRST_DUE_DATE
+
+    execution: 
+      sequence: 10
+      event: alt_P11_MODEL # 847601613278483548
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: refresh linhas ======================
+  id: 1773930298995512512
+  identification: 
+    name: refresh linhas
+
+  execution: 
+    sequence: 140
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: Region
+    region: Forms_Nfs_Manuais # 1797940575789139926
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 1773930394797512513
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Linhas # 1799862362978569124
+
+    execution: 
+      sequence: 20
+      event: refresh linhas # 1773930298995512512
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 1784028351539599195
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        BEGIN
+          --
+          --execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS='.,']';
+          --
+          :P11_EFD_HEADER_ID := nvl(:P11_EFD_HEADER_ID,xxrmais_invoices_s.nextval);
+          --
+          for x in (SELECT descricao,
+                             quantidade,
+                             unit 
+                      FROM rmais_lines_tmp)
+          loop
+                  APEX_COLLECTION.ADD_MEMBER(
+                      p_collection_name => 'RMAIS_LINHAS',
+                      p_n001            => :P11_EFD_HEADER_ID,
+                      p_n002            => null,
+                      p_c001            => null,
+                      p_c002            => null,
+                      p_n003            => x.quantidade,
+                      p_n004            => x.unit,
+                      p_n005            => x.unit * x.quantidade,
+                      p_c003            => x.descricao
+                      );
+          :P11_TOTAL_AMOUNT := trunc(nvl(:P11_TOTAL_AMOUNT,0) + x.unit * x.quantidade,2);
+          end loop;
+          --
+          delete rmais_lines_tmp;
+          --
+          --execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS=',.']';
+          --
+        exception when others then
+          raise_application_error(-20033,'Erro ao buscar PO');
+        END;
+      items-to-submit: 
+      - P11_EFD_HEADER_ID
+      items-to-return: 
+      - P11_EFD_HEADER_ID
+      - P11_TOTAL_AMOUNT
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: refresh linhas # 1773930298995512512
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: rem_special_char_cnpj_issue =========
+  id: 1776546480055384528
+  identification: 
+    name: rem_special_char_cnpj_issue
+
+  execution: 
+    sequence: 100
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: Item(s)
+    item(s): 
+    - P11_ISSUER_DOCUMENT_NUMBER
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 1776546640503384529
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: JavaScript Expression
+      javascript-expression: apex.item( "P11_ISSUER_DOCUMENT_NUMBER" ).setValue( apex.item( "P11_ISSUER_DOCUMENT_NUMBER" ).getValue().trim().replaceAll(/\D/g, ''), null, true );
+
+    execution: 
+      sequence: 10
+      event: rem_special_char_cnpj_issue # 1776546480055384528
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: rem_special_chars_cep_issue =========
+  id: 1776546735446384530
+  identification: 
+    name: rem_special_chars_cep_issue
+
+  execution: 
+    sequence: 110
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: Item(s)
+    item(s): 
+    - P11_ISSUER_ADDRESS_ZIP_CODE
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 1776546801716384531
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: JavaScript Expression
+      javascript-expression: |2
+         apex.item( "P11_ISSUER_ADDRESS_ZIP_CODE" ).setValue( 
+           apex.item( "P11_ISSUER_ADDRESS_ZIP_CODE" ).getValue().trim().replaceAll(/\D/g, '')
+         , null, true );
+
+    execution: 
+      sequence: 10
+      event: rem_special_chars_cep_issue # 1776546735446384530
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: rem_special_chars_cep_receiver ======
+  id: 1776546928302384532
+  identification: 
+    name: rem_special_chars_cep_receiver
+
+  execution: 
+    sequence: 120
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.FOCUSOUT
+    selection-type: Item(s)
+    item(s): 
+    - P11_ISSUER_ADDRESS_ZIP_CODE
+    - P11_RECEIVER_ADDRESS_ZIP_CODE
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 1776546978193384533
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: JavaScript Expression
+      javascript-expression: |2
+         apex.item( "P11_RECEIVER_ADDRESS_ZIP_CODE" ).setValue( 
+           apex.item( "P11_RECEIVER_ADDRESS_ZIP_CODE" ).getValue().trim().replaceAll(/\D/g, '')
+         , null, true );
+
+    execution: 
+      sequence: 10
+      event: rem_special_chars_cep_receiver # 1776546928302384532
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: Excluir_Linhas ======================
+  id: 1779738228503863492
+  identification: 
+    name: Excluir_Linhas
+
+  execution: 
+    sequence: 90
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: Excluir # 1779738075544863491
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 1779738360865863493
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        begin
+        APEX_COLLECTION.DELETE_MEMBER (
+            p_collection_name => 'RMAIS_LINHAS',
+            p_seq             => :P11_LINHA);
+        APEX_COLLECTION.RESEQUENCE_COLLECTION (
+            p_collection_name => 'RMAIS_LINHAS');
+        --    
+          select sum(n005) line_amount
+            into :P11_TOTAL_AMOUNT 
+            from apex_collections 
+           where collection_name = 'RMAIS_LINHAS';    
+        --
+        end;
+      items-to-submit: 
+      - P11_LINHA
+      items-to-return: 
+      - P11_TOTAL_AMOUNT
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: Excluir_Linhas # 1779738228503863492
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 1779738449437863494
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Linhas # 1799862362978569124
+
+    execution: 
+      sequence: 20
+      event: Excluir_Linhas # 1779738228503863492
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Alerta_retcode ======================
+  id: 1792061435805934217
+  identification: 
+    name: Alerta_retcode
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - G_RETCODE
+
+  client-side-condition: 
+    type: Item is not null
+    item: G_RETCODE
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 1792061487615934218
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var str = $v('G_RETCODE');
+        var res = str.replace("/ã/g", "\u00e3");
+        alert(res);
+
+    execution: 
+      sequence: 10
+      event: Alerta_retcode # 1792061435805934217
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 1792061670589934219
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - G_RETCODE
+
+    execution: 
+      sequence: 20
+      event: Alerta_retcode # 1792061435805934217
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: Tomador_dados =======================
+  id: 1798042623234178509
+  identification: 
+    name: Tomador_dados
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_RECEIVER_DOCUMENT_NUMBER
+
+  client-side-condition: 
+    type: Item is not null
+    item: P11_RECEIVER_DOCUMENT_NUMBER
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 1776547099810384534
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: JavaScript Expression
+      javascript-expression: |2
+         apex.item( "P11_RECEIVER_ADDRESS_ZIP_CODE" ).setValue( 
+           apex.item( "P11_RECEIVER_ADDRESS_ZIP_CODE" ).getValue().trim().replaceAll(/\D/g, '')
+         , null, true );
+
+    execution: 
+      sequence: 50
+      event: Tomador_dados # 1798042623234178509
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Set Value ===================================
+    id: 1798042738657178510
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: SQL Statement
+      sql-statement: |
+        SELECT sys.htf.escape_sc( to_char((initcap(nome)))) nome , 
+               endereco , 
+               numero , 
+               compl , 
+               bairro , 
+               cidade , 
+               estado , 
+               replace(cep, '-', '') cep
+          FROM RMAIS_ORGANIZATIONS 
+          where cnpj = to_char(:P11_RECEIVER_DOCUMENT_NUMBER)
+          
+      items-to-submit: 
+      - P11_RECEIVER_DOCUMENT_NUMBER
+      escape-special-characters: false
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_RECEIVER_NAME
+      - P11_RECEIVER_ADDRESS
+      - P11_RECEIVER_ADDRESS_NUMBER
+      - P11_RECEIVER_ADDRESS_COMPLEMENT
+      - P11_RECEIVER_ADDRESS_CITY_CODE
+      - P11_RECEIVER_ADDRESS_CITY_NAME
+      - P11_RECEIVER_ADDRESS_STATE
+      - P11_RECEIVER_ADDRESS_ZIP_CODE
+
+    execution: 
+      sequence: 30
+      event: Tomador_dados # 1798042623234178509
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 1856661905480546974
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        $("#apex_wait_overlay").remove();
+        $(".u-Processing").remove();
+
+    execution: 
+      sequence: 60
+      event: Tomador_dados # 1798042623234178509
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 1856661982568546975
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: var spinner = apex.util.showSpinner();
+
+    execution: 
+      sequence: 10
+      event: Tomador_dados # 1798042623234178509
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 1856662441398546979
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+         l_url VARCHAR2(500) := '/api/report/tomador/getTomador/'||:P11_RECEIVER_DOCUMENT_NUMBER;
+         l_reponse VARCHAR2(4000);
+        BEGIN
+          --
+          l_reponse := rmais_process_pkg.Get_Response(l_url);
+          :P11_BU_NAME := json_value(l_reponse,'$.DATA.BU_NAME');
+          --
+        exception when others then
+          null;            
+        END;
+      items-to-submit: 
+      - P11_RECEIVER_DOCUMENT_NUMBER
+      items-to-return: 
+      - P11_BU_NAME
+      suppress-change-event: false
+
+    execution: 
+      sequence: 40
+      event: Tomador_dados # 1798042623234178509
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: Inserir Linhas ======================
+  id: 1799863081321569132
+  identification: 
+    name: Inserir Linhas
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: Inserir_linha # 1798043852664178521
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: |
+      $v('P11_DESCRICAO') != '' &&
+      $v('P11_QTD') != '' &&
+      $v('P11_VALOR_TOTAL_LIN') != '' &&
+      $v('P11_VALOR_UNIT') != ''
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 487024074779624105
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: 1
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_QTD
+
+    execution: 
+      sequence: 40
+      event: Inserir Linhas # 1799863081321569132
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+    client-side-condition: 
+      type: Item = Value
+      item: P11_MODEL
+      value: 00
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 1799863219838569133
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        BEGIN
+          --
+          :P11_EFD_HEADER_ID := nvl(:P11_EFD_HEADER_ID,xxrmais_invoices_s.nextval);
+          --
+         -- execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS='.,']';
+          
+                  APEX_COLLECTION.ADD_MEMBER(
+                      p_collection_name => 'RMAIS_LINHAS',
+                      
+                        p_n001  => :P11_EFD_HEADER_ID,
+                        p_n002  => null,
+                        p_c002  => :P11_SERV_CODE,
+                        p_n003  => :P11_QTD,
+                        p_n004  => :P11_VALOR_UNIT,
+                        p_n005  => :P11_VALOR_TOTAL_LIN,
+                        p_c003  => :P11_DESCRICAO
+                      );
+          --
+          :P11_TOTAL_AMOUNT := nvl(:P11_TOTAL_AMOUNT,0) + :P11_VALOR_TOTAL_LIN;
+        
+          select sum(n005) line_amount
+            into :P11_TOTAL_AMOUNT 
+            from apex_collections 
+           where collection_name = 'RMAIS_LINHAS';
+          --execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS=',.']';
+        --
+        exception when others then
+          raise_application_error(-20033,'Erro ao buscar Linhas '||sqlerrm);
+        END;
+      items-to-submit: 
+      - P11_EFD_HEADER_ID
+      - P11_SERV_CODE
+      - P11_VALOR_UNIT
+      - P11_QTD
+      - P11_VALOR_TOTAL_LIN
+      - P11_DESCRICAO
+      - P11_TOTAL_AMOUNT
+      items-to-return: 
+      - P11_TOTAL_AMOUNT
+      - P11_EFD_HEADER_ID
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: Inserir Linhas # 1799863081321569132
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 1799863275101569134
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Linhas # 1799862362978569124
+
+    execution: 
+      sequence: 20
+      event: Inserir Linhas # 1799863081321569132
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Clear =======================================
+    id: 1799863482149569136
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_DESCRICAO
+      - P11_QTD
+      - P11_VALOR_UNIT
+      - P11_VALOR_TOTAL_LIN
+      - P11_SERV_CODE
+
+    execution: 
+      sequence: 30
+      event: Inserir Linhas # 1799863081321569132
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Alert =======================================
+    id: 1799863671585569137
+    identification: 
+      action: Alert
+
+    settings: 
+      message: Campos obrigatórios para criação da linha não preenchido
+      style: Default
+
+    execution: 
+      sequence: 10
+      event: Inserir Linhas # 1799863081321569132
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: refresh_load ========================
+  id: 1800051885244878089
+  identification: 
+    name: refresh_load
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 487023938780624104
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: $( "#P11_ISSUE_DATE" ).prop( "disabled", true );
+
+    execution: 
+      sequence: 30
+      event: refresh_load # 1800051885244878089
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    server-side-condition: 
+      type: Never
+
+  - # ====== Action: Refresh =====================================
+    id: 1800052063260878090
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Linhas # 1799862362978569124
+
+    execution: 
+      sequence: 10
+      event: refresh_load # 1800051885244878089
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Clear =======================================
+    id: 1800054383899878114
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_DESCRICAO
+      - P11_QTD
+      - P11_VALOR_UNIT
+      - P11_VALOR_TOTAL_LIN
+      - P11_SERV_CODE
+
+    execution: 
+      sequence: 20
+      event: refresh_load # 1800051885244878089
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Calculo_valor_linha =================
+  id: 1800052285719878093
+  identification: 
+    name: Calculo_valor_linha
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_QTD
+    - P11_VALOR_UNIT
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: |
+      $v('P11_QTD') != '' &&
+      $v('P11_VALOR_UNIT') != ''
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 1800052421681878094
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: PL/SQL Function Body
+      pl/sql-function-body: 'return (:P11_QTD * :P11_VALOR_UNIT);'
+      items-to-submit: 
+      - P11_QTD
+      - P11_VALOR_UNIT
+      escape-special-characters: true
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_VALOR_TOTAL_LIN
+
+    execution: 
+      sequence: 10
+      event: Calculo_valor_linha # 1800052285719878093
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: INFORM_FORNECEDOR ===================
+  id: 1800052657538878096
+  identification: 
+    name: INFORM_FORNECEDOR
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: Buscar # 1800052558894878095
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: |
+      ($v('P11_ISSUER_DOCUMENT_NUMBER')?'Y':'N') == 'Y' &&
+      ($v('P11_ISSUER_DOCUMENT_NUMBER') != $v('P11_RECEIVER_DOCUMENT_NUMBER'))
+      
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 484654676487453401
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.message.clearErrors('P11_ISSUER_DOCUMENT_NUMBER');
+        //apex.item('P11_POSSUI_IMPOSTOS').setValue()
+        //apex.item('P11_COM_PEDIDO').setValue()
+
+    execution: 
+      sequence: 20
+      event: INFORM_FORNECEDOR # 1800052657538878096
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 484654729790453402
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // First clear the errors
+        apex.message.clearErrors('P11_ISSUER_DOCUMENT_NUMBER');
+        apex.message.showErrors([
+            {
+                type:       "error",
+                location:   [ "inline" ],
+                pageItem:   "P11_ISSUER_DOCUMENT_NUMBER",
+                message:    $v('P11_ISSUER_DOCUMENT_NUMBER')?"Cnpjs devem ser diferentes!":"Informe o CNPJ",
+                unsafe:     false
+            }
+        ]);
+        
+        
+
+    execution: 
+      sequence: 10
+      event: INFORM_FORNECEDOR # 1800052657538878096
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 1800052765083878097
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |2
+          rmais_process_pkg.get_fornecedor_apex (p_issuer_document_number => :P11_ISSUER_DOCUMENT_NUMBER,
+            						  p_efd_header_id => :P11_EFD_HEADER_ID,
+            						  p_bu_name => :P11_BU_NAME,
+            						  p_ISSUER_NAME => :P11_ISSUER_NAME, 
+            						  p_ISSUER_ADDRESS => :P11_ISSUER_ADDRESS,
+            						  p_ISSUER_ADDRESS_NUMBER => :P11_ISSUER_ADDRESS_NUMBER,
+            						  p_ISSUER_ADDRESS_COMPLEMENT => :P11_ISSUER_ADDRESS_COMPLEMENT,
+            						  p_ISSUER_ADDRESS_CITY_CODE => :P11_ISSUER_ADDRESS_CITY_CODE,
+            						  p_ISSUER_ADDRESS_CITY_NAME => :P11_ISSUER_ADDRESS_CITY_NAME,
+            						  p_ISSUER_ADDRESS_ZIP_CODE => :P11_ISSUER_ADDRESS_ZIP_CODE,
+            						  p_ISSUER_ADDRESS_STATE => :P11_ISSUER_ADDRESS_STATE,
+            						  p_G_RETCODE => :G_RETCODE);
+                                    
+                                      
+        				
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      items-to-submit: 
+      - P11_ISSUER_DOCUMENT_NUMBER
+      - P11_EFD_HEADER_ID
+      - P11_BU_NAME
+      items-to-return: 
+      - P11_ISSUER_NAME
+      - P11_ISSUER_ADDRESS
+      - P11_ISSUER_ADDRESS_NUMBER
+      - P11_ISSUER_ADDRESS_STATE
+      - P11_ISSUER_ADDRESS_COMPLEMENT
+      - P11_ISSUER_ADDRESS_ZIP_CODE
+      - P11_ISSUER_ADDRESS_CITY_CODE
+      - P11_ISSUER_ADDRESS_CITY_NAME
+      - G_RETCODE
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: INFORM_FORNECEDOR # 1800052657538878096
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: status_default ======================
+  id: 1800054003051878110
+  identification: 
+    name: status_default
+
+  execution: 
+    sequence: 70
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_DOCUMENT_STATUS
+
+  client-side-condition: 
+    type: Item != Value
+    item: P11_DOCUMENT_STATUS
+    value: N
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 1800054137312878111
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: N
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_DOCUMENT_STATUS
+
+    execution: 
+      sequence: 10
+      event: status_default # 1800054003051878110
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: SET_TYPE_MANUAL =====================
+  id: 1800054634058878116
+  identification: 
+    name: SET_TYPE_MANUAL
+
+  execution: 
+    sequence: 80
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_DOCUMENT_TYPE
+
+  client-side-condition: 
+    type: Item is null
+    item: P11_DOCUMENT_TYPE
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 1800054728187878117
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: MANUAL
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_DOCUMENT_TYPE
+
+    execution: 
+      sequence: 10
+      event: SET_TYPE_MANUAL # 1800054634058878116
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: Calc_Valor_Liq ======================
+  id: 1829005491348923600
+  identification: 
+    name: Calc_Valor_Liq
+
+  execution: 
+    sequence: 130
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_TOTAL_AMOUNT
+    - P11_PIS_AMOUNT
+    - P11_COFINS_AMOUNT
+    - P11_INSS_BASE
+    - P11_INSS_TAX
+    - P11_INSS_AMOUNT
+    - P11_IR_BASE
+    - P11_IR_AMOUNT
+    - P11_ISS_BASE
+    - P11_ISS_TAX
+    - P11_CSLL_AMOUNT
+    - P11_OTHER_EXPENSES_AMOUNT
+    - P11_DISCOUNT_AMOUNT
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 1829005382721923599
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: PL/SQL Function Body
+      pl/sql-function-body: |
+        DECLARE
+          l NUMBER(15,2);
+        BEGIN
+        
+          l := ( nvl(:P11_TOTAL_AMOUNT, 0) - (nvl(:P11_PIS_AMOUNT, 0) + nvl(:P11_COFINS_AMOUNT, 0) + nvl(:P11_INSS_TAX, 0) + nvl(:P11_INSS_AMOUNT, 0) + nvl(:P11_IR_AMOUNT, 0) + nvl(:P11_ISS_TAX, 0) + nvl(:P11_CSLL_AMOUNT, 0) + nvl(:P11_OTHER_EXPENSES_AMOUNT, 0) + nvl(:P11_DISCOUNT_AMOUNT, 0) ) );
+        
+          if ( nvl(:P11_TOTAL_AMOUNT, 0) < 1 )
+          THEN
+            l := 0;
+          END IF;
+        
+          RETURN l;
+        
+        END;
+      items-to-submit: 
+      - P11_TOTAL_AMOUNT
+      - P11_PIS_AMOUNT
+      - P11_COFINS_AMOUNT
+      - P11_INSS_TAX
+      - P11_INSS_AMOUNT
+      - P11_IR_AMOUNT
+      - P11_ISS_TAX
+      - P11_CSLL_AMOUNT
+      - P11_OTHER_EXPENSES_AMOUNT
+      - P11_DISCOUNT_AMOUNT
+      escape-special-characters: true
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P11_VAL_LIQ
+
+    execution: 
+      sequence: 10
+      event: Calc_Valor_Liq # 1829005491348923600
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+validations: 
+- # ====== Validation: Boleto_duplicado ========================
+  id: 234391080322263068
+  identification: 
+    name: Boleto_duplicado
+
+  execution: 
+    sequence: 110
+
+  validation: 
+    type: Function Body (returning Error Text)
+    language: PL/SQL
+    pl/sql-function-body-returning-error-text: |
+      declare
+          bol_exist number;
+      begin
+          select count(*) into bol_exist 
+              from rmais_efd_headers 
+              where 
+                  :p11_BOLETO_COD is not null and :p11_EFD_HEADER_ID is not null
+                  and boleto_cod = nvl(:p11_BOLETO_COD,0)
+                  and EFD_HEADER_ID != nvl(:p11_EFD_HEADER_ID,'0');
+          if bol_exist > 0 then
+              return 'Boleto existente.';
+          end if;
+      end;
+    always-execute: true
+
+  error: 
+    display-location: Inline with Field and in Notification
+    associated-item: P11_BOLETO_COD # 847601505270483546
+
+  server-side-condition: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: "return :request in ('SAVE','CREATE') and :P11_MODEL in ('06','21','22','28','29');"
+
+- # ====== Validation: Boleto_errado ===========================
+  id: 234391307264264602
+  identification: 
+    name: Boleto_errado
+
+  execution: 
+    sequence: 120
+
+  validation: 
+    type: Function Body (returning Error Text)
+    language: PL/SQL
+    pl/sql-function-body-returning-error-text: |
+      if (:p11_BOLETO_COD is null or length(regexp_replace(nvl(:p11_BOLETO_COD,0),'[^[:digit:]]')) not in (48,47)) then
+          return 'Preencha o código de barras do boleto corretamente.'||length(regexp_replace(nvl(:p11_BOLETO_COD,0),'[^[:digit:]]'));
+      end if;
+    always-execute: true
+
+  error: 
+    display-location: Inline with Field and in Notification
+    associated-item: P11_BOLETO_COD # 847601505270483546
+
+  server-side-condition: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: "return :request in ('SAVE','CREATE') and :P11_MODEL in ('06','21','22','28','29');"
+
+- # ====== Validation: Vencimento ==============================
+  id: 234391641171265471
+  identification: 
+    name: Vencimento
+
+  execution: 
+    sequence: 130
+
+  validation: 
+    type: Function Body (returning Error Text)
+    language: PL/SQL
+    pl/sql-function-body-returning-error-text: |
+      if (:p11_FIRST_DUE_DATE is null or to_date(:p11_FIRST_DUE_DATE,'DD/MM/YYYY') < TO_DATE(:p11_ISSUE_DATE,'DD/MM/YYYY')) then
+          return 'Verifique se a data de vencimento está preenchida ou se é maior que a data de emissão.';
+      end if;
+    always-execute: true
+
+  error: 
+    display-location: Inline with Field
+    associated-item: P11_FIRST_DUE_DATE # 847601524063483547
+
+  server-side-condition: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: "return :request in ('SAVE','CREATE') and :P11_MODEL in ('06','21','22','28','29');"
+
+- # ====== Validation: Validar_impostos_pis ====================
+  id: 484657881827453433
+  identification: 
+    name: Validar_impostos_pis
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 
+          1 
+      from 
+          dual 
+      where 
+          nvl(:P11_PIS_AMOUNT   ,0) = 0 and
+          nvl(:P11_COFINS_AMOUNT,0) = 0 and
+          nvl(:P11_CSLL_AMOUNT  ,0) = 0 and
+          nvl(:P11_INSS_AMOUNT  ,0) = 0 and
+          nvl(:P11_IR_AMOUNT    ,0) = 0 and
+          nvl(:P11_ISS_AMOUNT   ,0) = 0 and
+          nvl(:P11_LANC_COM_IMPOSTO,'N') = 'S'
+    always-execute: true
+
+  error: 
+    error-message: Incluir um valor de imposto
+    display-location: Inline with Field and in Notification
+    associated-item: P11_PIS_AMOUNT # 1797951710992139976
+
+- # ====== Validation: Validar_impostos_cofins =================
+  id: 484657930683453434
+  identification: 
+    name: Validar_impostos_cofins
+
+  execution: 
+    sequence: 30
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 
+          1 
+      from 
+          dual 
+      where 
+          nvl(:P11_PIS_AMOUNT   ,0) = 0 and
+          nvl(:P11_COFINS_AMOUNT,0) = 0 and
+          nvl(:P11_CSLL_AMOUNT  ,0) = 0 and
+          nvl(:P11_INSS_AMOUNT  ,0) = 0 and
+          nvl(:P11_IR_AMOUNT    ,0) = 0 and
+          nvl(:P11_ISS_AMOUNT   ,0) = 0 and
+          nvl(:P11_LANC_COM_IMPOSTO,'N') = 'S'
+    always-execute: true
+
+  error: 
+    error-message: Incluir um valor de imposto
+    display-location: Inline with Field
+    associated-item: P11_COFINS_AMOUNT # 1797952127302139977
+
+- # ====== Validation: Validar_impostos_csll ===================
+  id: 484658020812453435
+  identification: 
+    name: Validar_impostos_csll
+
+  execution: 
+    sequence: 40
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 
+          1 
+      from 
+          dual 
+      where 
+          nvl(:P11_PIS_AMOUNT   ,0) = 0 and
+          nvl(:P11_COFINS_AMOUNT,0) = 0 and
+          nvl(:P11_CSLL_AMOUNT  ,0) = 0 and
+          nvl(:P11_INSS_AMOUNT  ,0) = 0 and
+          nvl(:P11_IR_AMOUNT    ,0) = 0 and
+          nvl(:P11_ISS_AMOUNT   ,0) = 0 and
+          nvl(:P11_LANC_COM_IMPOSTO,'N') = 'S'
+    always-execute: true
+
+  error: 
+    error-message: Incluir um valor de imposto
+    display-location: Inline with Field
+    associated-item: P11_CSLL_AMOUNT # 1797956504360139995
+
+- # ====== Validation: Validar_impostos_ir =====================
+  id: 484658137603453436
+  identification: 
+    name: Validar_impostos_ir
+
+  execution: 
+    sequence: 50
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 
+          1 
+      from 
+          dual 
+      where 
+          nvl(:P11_PIS_AMOUNT   ,0) = 0 and
+          nvl(:P11_COFINS_AMOUNT,0) = 0 and
+          nvl(:P11_CSLL_AMOUNT  ,0) = 0 and
+          nvl(:P11_INSS_AMOUNT  ,0) = 0 and
+          nvl(:P11_IR_AMOUNT    ,0) = 0 and
+          nvl(:P11_ISS_AMOUNT   ,0) = 0 and
+          nvl(:P11_LANC_COM_IMPOSTO,'N') = 'S'
+    always-execute: true
+
+  error: 
+    error-message: Incluir um valor de imposto
+    display-location: Inline with Field
+    associated-item: P11_IR_AMOUNT # 1797954536606139987
+
+- # ====== Validation: Validar_impostos_iss ====================
+  id: 484658271053453437
+  identification: 
+    name: Validar_impostos_iss
+
+  execution: 
+    sequence: 60
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 
+          1 
+      from 
+          dual 
+      where 
+          nvl(:P11_PIS_AMOUNT   ,0) = 0 and
+          nvl(:P11_COFINS_AMOUNT,0) = 0 and
+          nvl(:P11_CSLL_AMOUNT  ,0) = 0 and
+          nvl(:P11_INSS_AMOUNT  ,0) = 0 and
+          nvl(:P11_IR_AMOUNT    ,0) = 0 and
+          nvl(:P11_ISS_AMOUNT   ,0) = 0 and
+          nvl(:P11_LANC_COM_IMPOSTO,'N') = 'S'
+    always-execute: true
+
+  error: 
+    error-message: Incluir um valor de imposto
+    display-location: Inline with Field
+    associated-item: P11_ISS_AMOUNT # 1797955372440139990
+
+- # ====== Validation: Validar_impostos_inss ===================
+  id: 484658365629453438
+  identification: 
+    name: Validar_impostos_inss
+
+  execution: 
+    sequence: 70
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 
+          1 
+      from 
+          dual 
+      where 
+          nvl(:P11_PIS_AMOUNT   ,0) = 0 and
+          nvl(:P11_COFINS_AMOUNT,0) = 0 and
+          nvl(:P11_CSLL_AMOUNT  ,0) = 0 and
+          nvl(:P11_INSS_AMOUNT  ,0) = 0 and
+          nvl(:P11_IR_AMOUNT    ,0) = 0 and
+          nvl(:P11_ISS_AMOUNT   ,0) = 0 and
+          nvl(:P11_LANC_COM_IMPOSTO,'N') = 'S'
+    always-execute: true
+
+  error: 
+    error-message: Incluir um valor de imposto
+    display-location: Inline with Field
+    associated-item: P11_INSS_AMOUNT # 1797953706782139983
+
+- # ====== Validation: valid_P11_BOLETO_COD ====================
+  id: 847602056665483552
+  identification: 
+    name: valid_P11_BOLETO_COD
+
+  execution: 
+    sequence: 90
+
+  validation: 
+    type: Function Body (returning Error Text)
+    language: PL/SQL
+    pl/sql-function-body-returning-error-text: |
+      declare
+          l_msg varchar2(200);
+      begin
+          if :P11_BOLETO_COD is null then
+              l_msg := '#LABEL# deve ter algum valor.';
+          elsif length(regexp_replace(:P11_BOLETO_COD,'[^[:digit:]]')) > 49 then
+              l_msg := '#LABEL# com caracteres em excesso!';
+          end if;
+          return l_msg;
+      end;
+    always-execute: true
+
+  error: 
+    display-location: Inline with Field and in Notification
+    associated-item: P11_BOLETO_COD # 847601505270483546
+
+  server-side-condition: 
+    type: Never
+
+computations: 
+- # ====== Computation: P11_EFD_HEADER_ID ======================
+  id: 1792446009149170537
+  identification: 
+    item-name: P11_EFD_HEADER_ID
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: select xxrmais_invoices_s.nextval from dual
+
+  server-side-condition: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: return false;
+
+- # ====== Computation: P11_ACCESS_KEY_NUMBER ==================
+  id: 1798040635079178489
+  identification: 
+    item-name: P11_ACCESS_KEY_NUMBER
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: |
+      begin
+      --return lpad(LPAD(nvl(:P11_ISSUER_DOCUMENT_NUMBER,'0'),15,'0')||LPAD(nvl(:P11_RECEIVER_DOCUMENT_NUMBER,'0'),15,'0')||:P11_DOCUMENT_NUMBER,44,'0');
+      --ERA ESSE --return lpad(LPAD(nvl(:P11_ISSUER_DOCUMENT_NUMBER,'0'),15,'0')||LPAD(nvl(:P11_RECEIVER_DOCUMENT_NUMBER,'0'),15,'0')||to_char(to_date(:P11_ISSUE_DATE,'DD-MON-YYYY'),'YYYYMM')||:P11_DOCUMENT_NUMBER,44,'0');
+      return XXRMAIS_UTIL_V2_PKG.get_access_key_number(nvl(:P11_RECEIVER_DOCUMENT_NUMBER,'0'), nvl(:P11_ISSUER_DOCUMENT_NUMBER,'0'), to_date(:P11_ISSUE_DATE,'DD-MON-YYYY'), :P11_DOCUMENT_NUMBER);
+      --return lpad(LPAD(nvl(:P11_ISSUER_DOCUMENT_NUMBER,'0'),15,'0')||LPAD(nvl(:P11_RECEIVER_DOCUMENT_NUMBER,'0'),15,'0')||to_char(to_date(:P11_ISSUE_DATE,'DD-MON-YYYY'),'YYYYMM')||LPAD(:P11_DOCUMENT_NUMBER,8,'0'),44,'0');      
+      --return lpad(LPAD(nvl(:P11_RECEIVER_DOCUMENT_NUMBER,'0'),15,'0')||LPAD(nvl(:P11_ISSUER_DOCUMENT_NUMBER,'0'),15,'0')||to_char(to_date(:P11_ISSUE_DATE,'DD-MON-YYYY'),'YYYYMM')||LPAD(:P11_DOCUMENT_NUMBER,8,'0'),44,'0');      
+      --
+      exception when others then
+      raise_application_error(-20014,'Erro ao formar chave: '||:P11_ISSUE_DATE);
+      end;
+
+- # ====== Computation: P11_CREATION_DATE ======================
+  id: 1798040794256178491
+  identification: 
+    item-name: P11_CREATION_DATE
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: return sysdate;
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P11_CREATION_DATE
+
+- # ====== Computation: P11_CREATE_BY ==========================
+  id: 1798041067204178493
+  identification: 
+    item-name: P11_CREATE_BY
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: 'return :APP_USER'
+
+- # ====== Computation: P11_LAST_UPDATE_DATE ===================
+  id: 1798041189434178495
+  identification: 
+    item-name: P11_LAST_UPDATE_DATE
+
+  execution: 
+    sequence: 20
+    point: After Submit
+
+  computation: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: return sysdate;
+
+- # ====== Computation: P11_LAST_UPDATED_BY ====================
+  id: 1798041544092178498
+  identification: 
+    item-name: P11_LAST_UPDATED_BY
+
+  execution: 
+    sequence: 20
+    point: After Submit
+
+  computation: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: 'return :APP_USER'
+
+processes: 
+- # ====== Process: Limpar_boleto ==============================
+  id: 160061475334966523
+  identification: 
+    name: Limpar_boleto
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      if :P11_MODEL in ('06','21','22','28','29') then
+          :P11_BOLETO_COD := regexp_replace(:P11_BOLETO_COD,'[^[:digit:]]');    
+      else
+          :P11_BOLETO_COD := null;
+          :P11_FIRST_DUE_DATE := null;
+      end if;
+      :P11_DOCUMENT_STATUS := 'N';
+      :P11_TIPO_ENTRADA := null;
+      
+
+  execution: 
+    sequence: 110
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Initialize form Forms_Nfs_Manuais ==========
+  id: 1797974103402140013
+  identification: 
+    name: Initialize form Forms_Nfs_Manuais
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Forms_Nfs_Manuais =============
+  id: 1797974499324140014
+  identification: 
+    name: Process form Forms_Nfs_Manuais
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Forms_Nfs_Manuais # 1797940575789139926
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Sucesso!
+
+  error: 
+    error-message: 'Error: Consulte o Administrador do Sistema!'
+    display-location: Inline in Notification
+
+- # ====== Process: Collection_linhas ==========================
+  id: 1799862082297569122
+  identification: 
+    name: Collection_linhas
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+        execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS='.,']';
+        begin
+        --
+        :P11_QTD := 1;
+        --
+        IF APEX_COLLECTION.COLLECTION_EXISTS (p_collection_name => 'RMAIS_LINHAS') THEN
+              APEX_COLLECTION.DELETE_COLLECTION(p_collection_name => 'RMAIS_LINHAS');
+              APEX_COLLECTION.CREATE_COLLECTION(p_collection_name => 'RMAIS_LINHAS');
+        ELSE
+          APEX_COLLECTION.CREATE_COLLECTION(p_collection_name => 'RMAIS_LINHAS');
+        END IF;
+        
+      End;
+          for x in (SELECT efd_header_id,
+                           efd_line_id,
+                           line_number,
+                           fiscal_classification,
+                           line_quantity,
+                           unit_price,
+                           line_amount,
+                           item_description
+      FROM rmais_efd_lines
+       where efd_header_id = :P11_EFD_HEADER_ID
+       order by  line_number asc)
+        loop
+                APEX_COLLECTION.ADD_MEMBER(
+                    p_collection_name => 'RMAIS_LINHAS',
+                    p_n001            => x.efd_header_id,
+                    p_n002            => x.efd_line_id,
+                    p_c001            => x.line_number,
+                    p_c002            => x.fiscal_classification,
+                    p_n003            => x.line_quantity,
+                    p_n004            => x.unit_price,
+                    p_n005            => x.line_amount,
+                    p_c003            => x.item_description
+                    );
+      
+        end loop;
+        --
+        execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS=',.']';
+      --
+      exception when others then
+        raise_application_error(-20033,'Erro ao buscar PO');
+      END;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Insert_lines ===============================
+  id: 1800051867951878088
+  identification: 
+    name: Insert_lines
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+       --:P11_EFD_HEADER_ID := nvl(:P11_EFD_HEADER_ID,xxrmais_invoices_s.nextval);
+      --
+      delete rmais_efd_lines where efd_header_id = :P11_EFD_HEADER_ID;
+      --
+      for regl in (select n001 efd_header_id,
+                      n002 efd_line_id,
+                      seq_id line_number,
+                      c002 fiscal_classification,
+                      n003 line_quantity,
+                      n004 unit_price,
+                      n005 line_amount,
+                      c003 item_description
+                  from apex_collections 
+                  where collection_name = 'RMAIS_LINHAS'
+                  order by seq_id asc)
+          loop
+              INSERT INTO rmais_efd_lines
+              (efd_header_id , efd_line_id,creation_date,created_by,last_update_date,last_updated_by,line_number , fiscal_classification , line_quantity , unit_price ,line_amount , item_description )
+              VALUES (:P11_EFD_HEADER_ID,rmais_efd_lines_s.nextval,SYSDATE,-1,SYSDATE,-1,regl.line_number,regl.fiscal_classification,regl.line_quantity , regl.unit_price , regl.line_amount , regl.item_description);
+          end loop;
+      end;
+
+  execution: 
+    sequence: 100
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: revalidar ==================================
+  id: 1800054363485878113
+  identification: 
+    name: revalidar
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+        execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS='.,']';
+        rmais_process_pkg.main(p_header_id => :P11_EFD_HEADER_ID  ,p_flag_auto =>'Y', p_send_erp => 'Y');
+        execute immediate q'[alter session set NLS_NUMERIC_CHARACTERS=',.']';
+         
+      EXCEPTION WHEN OTHERS THEN
+        raise_application_error (-20011,'Erro ao reprocessar documento '||sqlerrm);
+      end;
+
+  execution: 
+    sequence: 888
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    error-message: Error
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Never
+
+  security: 
+    authorization-scheme: MODEL.LOV.NOT_W_ARGUMENT # 234147385461836780
+
+branches: 
+- # ====== Branch: Go To Page 10 ===============================
+  id: 457256596260211247
+  identification: 
+    name: Go To Page 10
+
+  execution: 
+    sequence: 11
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.&success_msg=#SUCCESS_MSG#'
+      page: 10 # Emissão
+
+- # ====== Branch: Go To Page 6 ================================
+  id: 1797973645970140011
+  identification: 
+    name: Go To Page 6
+
+  execution: 
+    sequence: 1
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:6:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 6 # Nf´s
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: SAVE,CREATE
+

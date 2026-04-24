@@ -1,0 +1,92 @@
+---
+- # ====== Application Item: AZ_USER_ADMIN =====================
+  id: 1623217765001029035
+  identification: 
+    name: AZ_USER_ADMIN
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: AZ_USER_ONLY_READ =================
+  id: 1623217923041034226
+  identification: 
+    name: AZ_USER_ONLY_READ
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: AZ_USER_ADMIN_RM ==================
+  id: 1623506178465780459
+  identification: 
+    name: AZ_USER_ADMIN_RM
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: AZ_EMAIL ==========================
+  id: 1742444590233388392
+  identification: 
+    name: AZ_EMAIL
+    scope: Application
+
+  security: 
+    session-state-protection: Unrestricted
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: AZ_USER ===========================
+  id: 1745525711366323702
+  identification: 
+    name: AZ_USER
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: G_MODEL ===========================
+  id: 1792006953201054159
+  identification: 
+    name: G_MODEL
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: false
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: G_TRANSACTION_ID ==================
+  id: 1825233758668550358
+  identification: 
+    name: G_TRANSACTION_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Unrestricted
+    escape-special-characters: false
+
+  subscription: 
+    version-number: 1
+
