@@ -64,7 +64,10 @@ export_type not in ('USER','USER_SYS_PRIVS','USER_ROLE_PRIVS','ALL_TAB_PRIVS','O
 -- object_type not in ('CONTEXT', 'SCHEDULE'),         
 
 -- Export APEX application only:
--- export_type = 'APEX_APPLICATIONS',
+export_type != 'APEX_APPLICATIONS',
+
+-- Fase 1 - Tables and Sequences
+object_type in ('TABLE','SEQUENCE'),
 
 -- Export applications by ID:
 application_id in (100),
