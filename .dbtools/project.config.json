@@ -5,8 +5,8 @@
     "autoConnect" : false,
     "version" : "26.1.0.0"
   },
-  "schemas" : [ "RMAIS", "RMAIS_DEV" ],
-  "lastReleaseVersion" : "",
+  "schemas" : [ "RMAIS", "SCH_RMAIS_DEV" ],
+  "lastReleaseVersion" : "1.9.10-1",
   "export" : {
     "format" : {
       "enable" : true
