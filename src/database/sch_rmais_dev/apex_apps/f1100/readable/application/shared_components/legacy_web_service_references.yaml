@@ -1,0 +1,34 @@
+---
+- # ====== Web Service Reference: Teste envio ==================
+  id: 1859309499360303554
+  identification: 
+    name: Teste envio
+
+  operations: 
+  - # ====== Operation: Teste envio - doREST =====================
+    id: 1859308464612303545
+    identification: 
+      name: Teste envio - doREST
+
+    out-parameters: 
+    - # ====== Out Parameter: json =================================
+      id: 1859308157914303544
+      identification: 
+        name: json
+
+  - # ====== Operation: Teste envio - BASIC_AUTH =================
+    id: 1859309296915303547
+    identification: 
+      name: Teste envio - BASIC_AUTH
+
+    basic-authentication-parameters: 
+    - # ====== Basic Authentication Parameter: Password ============
+      id: 1859308668049303545
+      identification: 
+        name: Password
+
+    - # ====== Basic Authentication Parameter: Username ============
+      id: 1859308991748303546
+      identification: 
+        name: Username
+

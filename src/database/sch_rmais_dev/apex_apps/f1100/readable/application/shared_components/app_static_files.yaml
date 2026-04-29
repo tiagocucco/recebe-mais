@@ -1,0 +1,55 @@
+---
+- # ====== Static Application File: logo_hdi.svg ===============
+  id: 849179509805850745
+  identification: 
+    file-name: logo_hdi.svg
+
+  attributes: 
+    mime-type: image/svg+xml
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-icon.svg ===============
+  id: 1813267293123082346
+  identification: 
+    file-name: app-icon.svg
+
+  attributes: 
+    mime-type: image/svg+xml
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-icon.css ===============
+  id: 1813267552756082347
+  identification: 
+    file-name: app-icon.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: logo_rmais_control.png =====
+  id: 1861419094335411562
+  identification: 
+    file-name: logo_rmais_control.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: logo_rmais_control_icon.png 
+  id: 1861421908148492120
+  identification: 
+    file-name: logo_rmais_control_icon.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: logo-recebe-mais-simbolo.png
+  id: 1919592289179587160
+  identification: 
+    file-name: logo-recebe-mais-simbolo.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
