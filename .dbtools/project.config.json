@@ -6,7 +6,7 @@
     "version" : "26.1.0.0"
   },
   "schemas" : [ "SCH_RMAIS_DEV" ],
-  "lastReleaseVersion" : "1.9",
+  "lastReleaseVersion" : "2.0",
   "export" : {
     "format" : {
       "enable" : true
