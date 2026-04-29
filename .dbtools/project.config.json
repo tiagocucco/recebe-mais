@@ -1,12 +1,12 @@
 {
   "project" : "project-hdi",
   "sqlcl" : {
-    "connectionName" : "hdi-test",
+    "connectionName" : "hdi-dev",
     "autoConnect" : false,
     "version" : "26.1.0.0"
   },
-  "schemas" : [ "RMAIS", "SCH_RMAIS_DEV" ],
-  "lastReleaseVersion" : "1.9.10-1",
+  "schemas" : [ "SCH_RMAIS_DEV" ],
+  "lastReleaseVersion" : "1.9",
   "export" : {
     "format" : {
       "enable" : true
