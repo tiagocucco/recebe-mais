@@ -1,0 +1,4371 @@
+---
+# ====== Page: Emissão =======================================
+id: 10
+identification: 
+  name: Emissão
+  alias: REPORT-NFS-MANUAIS
+  title: Report_Nfs_Manuais
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Report 1 ====================================
+  id: 1832261470897451934
+  identification: 
+    title: Report 1
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select A.EFD_HEADER_ID,
+             A.ORG_ID,
+             A.ORGANIZATION_ID,
+             A.LOCATION_ID,
+             A.LAYOUT_VERSION,
+             A.OPERATION_TYPE,
+             A.DOCUMENT_TYPE,
+             A.RI_DOCUMENT_TYPE_ID,
+             A.SOURCE_DOCUMENT_TYPE,
+             A.ACCESS_KEY_NUMBER,
+             A.USAGE_AUTHORIZATION,
+             A.EVENT_CODE,
+             A.EVENT_TYPE,
+             A.EVENT_DATE,
+             A.DOCUMENT_NUMBER,
+             A.SERIES,
+             A.MODEL,
+             A.ISSUE_DATE,
+             A.LIABLE_FREIGHT_PAYMENT,
+             A.DAR_NUMBER,
+             A.DAR_TOTAL_AMOUNT,
+             A.DAR_PAYMENT_DATE,
+             A.CARRIER_DOCUMENT_TYPE,
+             A.CARRIER_ADDRESS_STATE,
+             A.CARRIER_STATE_INSCRIPTION,
+             A.CARRIER_VEHICLE_PLATE_NUMBER,
+             A.PAYMENT_TERM_ID,
+             A.PAYMENT_BASE_DATE,
+             A.FIRST_DUE_DATE,
+             A.TOTAL_AMOUNT,
+             A.ISSUING_PURPOSE,
+             A.ISSUING_TYPE,
+             A.FREIGHT_MODAL,
+             A.GROSS_WEIGHT,
+             A.FREIGHT_UNIT_OF_MEASURE,
+             -- Robson 23/03/2023 decode(A.document_status,'N','A Receber','V','Válido','I','Inválido','E','Erro','T','Enviado ERP','C','Cancelada','Status Desconhecido')  DOCUMENT_STATUS,
+             B.DESC_STATUS_DOCS DOCUMENT_STATUS, -- Robson 23/03/2023
+             A.ADDITIONAL_INFORMATION,
+             A.REJECT_REASON,
+             A.REJECT_JUSTIFICATION,
+             A.ISSUER_TAXPAYER_ID,
+             A.ISSUER_NAME,
+             A.ISSUER_DOCUMENT_NUMBER,
+             A.ISSUER_ADDRESS,
+             A.ISSUER_ADDRESS_NUMBER,
+             A.ISSUER_ADDRESS_STATE,
+             A.ISSUER_ADDRESS_COMPLEMENT,
+             A.ISSUER_ADDRESS_ZIP_CODE,
+             A.ISSUER_ADDRESS_CITY_ID,
+             A.ISSUER_ADDRESS_CITY_CODE,
+             A.ISSUER_ADDRESS_CITY_NAME,
+             A.RECEIVER_TAXPAYER_ID,
+             A.RECEIVER_NAME,
+             A.RECEIVER_DOCUMENT_NUMBER,
+             A.RECEIVER_ADDRESS,
+             A.RECEIVER_ADDRESS_NUMBER,
+             A.RECEIVER_ADDRESS_CITY_ID,
+             A.RECEIVER_ADDRESS_CITY_CODE,
+             A.RECEIVER_ADDRESS_CITY_NAME,
+             A.RECEIVER_ADDRESS_STATE,
+             A.RECEIVER_ADDRESS_COMPLEMENT,
+             A.RECEIVER_ADDRESS_ZIP_CODE,
+             A.SHIP_FROM_DOCUMENT_NUMBER,
+             A.SHIP_FROM_ADDRESS_STATE,
+             A.SHIP_FROM_ADDRESS_CITY_CODE,
+             A.SHIP_FROM_ADDRESS_CITY_NAME,
+             A.SHIP_FROM_ADDRESS,
+             A.SHIP_FROM_ADDRESS_NUMBER,
+             A.SHIP_FROM_ADDRESS_ZIP_CODE,
+             A.SHIP_FROM_ADDRESS_COMPLEMENT,
+             A.SHIP_TO_DOCUMENT_NUMBER,
+             A.SHIP_TO_ADDRESS,
+             A.SHIP_TO_ADDRESS_NUMBER,
+             A.SHIP_TO_ADDRESS_CITY_CODE,
+             A.SHIP_TO_ADDRESS_CITY_NAME,
+             A.SHIP_TO_ADDRESS_STATE,
+             A.SHIP_TO_ADDRESS_ZIP_CODE,
+             A.SHIP_TO_ADDRESS_COMPLEMENT,
+             A.FREIGHT_AMOUNT,
+             A.INSURANCE_AMOUNT,
+             A.OTHER_EXPENSES_AMOUNT,
+             A.DISCOUNT_AMOUNT,
+             A.TRIBUTARY_REGIMEN,
+             A.ICMS_CALCULATION_BASIS,
+             A.ICMS_AMOUNT,
+             A.ICMS_ST_CALCULATION_BASIS,
+             A.ICMS_ST_AMOUNT,
+             A.IPI_AMOUNT,
+             A.PIS_AMOUNT,
+             A.COFINS_AMOUNT,
+             A.PIS_WITHHOLD_AMOUNT,
+             A.COFINS_WITHHOLD_AMOUNT,
+             A.RI_IMPORTING_INDICATOR,
+             A.FILE_NAME,
+             A.EMAIL,
+             A.PROCESS_DATE,
+             A.SOURCE_TYPE,
+             A.CREATION_DATE,
+             A.CREATED_BY,
+             A.LAST_UPDATE_DATE,
+             A.LAST_UPDATED_BY,
+             A.LAST_UPDATE_LOGIN,
+             A.PROGRAM_ID,
+             A.PROGRAM_LOGIN_ID,
+             A.PROGRAM_APPLICATION_ID,
+             A.REQUEST_ID,
+             A.ATTRIBUTE_CATEGORY,
+             A.ATTRIBUTE1,
+             A.ATTRIBUTE2,
+             A.ATTRIBUTE3,
+             A.ATTRIBUTE4,
+             A.ATTRIBUTE5,
+             A.ATTRIBUTE6,
+             A.ATTRIBUTE7,
+             A.ATTRIBUTE8,
+             A.ATTRIBUTE9,
+             A.ATTRIBUTE10,
+             A.ATTRIBUTE11,
+             A.ATTRIBUTE12,
+             A.ATTRIBUTE13,
+             A.ATTRIBUTE14,
+             A.ATTRIBUTE15,
+             A.CARRIER_DOCUMENT_NUMBER,
+             A.PAYMENT_INDICATOR,
+             A.FREIGHT_UTILIZATION_ID,
+             A.ICMS_FCP_AMOUNT,
+             A.ICMS_SHARING_DEST_AMOUNT,
+             A.ICMS_SHARING_SOURCE_AMOUNT,
+             A.OPERATION_NATURE,
+             A.SERVICE_TAKER_TYPE,
+             A.SOURCE,
+             A.SIMPLE_NATIONAL_INDICATOR,
+             A.FREIGHT_IBGE_SOURCE,
+             A.FREIGHT_CITY_SOURCE_CODE,
+             A.FREIGHT_CITY_SOURCE_ID,
+             A.FREIGHT_IBGE_DESTINATION,
+             A.FREIGHT_CITY_DEST_CODE,
+             A.FREIGHT_CITY_DEST_ID,
+             A.INSS_INCOME_CODE,
+             A.INSS_BASE,
+             A.INSS_TAX,
+             A.INSS_AMOUNT,
+             A.SEST_SENAT_INCOME_CODE,
+             A.SEST_AMOUNT,
+             A.SENAT_AMOUNT,
+             A.SEST_TAX,
+             A.SENAT_TAX,
+             A.SEST_BASE_AMOUNT,
+             A.SENAT_BASE_AMOUNT,
+             A.AWT_GROUP_ID,
+             A.OPERATION,
+             A.SEST_SENAT_BASE,
+             A.TOTAL_FCP_AMOUNT,
+             A.TOTAL_FCP_ST_AMOUNT,
+             A.DOCUMENT_SHIPPER_STATUS,
+             A.FREIGHT_FLAG,
+             A.NET_AMOUNT,
+             A.SOURCE_STATE_CODE,
+             A.SOURCE_IBGE_CODE,
+             A.DESTINATION_STATE_CODE,
+             A.DESTINATION_IBGE_CODE,
+             A.SENDER_NAME,
+             A.SENDER_DOCUMENT_NUMBER,
+             A.SENDER_ADDRESS_STATE,
+             A.SENDER_ADDRESS_CITY_CODE,
+             A.SENDER_ADDRESS_CITY_NAME,
+             A.SENDER_ADDRESS,
+             A.SENDER_ADDRESS_NUMBER,
+             A.SENDER_ADDRESS_COMPLEMENT,
+             A.SENDER_ADDRESS_ZIP_CODE,
+             A.INSS_BILLED_AMOUNT,
+             A.REFERENCED_CHCTE,
+             A.OBSERVATION,
+             A.FREIGHT_MODE,
+             A.IR_AMOUNT,
+             A.IR_BASE,
+             A.IR_CATEG,
+             A.IR_TAX,
+             A.IR_VENDOR,
+             A.ISS_AMOUNT,
+             A.ISS_TAX,
+             A.ISS_BASE,
+             A.ISS_CITY_CODE,
+             A.ISS_CITY_ID,
+             A.CHECKED_FLAG,
+             A.CHECKED_DATE,
+             A.CHECKED_BY,
+             A.SUBMITED_BY,
+             A.INSS_INIT_BASE,
+             A.CARRIER_NAME,
+             A.COD_VERIF_NFS,
+             A.COMPETENCIA_NFS,
+             A.DOC_ID,
+             A.CURRENCY_CODE,
+             A.SOURCE_DOC_INFO,
+             A.ISSUER_INFO,
+             A.RECEIVER_INFO,
+             A.TERM_INFO,
+             A.CSLL_AMOUNT,
+             A.MUNICIPIO_INCIDENCIA,
+             A.INCRICAO_OBRA,
+             A.TRIBUTOS_APROXIMADOS,
+             A.FONTE,
+             A.USER_NAME
+        from RMAIS_EFD_HEADERS A,
+             RMAIS_STATUS_DOCS B
+      where 1=1--user_name = :APP_USER
+      and A.document_status = B.FLAG_STATUS_DOCS (+)
+      and (nvl(A.DOCUMENT_TYPE,'N') = 'MANUAL' OR A.pdf_filename is not null or A.document_status = 'FA')
+      and A.document_status not in ('T','Y','UP','C','CE','CC')
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 1813179302715082248
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1832261912916451935
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:11:&SESSION.::&DEBUG.:RP:P11_EFD_HEADER_ID:\#EFD_HEADER_ID#\'
+        page: 11 # Lancamento
+        clear-cache: RP
+        values: 
+          p11_efd_header_id: '#EFD_HEADER_ID#'
+
+      link-icon: <span aria-label="Edit"><span class="fa fa-edit" aria-hidden="true" title="Edit"></span></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Top - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: No data found.
+      when-more-data-found: 'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: true
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: false
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: true
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 1832267373284454266
+      identification: 
+        name: Primary Report
+        alias: 227528
+
+    columns: 
+    - # ====== Column: PAYMENT_TERM_ID =============================
+      id: 846119299150873746
+      identification: 
+        column-name: PAYMENT_TERM_ID
+        type: Plain Text
+
+      heading: 
+        heading: Payment Term Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 1950
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREATED_BY ==================================
+      id: 846119403035873747
+      identification: 
+        column-name: CREATED_BY
+        type: Plain Text
+
+      heading: 
+        heading: Created By
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 1960
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LAST_UPDATED_BY =============================
+      id: 846119493378873748
+      identification: 
+        column-name: LAST_UPDATED_BY
+        type: Plain Text
+
+      heading: 
+        heading: Last Updated By
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 1970
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LAST_UPDATE_LOGIN ===========================
+      id: 846119668175873749
+      identification: 
+        column-name: LAST_UPDATE_LOGIN
+        type: Plain Text
+
+      heading: 
+        heading: Last Update Login
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 1980
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EFD_HEADER_ID ===============================
+      id: 1832262015285451937
+      identification: 
+        column-name: EFD_HEADER_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Efd Header Id
+
+      layout: 
+        sequence: 0
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DOCUMENT_NUMBER =============================
+      id: 1832262375338451942
+      identification: 
+        column-name: DOCUMENT_NUMBER
+        type: Plain Text
+
+      heading: 
+        heading: Número
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ISSUE_DATE ==================================
+      id: 1832262791750451943
+      identification: 
+        column-name: ISSUE_DATE
+        type: Plain Text
+
+      heading: 
+        heading: Data Emissão
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 3
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TOTAL_AMOUNT ================================
+      id: 1832263133550451943
+      identification: 
+        column-name: TOTAL_AMOUNT
+        type: Plain Text
+
+      heading: 
+        heading: Total
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 4
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: FML999G999G999G999G990D00
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DOCUMENT_STATUS =============================
+      id: 1832263531224451943
+      identification: 
+        column-name: DOCUMENT_STATUS
+        type: Plain Text
+
+      heading: 
+        heading: Status
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 5
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ISSUER_NAME =================================
+      id: 1832264008446451943
+      identification: 
+        column-name: ISSUER_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Fornecedor
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 6
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ISSUER_DOCUMENT_NUMBER ======================
+      id: 1832264370337451943
+      identification: 
+        column-name: ISSUER_DOCUMENT_NUMBER
+        type: Plain Text
+
+      heading: 
+        heading: CNPJ Forn.
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 7
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: RECEIVER_NAME ===============================
+      id: 1832264802336451943
+      identification: 
+        column-name: RECEIVER_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Tomador
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 8
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: RECEIVER_DOCUMENT_NUMBER ====================
+      id: 1832265219096451944
+      identification: 
+        column-name: RECEIVER_DOCUMENT_NUMBER
+        type: Plain Text
+
+      heading: 
+        heading: CNPJ Tom.
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 9
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: RECEIVER_ADDRESS ============================
+      id: 1832265558503451944
+      identification: 
+        column-name: RECEIVER_ADDRESS
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ORG_ID ======================================
+      id: 1832330516579490432
+      identification: 
+        column-name: ORG_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Org Id
+
+      layout: 
+        sequence: 20
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ORGANIZATION_ID =============================
+      id: 1832330590877490433
+      identification: 
+        column-name: ORGANIZATION_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Organization Id
+
+      layout: 
+        sequence: 30
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: LOCATION_ID =================================
+      id: 1832330677895490434
+      identification: 
+        column-name: LOCATION_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Location Id
+
+      layout: 
+        sequence: 40
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: LAYOUT_VERSION ==============================
+      id: 1832330732865490435
+      identification: 
+        column-name: LAYOUT_VERSION
+        type: Hidden Column
+
+      heading: 
+        heading: Layout Version
+
+      layout: 
+        sequence: 50
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: OPERATION_TYPE ==============================
+      id: 1832330894576490436
+      identification: 
+        column-name: OPERATION_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Operation Type
+
+      layout: 
+        sequence: 60
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DOCUMENT_TYPE ===============================
+      id: 1832330958261490437
+      identification: 
+        column-name: DOCUMENT_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Document Type
+
+      layout: 
+        sequence: 70
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RI_DOCUMENT_TYPE_ID =========================
+      id: 1832331121695490438
+      identification: 
+        column-name: RI_DOCUMENT_TYPE_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Ri Document Type Id
+
+      layout: 
+        sequence: 80
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SOURCE_DOCUMENT_TYPE ========================
+      id: 1832331210728490439
+      identification: 
+        column-name: SOURCE_DOCUMENT_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Source Document Type
+
+      layout: 
+        sequence: 90
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ACCESS_KEY_NUMBER ===========================
+      id: 1832331274142490440
+      identification: 
+        column-name: ACCESS_KEY_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Access Key Number
+
+      layout: 
+        sequence: 100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: USAGE_AUTHORIZATION =========================
+      id: 1832331373571490441
+      identification: 
+        column-name: USAGE_AUTHORIZATION
+        type: Hidden Column
+
+      heading: 
+        heading: Usage Authorization
+
+      layout: 
+        sequence: 110
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: EVENT_CODE ==================================
+      id: 1832331496317490442
+      identification: 
+        column-name: EVENT_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Event Code
+
+      layout: 
+        sequence: 120
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: EVENT_TYPE ==================================
+      id: 1832331603695490443
+      identification: 
+        column-name: EVENT_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Event Type
+
+      layout: 
+        sequence: 130
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: EVENT_DATE ==================================
+      id: 1832331672594490444
+      identification: 
+        column-name: EVENT_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Event Date
+
+      layout: 
+        sequence: 140
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SERIES ======================================
+      id: 1832331817606490445
+      identification: 
+        column-name: SERIES
+        type: Hidden Column
+
+      heading: 
+        heading: Series
+
+      layout: 
+        sequence: 150
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: MODEL =======================================
+      id: 1834130053607880896
+      identification: 
+        column-name: MODEL
+        type: Hidden Column
+
+      heading: 
+        heading: Model
+
+      layout: 
+        sequence: 160
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: LIABLE_FREIGHT_PAYMENT ======================
+      id: 1834130164117880897
+      identification: 
+        column-name: LIABLE_FREIGHT_PAYMENT
+        type: Hidden Column
+
+      heading: 
+        heading: Liable Freight Payment
+
+      layout: 
+        sequence: 170
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DAR_NUMBER ==================================
+      id: 1834130261077880898
+      identification: 
+        column-name: DAR_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Dar Number
+
+      layout: 
+        sequence: 180
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DAR_TOTAL_AMOUNT ============================
+      id: 1834130338534880899
+      identification: 
+        column-name: DAR_TOTAL_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Dar Total Amount
+
+      layout: 
+        sequence: 190
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DAR_PAYMENT_DATE ============================
+      id: 1834130437994880900
+      identification: 
+        column-name: DAR_PAYMENT_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Dar Payment Date
+
+      layout: 
+        sequence: 200
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CARRIER_DOCUMENT_TYPE =======================
+      id: 1834130606691880901
+      identification: 
+        column-name: CARRIER_DOCUMENT_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Carrier Document Type
+
+      layout: 
+        sequence: 210
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CARRIER_ADDRESS_STATE =======================
+      id: 1834130683050880902
+      identification: 
+        column-name: CARRIER_ADDRESS_STATE
+        type: Hidden Column
+
+      heading: 
+        heading: Carrier Address State
+
+      layout: 
+        sequence: 220
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CARRIER_STATE_INSCRIPTION ===================
+      id: 1834130744162880903
+      identification: 
+        column-name: CARRIER_STATE_INSCRIPTION
+        type: Hidden Column
+
+      heading: 
+        heading: Carrier State Inscription
+
+      layout: 
+        sequence: 230
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CARRIER_VEHICLE_PLATE_NUMBER ================
+      id: 1834130832424880904
+      identification: 
+        column-name: CARRIER_VEHICLE_PLATE_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Carrier Vehicle Plate Number
+
+      layout: 
+        sequence: 240
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PAYMENT_BASE_DATE ===========================
+      id: 1834131121630880906
+      identification: 
+        column-name: PAYMENT_BASE_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Payment Base Date
+
+      layout: 
+        sequence: 260
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FIRST_DUE_DATE ==============================
+      id: 1834131177518880907
+      identification: 
+        column-name: FIRST_DUE_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: First Due Date
+
+      layout: 
+        sequence: 270
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUING_PURPOSE =============================
+      id: 1834131308915880908
+      identification: 
+        column-name: ISSUING_PURPOSE
+        type: Hidden Column
+
+      heading: 
+        heading: Issuing Purpose
+
+      layout: 
+        sequence: 280
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUING_TYPE ================================
+      id: 1834131404682880909
+      identification: 
+        column-name: ISSUING_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Issuing Type
+
+      layout: 
+        sequence: 290
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_MODAL ===============================
+      id: 1834131447037880910
+      identification: 
+        column-name: FREIGHT_MODAL
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Modal
+
+      layout: 
+        sequence: 300
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: GROSS_WEIGHT ================================
+      id: 1834131533931880911
+      identification: 
+        column-name: GROSS_WEIGHT
+        type: Hidden Column
+
+      heading: 
+        heading: Gross Weight
+
+      layout: 
+        sequence: 310
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_UNIT_OF_MEASURE =====================
+      id: 1834131635410880912
+      identification: 
+        column-name: FREIGHT_UNIT_OF_MEASURE
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Unit Of Measure
+
+      layout: 
+        sequence: 320
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ADDITIONAL_INFORMATION ======================
+      id: 1834131771109880913
+      identification: 
+        column-name: ADDITIONAL_INFORMATION
+        type: Hidden Column
+
+      heading: 
+        heading: Additional Information
+
+      layout: 
+        sequence: 330
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: REJECT_REASON ===============================
+      id: 1834131826277880914
+      identification: 
+        column-name: REJECT_REASON
+        type: Hidden Column
+
+      heading: 
+        heading: Reject Reason
+
+      layout: 
+        sequence: 340
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: REJECT_JUSTIFICATION ========================
+      id: 1834131953100880915
+      identification: 
+        column-name: REJECT_JUSTIFICATION
+        type: Hidden Column
+
+      heading: 
+        heading: Reject Justification
+
+      layout: 
+        sequence: 350
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_TAXPAYER_ID ==========================
+      id: 1834132094498880916
+      identification: 
+        column-name: ISSUER_TAXPAYER_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Taxpayer Id
+
+      layout: 
+        sequence: 360
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS ==============================
+      id: 1834132221572880917
+      identification: 
+        column-name: ISSUER_ADDRESS
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address
+
+      layout: 
+        sequence: 370
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_NUMBER =======================
+      id: 1834132249727880918
+      identification: 
+        column-name: ISSUER_ADDRESS_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address Number
+
+      layout: 
+        sequence: 380
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_STATE ========================
+      id: 1834132373005880919
+      identification: 
+        column-name: ISSUER_ADDRESS_STATE
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address State
+
+      layout: 
+        sequence: 390
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_COMPLEMENT ===================
+      id: 1834132488198880920
+      identification: 
+        column-name: ISSUER_ADDRESS_COMPLEMENT
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address Complement
+
+      layout: 
+        sequence: 400
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_ZIP_CODE =====================
+      id: 1834132537181880921
+      identification: 
+        column-name: ISSUER_ADDRESS_ZIP_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address Zip Code
+
+      layout: 
+        sequence: 410
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_CITY_ID ======================
+      id: 1834132723265880922
+      identification: 
+        column-name: ISSUER_ADDRESS_CITY_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address City Id
+
+      layout: 
+        sequence: 420
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_CITY_CODE ====================
+      id: 1834132745826880923
+      identification: 
+        column-name: ISSUER_ADDRESS_CITY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address City Code
+
+      layout: 
+        sequence: 430
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_ADDRESS_CITY_NAME ====================
+      id: 1834132909164880924
+      identification: 
+        column-name: ISSUER_ADDRESS_CITY_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Address City Name
+
+      layout: 
+        sequence: 440
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_TAXPAYER_ID ========================
+      id: 1834133003475880925
+      identification: 
+        column-name: RECEIVER_TAXPAYER_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Taxpayer Id
+
+      layout: 
+        sequence: 450
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_NUMBER =====================
+      id: 1834133107327880926
+      identification: 
+        column-name: RECEIVER_ADDRESS_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address Number
+
+      layout: 
+        sequence: 460
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_CITY_ID ====================
+      id: 1834133155300880927
+      identification: 
+        column-name: RECEIVER_ADDRESS_CITY_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address City Id
+
+      layout: 
+        sequence: 470
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_CITY_CODE ==================
+      id: 1834133231899880928
+      identification: 
+        column-name: RECEIVER_ADDRESS_CITY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address City Code
+
+      layout: 
+        sequence: 480
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_CITY_NAME ==================
+      id: 1834133334834880929
+      identification: 
+        column-name: RECEIVER_ADDRESS_CITY_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address City Name
+
+      layout: 
+        sequence: 490
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_STATE ======================
+      id: 1834133432253880930
+      identification: 
+        column-name: RECEIVER_ADDRESS_STATE
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address State
+
+      layout: 
+        sequence: 500
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_COMPLEMENT =================
+      id: 1834133572059880931
+      identification: 
+        column-name: RECEIVER_ADDRESS_COMPLEMENT
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address Complement
+
+      layout: 
+        sequence: 510
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_ADDRESS_ZIP_CODE ===================
+      id: 1834133668856880932
+      identification: 
+        column-name: RECEIVER_ADDRESS_ZIP_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Address Zip Code
+
+      layout: 
+        sequence: 520
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_DOCUMENT_NUMBER ===================
+      id: 1834133782301880933
+      identification: 
+        column-name: SHIP_FROM_DOCUMENT_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Document Number
+
+      layout: 
+        sequence: 530
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS_STATE =====================
+      id: 1834133845905880934
+      identification: 
+        column-name: SHIP_FROM_ADDRESS_STATE
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address State
+
+      layout: 
+        sequence: 540
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS_CITY_CODE =================
+      id: 1834134020856880935
+      identification: 
+        column-name: SHIP_FROM_ADDRESS_CITY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address City Code
+
+      layout: 
+        sequence: 550
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS_CITY_NAME =================
+      id: 1834134044071880936
+      identification: 
+        column-name: SHIP_FROM_ADDRESS_CITY_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address City Name
+
+      layout: 
+        sequence: 560
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS ===========================
+      id: 1834134195793880937
+      identification: 
+        column-name: SHIP_FROM_ADDRESS
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address
+
+      layout: 
+        sequence: 570
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS_NUMBER ====================
+      id: 1834134322496880938
+      identification: 
+        column-name: SHIP_FROM_ADDRESS_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address Number
+
+      layout: 
+        sequence: 580
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS_ZIP_CODE ==================
+      id: 1834134385685880939
+      identification: 
+        column-name: SHIP_FROM_ADDRESS_ZIP_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address Zip Code
+
+      layout: 
+        sequence: 590
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_FROM_ADDRESS_COMPLEMENT ================
+      id: 1834134485012880940
+      identification: 
+        column-name: SHIP_FROM_ADDRESS_COMPLEMENT
+        type: Hidden Column
+
+      heading: 
+        heading: Ship From Address Complement
+
+      layout: 
+        sequence: 600
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_DOCUMENT_NUMBER =====================
+      id: 1834134526070880941
+      identification: 
+        column-name: SHIP_TO_DOCUMENT_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Document Number
+
+      layout: 
+        sequence: 610
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS =============================
+      id: 1834134659542880942
+      identification: 
+        column-name: SHIP_TO_ADDRESS
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address
+
+      layout: 
+        sequence: 620
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS_NUMBER ======================
+      id: 1834134752783880943
+      identification: 
+        column-name: SHIP_TO_ADDRESS_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address Number
+
+      layout: 
+        sequence: 630
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS_CITY_CODE ===================
+      id: 1834134838187880944
+      identification: 
+        column-name: SHIP_TO_ADDRESS_CITY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address City Code
+
+      layout: 
+        sequence: 640
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS_CITY_NAME ===================
+      id: 1834134948126880945
+      identification: 
+        column-name: SHIP_TO_ADDRESS_CITY_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address City Name
+
+      layout: 
+        sequence: 650
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS_STATE =======================
+      id: 1834135071962880896
+      identification: 
+        column-name: SHIP_TO_ADDRESS_STATE
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address State
+
+      layout: 
+        sequence: 660
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS_ZIP_CODE ====================
+      id: 1834135182956880897
+      identification: 
+        column-name: SHIP_TO_ADDRESS_ZIP_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address Zip Code
+
+      layout: 
+        sequence: 670
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SHIP_TO_ADDRESS_COMPLEMENT ==================
+      id: 1834135280301880898
+      identification: 
+        column-name: SHIP_TO_ADDRESS_COMPLEMENT
+        type: Hidden Column
+
+      heading: 
+        heading: Ship To Address Complement
+
+      layout: 
+        sequence: 680
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_AMOUNT ==============================
+      id: 1834135358971880899
+      identification: 
+        column-name: FREIGHT_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Amount
+
+      layout: 
+        sequence: 690
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSURANCE_AMOUNT ============================
+      id: 1834135455827880900
+      identification: 
+        column-name: INSURANCE_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Insurance Amount
+
+      layout: 
+        sequence: 700
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: OTHER_EXPENSES_AMOUNT =======================
+      id: 1834135620121880901
+      identification: 
+        column-name: OTHER_EXPENSES_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Other Expenses Amount
+
+      layout: 
+        sequence: 710
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DISCOUNT_AMOUNT =============================
+      id: 1834135669254880902
+      identification: 
+        column-name: DISCOUNT_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Discount Amount
+
+      layout: 
+        sequence: 720
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: TRIBUTARY_REGIMEN ===========================
+      id: 1834135776785880903
+      identification: 
+        column-name: TRIBUTARY_REGIMEN
+        type: Hidden Column
+
+      heading: 
+        heading: Tributary Regimen
+
+      layout: 
+        sequence: 730
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_CALCULATION_BASIS ======================
+      id: 1834135870301880904
+      identification: 
+        column-name: ICMS_CALCULATION_BASIS
+        type: Hidden Column
+
+      heading: 
+        heading: Icms Calculation Basis
+
+      layout: 
+        sequence: 740
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_AMOUNT =================================
+      id: 1834135981518880905
+      identification: 
+        column-name: ICMS_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Icms Amount
+
+      layout: 
+        sequence: 750
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_ST_CALCULATION_BASIS ===================
+      id: 1834136085143880906
+      identification: 
+        column-name: ICMS_ST_CALCULATION_BASIS
+        type: Hidden Column
+
+      heading: 
+        heading: Icms St Calculation Basis
+
+      layout: 
+        sequence: 760
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_ST_AMOUNT ==============================
+      id: 1834136136275880907
+      identification: 
+        column-name: ICMS_ST_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Icms St Amount
+
+      layout: 
+        sequence: 770
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: IPI_AMOUNT ==================================
+      id: 1834136292192880908
+      identification: 
+        column-name: IPI_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Ipi Amount
+
+      layout: 
+        sequence: 780
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PIS_AMOUNT ==================================
+      id: 1834136344533880909
+      identification: 
+        column-name: PIS_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Pis Amount
+
+      layout: 
+        sequence: 790
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: COFINS_AMOUNT ===============================
+      id: 1834136519900880910
+      identification: 
+        column-name: COFINS_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Cofins Amount
+
+      layout: 
+        sequence: 800
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PIS_WITHHOLD_AMOUNT =========================
+      id: 1834136542403880911
+      identification: 
+        column-name: PIS_WITHHOLD_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Pis Withhold Amount
+
+      layout: 
+        sequence: 810
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: COFINS_WITHHOLD_AMOUNT ======================
+      id: 1834136710694880912
+      identification: 
+        column-name: COFINS_WITHHOLD_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Cofins Withhold Amount
+
+      layout: 
+        sequence: 820
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RI_IMPORTING_INDICATOR ======================
+      id: 1834136811139880913
+      identification: 
+        column-name: RI_IMPORTING_INDICATOR
+        type: Hidden Column
+
+      heading: 
+        heading: Ri Importing Indicator
+
+      layout: 
+        sequence: 830
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FILE_NAME ===================================
+      id: 1834136888829880914
+      identification: 
+        column-name: FILE_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: File Name
+
+      layout: 
+        sequence: 840
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: EMAIL =======================================
+      id: 1834136936548880915
+      identification: 
+        column-name: EMAIL
+        type: Hidden Column
+
+      heading: 
+        heading: Email
+
+      layout: 
+        sequence: 850
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PROCESS_DATE ================================
+      id: 1834137041185880916
+      identification: 
+        column-name: PROCESS_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Process Date
+
+      layout: 
+        sequence: 860
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SOURCE_TYPE =================================
+      id: 1834137184923880917
+      identification: 
+        column-name: SOURCE_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Source Type
+
+      layout: 
+        sequence: 870
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CREATION_DATE ===============================
+      id: 1834137276882880918
+      identification: 
+        column-name: CREATION_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Creation Date
+
+      layout: 
+        sequence: 880
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: LAST_UPDATE_DATE ============================
+      id: 1834137472869880920
+      identification: 
+        column-name: LAST_UPDATE_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Last Update Date
+
+      layout: 
+        sequence: 900
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PROGRAM_ID ==================================
+      id: 1834137751192880923
+      identification: 
+        column-name: PROGRAM_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Program Id
+
+      layout: 
+        sequence: 930
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PROGRAM_LOGIN_ID ============================
+      id: 1834137883473880924
+      identification: 
+        column-name: PROGRAM_LOGIN_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Program Login Id
+
+      layout: 
+        sequence: 940
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PROGRAM_APPLICATION_ID ======================
+      id: 1834137934464880925
+      identification: 
+        column-name: PROGRAM_APPLICATION_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Program Application Id
+
+      layout: 
+        sequence: 950
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: REQUEST_ID ==================================
+      id: 1834138078949880926
+      identification: 
+        column-name: REQUEST_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Request Id
+
+      layout: 
+        sequence: 960
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE_CATEGORY ==========================
+      id: 1834138141924880927
+      identification: 
+        column-name: ATTRIBUTE_CATEGORY
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute Category
+
+      layout: 
+        sequence: 970
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE1 ==================================
+      id: 1834138241951880928
+      identification: 
+        column-name: ATTRIBUTE1
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute1
+
+      layout: 
+        sequence: 980
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE2 ==================================
+      id: 1834138336927880929
+      identification: 
+        column-name: ATTRIBUTE2
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute2
+
+      layout: 
+        sequence: 990
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE3 ==================================
+      id: 1834138435793880930
+      identification: 
+        column-name: ATTRIBUTE3
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute3
+
+      layout: 
+        sequence: 1000
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE4 ==================================
+      id: 1834138615599880931
+      identification: 
+        column-name: ATTRIBUTE4
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute4
+
+      layout: 
+        sequence: 1010
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE5 ==================================
+      id: 1834138648980880932
+      identification: 
+        column-name: ATTRIBUTE5
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute5
+
+      layout: 
+        sequence: 1020
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE6 ==================================
+      id: 1834138771509880933
+      identification: 
+        column-name: ATTRIBUTE6
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute6
+
+      layout: 
+        sequence: 1030
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE7 ==================================
+      id: 1834138886327880934
+      identification: 
+        column-name: ATTRIBUTE7
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute7
+
+      layout: 
+        sequence: 1040
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE8 ==================================
+      id: 1834138993626880935
+      identification: 
+        column-name: ATTRIBUTE8
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute8
+
+      layout: 
+        sequence: 1050
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE9 ==================================
+      id: 1834139108631880936
+      identification: 
+        column-name: ATTRIBUTE9
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute9
+
+      layout: 
+        sequence: 1060
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE10 =================================
+      id: 1834139159330880937
+      identification: 
+        column-name: ATTRIBUTE10
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute10
+
+      layout: 
+        sequence: 1070
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE11 =================================
+      id: 1834139270900880938
+      identification: 
+        column-name: ATTRIBUTE11
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute11
+
+      layout: 
+        sequence: 1080
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE12 =================================
+      id: 1834139367801880939
+      identification: 
+        column-name: ATTRIBUTE12
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute12
+
+      layout: 
+        sequence: 1090
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE13 =================================
+      id: 1834139446019880940
+      identification: 
+        column-name: ATTRIBUTE13
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute13
+
+      layout: 
+        sequence: 1100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE14 =================================
+      id: 1834139529568880941
+      identification: 
+        column-name: ATTRIBUTE14
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute14
+
+      layout: 
+        sequence: 1110
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ATTRIBUTE15 =================================
+      id: 1834139626108880942
+      identification: 
+        column-name: ATTRIBUTE15
+        type: Hidden Column
+
+      heading: 
+        heading: Attribute15
+
+      layout: 
+        sequence: 1120
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CARRIER_DOCUMENT_NUMBER =====================
+      id: 1834139807457880943
+      identification: 
+        column-name: CARRIER_DOCUMENT_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Carrier Document Number
+
+      layout: 
+        sequence: 1130
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: PAYMENT_INDICATOR ===========================
+      id: 1834139907096880944
+      identification: 
+        column-name: PAYMENT_INDICATOR
+        type: Hidden Column
+
+      heading: 
+        heading: Payment Indicator
+
+      layout: 
+        sequence: 1140
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_UTILIZATION_ID ======================
+      id: 1834139925988880945
+      identification: 
+        column-name: FREIGHT_UTILIZATION_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Utilization Id
+
+      layout: 
+        sequence: 1150
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_FCP_AMOUNT =============================
+      id: 1834140097651880896
+      identification: 
+        column-name: ICMS_FCP_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Icms Fcp Amount
+
+      layout: 
+        sequence: 1160
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_SHARING_DEST_AMOUNT ====================
+      id: 1834140200933880897
+      identification: 
+        column-name: ICMS_SHARING_DEST_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Icms Sharing Dest Amount
+
+      layout: 
+        sequence: 1170
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ICMS_SHARING_SOURCE_AMOUNT ==================
+      id: 1834140265260880898
+      identification: 
+        column-name: ICMS_SHARING_SOURCE_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Icms Sharing Source Amount
+
+      layout: 
+        sequence: 1180
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: OPERATION_NATURE ============================
+      id: 1834140360062880899
+      identification: 
+        column-name: OPERATION_NATURE
+        type: Hidden Column
+
+      heading: 
+        heading: Operation Nature
+
+      layout: 
+        sequence: 1190
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SERVICE_TAKER_TYPE ==========================
+      id: 1834140441349880900
+      identification: 
+        column-name: SERVICE_TAKER_TYPE
+        type: Hidden Column
+
+      heading: 
+        heading: Service Taker Type
+
+      layout: 
+        sequence: 1200
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SOURCE ======================================
+      id: 1834140574869880901
+      identification: 
+        column-name: SOURCE
+        type: Hidden Column
+
+      heading: 
+        heading: Source
+
+      layout: 
+        sequence: 1210
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SIMPLE_NATIONAL_INDICATOR ===================
+      id: 1834140633533880902
+      identification: 
+        column-name: SIMPLE_NATIONAL_INDICATOR
+        type: Hidden Column
+
+      heading: 
+        heading: Simple National Indicator
+
+      layout: 
+        sequence: 1220
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_IBGE_SOURCE =========================
+      id: 1834140778056880903
+      identification: 
+        column-name: FREIGHT_IBGE_SOURCE
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Ibge Source
+
+      layout: 
+        sequence: 1230
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_CITY_SOURCE_CODE ====================
+      id: 1834140921501880904
+      identification: 
+        column-name: FREIGHT_CITY_SOURCE_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Freight City Source Code
+
+      layout: 
+        sequence: 1240
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_CITY_SOURCE_ID ======================
+      id: 1834140970852880905
+      identification: 
+        column-name: FREIGHT_CITY_SOURCE_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Freight City Source Id
+
+      layout: 
+        sequence: 1250
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_IBGE_DESTINATION ====================
+      id: 1834141070236880906
+      identification: 
+        column-name: FREIGHT_IBGE_DESTINATION
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Ibge Destination
+
+      layout: 
+        sequence: 1260
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_CITY_DEST_CODE ======================
+      id: 1834141176189880907
+      identification: 
+        column-name: FREIGHT_CITY_DEST_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Freight City Dest Code
+
+      layout: 
+        sequence: 1270
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_CITY_DEST_ID ========================
+      id: 1834141310346880908
+      identification: 
+        column-name: FREIGHT_CITY_DEST_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Freight City Dest Id
+
+      layout: 
+        sequence: 1280
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSS_INCOME_CODE ============================
+      id: 1834141335578880909
+      identification: 
+        column-name: INSS_INCOME_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Inss Income Code
+
+      layout: 
+        sequence: 1290
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSS_BASE ===================================
+      id: 1834141447154880910
+      identification: 
+        column-name: INSS_BASE
+        type: Hidden Column
+
+      heading: 
+        heading: Inss Base
+
+      layout: 
+        sequence: 1300
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSS_TAX ====================================
+      id: 1834141534562880911
+      identification: 
+        column-name: INSS_TAX
+        type: Hidden Column
+
+      heading: 
+        heading: Inss Tax
+
+      layout: 
+        sequence: 1310
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSS_AMOUNT =================================
+      id: 1834141666068880912
+      identification: 
+        column-name: INSS_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Inss Amount
+
+      layout: 
+        sequence: 1320
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SEST_SENAT_INCOME_CODE ======================
+      id: 1834141736464880913
+      identification: 
+        column-name: SEST_SENAT_INCOME_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Sest Senat Income Code
+
+      layout: 
+        sequence: 1330
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SEST_AMOUNT =================================
+      id: 1834141854633880914
+      identification: 
+        column-name: SEST_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Sest Amount
+
+      layout: 
+        sequence: 1340
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENAT_AMOUNT ================================
+      id: 1834141945459880915
+      identification: 
+        column-name: SENAT_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Senat Amount
+
+      layout: 
+        sequence: 1350
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SEST_TAX ====================================
+      id: 1834142075440880916
+      identification: 
+        column-name: SEST_TAX
+        type: Hidden Column
+
+      heading: 
+        heading: Sest Tax
+
+      layout: 
+        sequence: 1360
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENAT_TAX ===================================
+      id: 1834142179062880917
+      identification: 
+        column-name: SENAT_TAX
+        type: Hidden Column
+
+      heading: 
+        heading: Senat Tax
+
+      layout: 
+        sequence: 1370
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SEST_BASE_AMOUNT ============================
+      id: 1834142275380880918
+      identification: 
+        column-name: SEST_BASE_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Sest Base Amount
+
+      layout: 
+        sequence: 1380
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENAT_BASE_AMOUNT ===========================
+      id: 1834142358208880919
+      identification: 
+        column-name: SENAT_BASE_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Senat Base Amount
+
+      layout: 
+        sequence: 1390
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: AWT_GROUP_ID ================================
+      id: 1834142497914880920
+      identification: 
+        column-name: AWT_GROUP_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Awt Group Id
+
+      layout: 
+        sequence: 1400
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: OPERATION ===================================
+      id: 1834142589603880921
+      identification: 
+        column-name: OPERATION
+        type: Hidden Column
+
+      heading: 
+        heading: Operation
+
+      layout: 
+        sequence: 1410
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SEST_SENAT_BASE =============================
+      id: 1834142700558880922
+      identification: 
+        column-name: SEST_SENAT_BASE
+        type: Hidden Column
+
+      heading: 
+        heading: Sest Senat Base
+
+      layout: 
+        sequence: 1420
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: TOTAL_FCP_AMOUNT ============================
+      id: 1834142734737880923
+      identification: 
+        column-name: TOTAL_FCP_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Total Fcp Amount
+
+      layout: 
+        sequence: 1430
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: TOTAL_FCP_ST_AMOUNT =========================
+      id: 1834142896615880924
+      identification: 
+        column-name: TOTAL_FCP_ST_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Total Fcp St Amount
+
+      layout: 
+        sequence: 1440
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DOCUMENT_SHIPPER_STATUS =====================
+      id: 1834142979324880925
+      identification: 
+        column-name: DOCUMENT_SHIPPER_STATUS
+        type: Hidden Column
+
+      heading: 
+        heading: Document Shipper Status
+
+      layout: 
+        sequence: 1450
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_FLAG ================================
+      id: 1834143084945880926
+      identification: 
+        column-name: FREIGHT_FLAG
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Flag
+
+      layout: 
+        sequence: 1460
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: NET_AMOUNT ==================================
+      id: 1834143199610880927
+      identification: 
+        column-name: NET_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Net Amount
+
+      layout: 
+        sequence: 1470
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SOURCE_STATE_CODE ===========================
+      id: 1834143274023880928
+      identification: 
+        column-name: SOURCE_STATE_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Source State Code
+
+      layout: 
+        sequence: 1480
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SOURCE_IBGE_CODE ============================
+      id: 1834143376724880929
+      identification: 
+        column-name: SOURCE_IBGE_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Source Ibge Code
+
+      layout: 
+        sequence: 1490
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DESTINATION_STATE_CODE ======================
+      id: 1834143432287880930
+      identification: 
+        column-name: DESTINATION_STATE_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Destination State Code
+
+      layout: 
+        sequence: 1500
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DESTINATION_IBGE_CODE =======================
+      id: 1834143557298880931
+      identification: 
+        column-name: DESTINATION_IBGE_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Destination Ibge Code
+
+      layout: 
+        sequence: 1510
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_NAME =================================
+      id: 1834143637380880932
+      identification: 
+        column-name: SENDER_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Name
+
+      layout: 
+        sequence: 1520
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_DOCUMENT_NUMBER ======================
+      id: 1834143811184880933
+      identification: 
+        column-name: SENDER_DOCUMENT_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Document Number
+
+      layout: 
+        sequence: 1530
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS_STATE ========================
+      id: 1834143879007880934
+      identification: 
+        column-name: SENDER_ADDRESS_STATE
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address State
+
+      layout: 
+        sequence: 1540
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS_CITY_CODE ====================
+      id: 1834143973329880935
+      identification: 
+        column-name: SENDER_ADDRESS_CITY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address City Code
+
+      layout: 
+        sequence: 1550
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS_CITY_NAME ====================
+      id: 1834144101767880936
+      identification: 
+        column-name: SENDER_ADDRESS_CITY_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address City Name
+
+      layout: 
+        sequence: 1560
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS ==============================
+      id: 1834144173051880937
+      identification: 
+        column-name: SENDER_ADDRESS
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address
+
+      layout: 
+        sequence: 1570
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS_NUMBER =======================
+      id: 1834144310153880938
+      identification: 
+        column-name: SENDER_ADDRESS_NUMBER
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address Number
+
+      layout: 
+        sequence: 1580
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS_COMPLEMENT ===================
+      id: 1834144391078880939
+      identification: 
+        column-name: SENDER_ADDRESS_COMPLEMENT
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address Complement
+
+      layout: 
+        sequence: 1590
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SENDER_ADDRESS_ZIP_CODE =====================
+      id: 1834144476065880940
+      identification: 
+        column-name: SENDER_ADDRESS_ZIP_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Sender Address Zip Code
+
+      layout: 
+        sequence: 1600
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSS_BILLED_AMOUNT ==========================
+      id: 1834144600067880941
+      identification: 
+        column-name: INSS_BILLED_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Inss Billed Amount
+
+      layout: 
+        sequence: 1610
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: REFERENCED_CHCTE ============================
+      id: 1834144643460880942
+      identification: 
+        column-name: REFERENCED_CHCTE
+        type: Hidden Column
+
+      heading: 
+        heading: Referenced Chcte
+
+      layout: 
+        sequence: 1620
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: OBSERVATION =================================
+      id: 1834144742476880943
+      identification: 
+        column-name: OBSERVATION
+        type: Hidden Column
+
+      heading: 
+        heading: Observation
+
+      layout: 
+        sequence: 1630
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FREIGHT_MODE ================================
+      id: 1834144917459880944
+      identification: 
+        column-name: FREIGHT_MODE
+        type: Hidden Column
+
+      heading: 
+        heading: Freight Mode
+
+      layout: 
+        sequence: 1640
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: IR_AMOUNT ===================================
+      id: 1834144970442880945
+      identification: 
+        column-name: IR_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Ir Amount
+
+      layout: 
+        sequence: 1650
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: IR_BASE =====================================
+      id: 1834145074335880996
+      identification: 
+        column-name: IR_BASE
+        type: Hidden Column
+
+      heading: 
+        heading: Ir Base
+
+      layout: 
+        sequence: 1660
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: IR_CATEG ====================================
+      id: 1834145204957880997
+      identification: 
+        column-name: IR_CATEG
+        type: Hidden Column
+
+      heading: 
+        heading: Ir Categ
+
+      layout: 
+        sequence: 1670
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: IR_TAX ======================================
+      id: 1834145279082880998
+      identification: 
+        column-name: IR_TAX
+        type: Hidden Column
+
+      heading: 
+        heading: Ir Tax
+
+      layout: 
+        sequence: 1680
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: IR_VENDOR ===================================
+      id: 1834145330796880999
+      identification: 
+        column-name: IR_VENDOR
+        type: Hidden Column
+
+      heading: 
+        heading: Ir Vendor
+
+      layout: 
+        sequence: 1690
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISS_AMOUNT ==================================
+      id: 1834145458582881000
+      identification: 
+        column-name: ISS_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Iss Amount
+
+      layout: 
+        sequence: 1700
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISS_TAX =====================================
+      id: 1834145545031881001
+      identification: 
+        column-name: ISS_TAX
+        type: Hidden Column
+
+      heading: 
+        heading: Iss Tax
+
+      layout: 
+        sequence: 1710
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISS_BASE ====================================
+      id: 1834145671822881002
+      identification: 
+        column-name: ISS_BASE
+        type: Hidden Column
+
+      heading: 
+        heading: Iss Base
+
+      layout: 
+        sequence: 1720
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISS_CITY_CODE ===============================
+      id: 1834145791865881003
+      identification: 
+        column-name: ISS_CITY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Iss City Code
+
+      layout: 
+        sequence: 1730
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISS_CITY_ID =================================
+      id: 1834145892082881004
+      identification: 
+        column-name: ISS_CITY_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Iss City Id
+
+      layout: 
+        sequence: 1740
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CHECKED_FLAG ================================
+      id: 1834145964577881005
+      identification: 
+        column-name: CHECKED_FLAG
+        type: Hidden Column
+
+      heading: 
+        heading: Checked Flag
+
+      layout: 
+        sequence: 1750
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CHECKED_DATE ================================
+      id: 1834146048147881006
+      identification: 
+        column-name: CHECKED_DATE
+        type: Hidden Column
+
+      heading: 
+        heading: Checked Date
+
+      layout: 
+        sequence: 1760
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CHECKED_BY ==================================
+      id: 1834146136255881007
+      identification: 
+        column-name: CHECKED_BY
+        type: Hidden Column
+
+      heading: 
+        heading: Checked By
+
+      layout: 
+        sequence: 1770
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SUBMITED_BY =================================
+      id: 1834146314054881008
+      identification: 
+        column-name: SUBMITED_BY
+        type: Hidden Column
+
+      heading: 
+        heading: Submited By
+
+      layout: 
+        sequence: 1780
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INSS_INIT_BASE ==============================
+      id: 1834146401869881009
+      identification: 
+        column-name: INSS_INIT_BASE
+        type: Hidden Column
+
+      heading: 
+        heading: Inss Init Base
+
+      layout: 
+        sequence: 1790
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CARRIER_NAME ================================
+      id: 1834146476533881010
+      identification: 
+        column-name: CARRIER_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: Carrier Name
+
+      layout: 
+        sequence: 1800
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: COD_VERIF_NFS ===============================
+      id: 1834146524654881011
+      identification: 
+        column-name: COD_VERIF_NFS
+        type: Hidden Column
+
+      heading: 
+        heading: Cod Verif Nfs
+
+      layout: 
+        sequence: 1810
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: COMPETENCIA_NFS =============================
+      id: 1834146719442881012
+      identification: 
+        column-name: COMPETENCIA_NFS
+        type: Hidden Column
+
+      heading: 
+        heading: Competencia Nfs
+
+      layout: 
+        sequence: 1820
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: DOC_ID ======================================
+      id: 1834146749114881013
+      identification: 
+        column-name: DOC_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Doc Id
+
+      layout: 
+        sequence: 1830
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CURRENCY_CODE ===============================
+      id: 1834146918852881014
+      identification: 
+        column-name: CURRENCY_CODE
+        type: Hidden Column
+
+      heading: 
+        heading: Currency Code
+
+      layout: 
+        sequence: 1840
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: SOURCE_DOC_INFO =============================
+      id: 1834147016716881015
+      identification: 
+        column-name: SOURCE_DOC_INFO
+        type: Hidden Column
+
+      heading: 
+        heading: Source Doc Info
+
+      layout: 
+        sequence: 1850
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: ISSUER_INFO =================================
+      id: 1834147118285881016
+      identification: 
+        column-name: ISSUER_INFO
+        type: Hidden Column
+
+      heading: 
+        heading: Issuer Info
+
+      layout: 
+        sequence: 1860
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: RECEIVER_INFO ===============================
+      id: 1834147130399881017
+      identification: 
+        column-name: RECEIVER_INFO
+        type: Hidden Column
+
+      heading: 
+        heading: Receiver Info
+
+      layout: 
+        sequence: 1870
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: TERM_INFO ===================================
+      id: 1834147239386881018
+      identification: 
+        column-name: TERM_INFO
+        type: Hidden Column
+
+      heading: 
+        heading: Term Info
+
+      layout: 
+        sequence: 1880
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: CSLL_AMOUNT =================================
+      id: 1834147367450881019
+      identification: 
+        column-name: CSLL_AMOUNT
+        type: Hidden Column
+
+      heading: 
+        heading: Csll Amount
+
+      layout: 
+        sequence: 1890
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: MUNICIPIO_INCIDENCIA ========================
+      id: 1834147459855881020
+      identification: 
+        column-name: MUNICIPIO_INCIDENCIA
+        type: Hidden Column
+
+      heading: 
+        heading: Municipio Incidencia
+
+      layout: 
+        sequence: 1900
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: INCRICAO_OBRA ===============================
+      id: 1834147536757881021
+      identification: 
+        column-name: INCRICAO_OBRA
+        type: Hidden Column
+
+      heading: 
+        heading: Incricao Obra
+
+      layout: 
+        sequence: 1910
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: TRIBUTOS_APROXIMADOS ========================
+      id: 1834147722962881022
+      identification: 
+        column-name: TRIBUTOS_APROXIMADOS
+        type: Hidden Column
+
+      heading: 
+        heading: Tributos Aproximados
+
+      layout: 
+        sequence: 1920
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: FONTE =======================================
+      id: 1834147821544881023
+      identification: 
+        column-name: FONTE
+        type: Hidden Column
+
+      heading: 
+        heading: Fonte
+
+      layout: 
+        sequence: 1930
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: USER_NAME ===================================
+      id: 1834147902849881024
+      identification: 
+        column-name: USER_NAME
+        type: Hidden Column
+
+      heading: 
+        heading: User Name
+
+      layout: 
+        sequence: 1940
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: false
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Report 1
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+buttons: 
+- # ====== Button: CREATE ======================================
+  id: 1832266794308451948
+  identification: 
+    button-name: CREATE
+    label: Lançar NF
+
+  layout: 
+    sequence: 30
+    region: Report 1 # 1832261470897451934
+    position: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:11:&SESSION.::&DEBUG.:11'
+      page: 11 # Lancamento
+      clear-cache: 11
+
+    warn-on-unsaved-changes: Do Not Check
+

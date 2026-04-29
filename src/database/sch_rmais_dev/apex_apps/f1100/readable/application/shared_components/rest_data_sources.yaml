@@ -1,0 +1,1577 @@
+---
+- # ====== REST Data Source: Get Setup Oracle ==================
+  id: 860889895332602544
+  identification: 
+    name: Get Setup Oracle
+
+  source: 
+    type: HTTP
+    remote-server: hdi-test-rm-digital-api-consultas # 52266316405808612
+    url-path-prefix: /v1/cadastroEmpresa
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Get Setup Oracle # 52266011441808610
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+    local-table-name: RMAIS_SETUP_CNPJ_ORACLE_TMP
+    type: Full Refresh - Delete
+    schedule: FREQ=HOURLY;INTERVAL=1;BYMINUTE=0;BYSECOND=0
+    http-request-limit: 1000
+
+  advanced: 
+    static-id: Get_Setup_Oracle
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 860884368839602538
+    identification: 
+      name: Get Setup Oracle
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: CITY ========================================
+      id: 860884575073602541
+      identification: 
+        column-name: CITY
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CITY
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: BU_ID =======================================
+      id: 860884819541602541
+      identification: 
+        column-name: BU_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: BU_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: STATE =======================================
+      id: 860885099247602541
+      identification: 
+        column-name: STATE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: STATE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+    - # ====== Column: BU_NAME =====================================
+      id: 860885417043602542
+      identification: 
+        column-name: BU_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: BU_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 4
+        hidden: false
+
+    - # ====== Column: ADDRESS1 ====================================
+      id: 860885687324602542
+      identification: 
+        column-name: ADDRESS1
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: ADDRESS1
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 5
+        hidden: false
+
+    - # ====== Column: ADDRESS2 ====================================
+      id: 860886024939602542
+      identification: 
+        column-name: ADDRESS2
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: ADDRESS2
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 6
+        hidden: false
+
+    - # ====== Column: ADDRESS3 ====================================
+      id: 860886360305602542
+      identification: 
+        column-name: ADDRESS3
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: ADDRESS3
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 7
+        hidden: false
+
+    - # ====== Column: ADDRESS4 ====================================
+      id: 860886649205602542
+      identification: 
+        column-name: ADDRESS4
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: ADDRESS4
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 8
+        hidden: false
+
+    - # ====== Column: CNPJ_SEQ ====================================
+      id: 860886912174602542
+      identification: 
+        column-name: CNPJ_SEQ
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: CNPJ_SEQ
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 9
+        hidden: false
+
+    - # ====== Column: LOCATION_ID =================================
+      id: 860887227014602542
+      identification: 
+        column-name: LOCATION_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: LOCATION_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 10
+        hidden: false
+
+    - # ====== Column: POSTAL_CODE =================================
+      id: 860887512839602542
+      identification: 
+        column-name: POSTAL_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: POSTAL_CODE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 11
+        hidden: false
+
+    - # ====== Column: LEGAL_ENTITY_ID =============================
+      id: 860887807843602542
+      identification: 
+        column-name: LEGAL_ENTITY_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: LEGAL_ENTITY_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 12
+        hidden: false
+
+    - # ====== Column: REGISTERED_NAME =============================
+      id: 860888124770602542
+      identification: 
+        column-name: REGISTERED_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: REGISTERED_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 13
+        hidden: false
+
+    - # ====== Column: LEGAL_ENTITY_NAME ===========================
+      id: 860888473619602542
+      identification: 
+        column-name: LEGAL_ENTITY_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: LEGAL_ENTITY_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 14
+        hidden: false
+
+    - # ====== Column: REGISTERED_NAME_LE ==========================
+      id: 860888709392602543
+      identification: 
+        column-name: REGISTERED_NAME_LE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: REGISTERED_NAME_LE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 15
+        hidden: false
+
+    - # ====== Column: REGISTRATION_NUMBER =========================
+      id: 860889034833602543
+      identification: 
+        column-name: REGISTRATION_NUMBER
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: REGISTRATION_NUMBER
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 16
+        hidden: false
+
+    - # ====== Column: REGISTRATION_NUMBER_LE ======================
+      id: 860889338615602543
+      identification: 
+        column-name: REGISTRATION_NUMBER_LE
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: REGISTRATION_NUMBER_LE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 17
+        hidden: false
+
+    - # ====== Column: ADDR_ELEMENT_ATTRIBUTE2 =====================
+      id: 860889635543602543
+      identification: 
+        column-name: ADDR_ELEMENT_ATTRIBUTE2
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: ADDR_ELEMENT_ATTRIBUTE2
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 18
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 860890149536602550
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: ProductCategory ===================
+  id: 1670101236960232162
+  identification: 
+    name: ProductCategory
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: v1/productCategory
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Currencies # 84774068719536732
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: ProductCategory
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1670100380269232159
+    identification: 
+      name: ProductCategory
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: CLASSIFICATION_ID ===========================
+      id: 1675619088244204156
+      identification: 
+        column-name: CLASSIFICATION_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: true
+
+    - # ====== Column: CLASSIFICATION_CODE =========================
+      id: 1675619663484204156
+      identification: 
+        column-name: CLASSIFICATION_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_CODE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: CLASSIFICATION_NAME =========================
+      id: 1675620165378204156
+      identification: 
+        column-name: CLASSIFICATION_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1670101399185232163
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: UserDefine ========================
+  id: 1670103376245236831
+  identification: 
+    name: UserDefine
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: v1/userDefined
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Get Setup Oracle # 52266011441808610
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: RMAIS
+    local-table-name: RMAIS_WS_DEFINED_CLASIFICATION
+    type: Full Refresh - Delete
+    schedule: FREQ=DAILY;INTERVAL=1;BYHOUR=0;BYMINUTE=0;BYSECOND=0
+    http-request-limit: 1000
+
+  advanced: 
+    static-id: UserDefineClassification
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1670102568312236831
+    identification: 
+      name: UserDefineClassification
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: CLASSIFICATION_ID ===========================
+      id: 1670102851972236831
+      identification: 
+        column-name: CLASSIFICATION_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: CLASSIFICATION_CODE =========================
+      id: 1670103156777236831
+      identification: 
+        column-name: CLASSIFICATION_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_CODE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: CLASSIFICATION_NAME =========================
+      id: 1670533511610128819
+      identification: 
+        column-name: CLASSIFICATION_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1670103568185236832
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: prodFSCClassification =============
+  id: 1670105197225242843
+  identification: 
+    name: prodFSCClassification
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: v1/prodFSCClassification
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Get Setup Oracle # 52266011441808610
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: prodFSCClassification
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1670104756060242842
+    identification: 
+      name: prodFSCClassification
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: CATEGORY_NAME ===============================
+      id: 1670104925832242842
+      identification: 
+        column-name: CATEGORY_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CATEGORY_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1670105423301242844
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: TransBusCategory ==================
+  id: 1670107257279250778
+  identification: 
+    name: TransBusCategory
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: v1/transBusCategory
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Currencies # 84774068719536732
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: TransBusCategory
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1670106451553250778
+    identification: 
+      name: TransBusCategory
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: CLASSIFICATION_ID ===========================
+      id: 1670106612000250778
+      identification: 
+        column-name: CLASSIFICATION_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: CLASSIFICATION_CODE =========================
+      id: 1670106895785250778
+      identification: 
+        column-name: CLASSIFICATION_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_CODE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1670107461476250778
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: Currencies ========================
+  id: 1812217014122512703
+  identification: 
+    name: Currencies
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: /v1/currencies
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Currencies # 84774068719536732
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: Currencies
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1812215562699512699
+    identification: 
+      name: Currencies
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: NAME ========================================
+      id: 1812215838677512701
+      identification: 
+        column-name: NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: DESCRIPTION =================================
+      id: 1812216155480512701
+      identification: 
+        column-name: DESCRIPTION
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: DESCRIPTION
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: C0 ==========================================
+      id: 1812216427200512702
+      identification: 
+        column-name: C0
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: DESCRIPTION."0"
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+    - # ====== Column: CURRENCY_CODE ===============================
+      id: 1812216673082512702
+      identification: 
+        column-name: CURRENCY_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CURRENCY_CODE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 4
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1812217177540512711
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: Terms =============================
+  id: 1812418321587703388
+  identification: 
+    name: Terms
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: v1/terms
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Get Setup Oracle # 52266011441808610
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+    local-table-name: RMAIS_SETUP_CNPJ_ORACLE_TMP
+    type: Full Refresh - Delete
+    schedule: FREQ=HOURLY;INTERVAL=1;BYMINUTE=0;BYSECOND=0
+    http-request-limit: 1000
+
+  advanced: 
+    static-id: Terms
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1812415754125703385
+    identification: 
+      name: Terms
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: NAME ========================================
+      id: 1812415880671703387
+      identification: 
+        column-name: NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: TERM_ID =====================================
+      id: 1812416217626703387
+      identification: 
+        column-name: TERM_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: true
+
+      parsing: 
+        path-expression: TERM_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: DUE_DAYS ====================================
+      id: 1812416499962703387
+      identification: 
+        column-name: DUE_DAYS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: DUE_DAYS
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+    - # ====== Column: DESCRIPTION =================================
+      id: 1812416853994703387
+      identification: 
+        column-name: DESCRIPTION
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: DESCRIPTION
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 4
+        hidden: false
+
+    - # ====== Column: DUE_PERCENT =================================
+      id: 1812417103683703387
+      identification: 
+        column-name: DUE_PERCENT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: DUE_PERCENT
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 5
+        hidden: false
+
+    - # ====== Column: SEQUENCE_NUM ================================
+      id: 1812417427166703387
+      identification: 
+        column-name: SEQUENCE_NUM
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: SEQUENCE_NUM
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 6
+        hidden: false
+
+    - # ====== Column: DISCOUNT_DAYS ===============================
+      id: 1812417740547703387
+      identification: 
+        column-name: DISCOUNT_DAYS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: DISCOUNT_DAYS
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 7
+        hidden: false
+
+    - # ====== Column: DISCOUNT_PERCENT ============================
+      id: 1812418019858703387
+      identification: 
+        column-name: DISCOUNT_PERCENT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: DISCOUNT_PERCENT
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 8
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1812418470069703395
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: Uso Pretendido ====================
+  id: 1812815876864856726
+  identification: 
+    name: Uso Pretendido
+
+  source: 
+    type: HTTP
+    remote-server: 'http://hdi-test.rm.digital:9000/api/consultas/' # 84774332654536733
+    url-path-prefix: v1/intendedUse
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for Get Setup Oracle # 52266011441808610
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+    local-table-name: RMAIS_UTILIZATIONS_WS
+    type: Full Refresh - Delete
+    schedule: FREQ=MINUTELY;INTERVAL=10;BYSECOND=0
+    http-request-limit: 100000
+
+  advanced: 
+    static-id: Uso_Pretentido
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1812815110965856722
+    identification: 
+      name: Uso Pretentido
+
+    data-profile: 
+      format: JSON
+      row-selector: DATA
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: CLASSIFICATION_ID ===========================
+      id: 1670530787006110402
+      identification: 
+        column-name: CLASSIFICATION_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_ID
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: CLASSIFICATION_CODE =========================
+      id: 1670531298190110402
+      identification: 
+        column-name: CLASSIFICATION_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_CODE
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: CLASSIFICATION_NAME =========================
+      id: 1670531782492110402
+      identification: 
+        column-name: CLASSIFICATION_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: CLASSIFICATION_NAME
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1812816115953856733
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: GET_FISCAL ========================
+  id: 1822127326980510751
+  identification: 
+    name: GET_FISCAL
+
+  source: 
+    type: HTTP
+    remote-server: 200-98-203-28-api-report # 51582581190196678
+    url-path-prefix: tax/getFiscalRules
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  authentication: 
+    credentials: Credentials for GET_FISCAL # 51582249192196676
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: GET_FISCAL
+    pass-ecid: N
+
+  data-profiles: 
+    id: 1822126233096510743
+    identification: 
+      name: GET_FISCAL
+
+    data-profile: 
+      format: JSON
+      row-selector: items
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: COLUMN_1_ID =================================
+      id: 1822126439982510746
+      identification: 
+        column-name: COLUMN_1_ID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: id
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: COLUMN_2_NAME ===============================
+      id: 1822126751657510747
+      identification: 
+        column-name: COLUMN_2_NAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 2000
+        primary-key: false
+
+      parsing: 
+        path-expression: name
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: COLUMN_3_HIREDATE ===========================
+      id: 1822127043225510747
+      identification: 
+        column-name: COLUMN_3_HIREDATE
+
+      source: 
+        type: Data
+        data-type: DATE
+        primary-key: false
+
+      parsing: 
+        path-expression: hire-date
+        format-mask: 'YYYY-MM-DD"T"HH24:MI:SS'
+        has-time-zone: false
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1822127541810510762
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+    parameters: 
+    - # ====== Parameter: body =====================================
+      id: 1822130081449526760
+      identification: 
+        name: body
+
+      operation: 
+        database-operation: Fetch Rows
+
+      parameter: 
+        type: Request or Response Body
+        data-type: String
+
+      value: 
+        direction: In
+        static: false
+        value: |
+          {
+              "cnpj_emissor" : "65793192000186",
+              "cfop" : "1253"
+          }
+        required: false
+
+- # ====== REST Data Source: consuming ws rest oracle apex =====
+  id: 1822138673078668237
+  identification: 
+    name: consuming ws rest oracle apex
+
+  source: 
+    type: HTTP
+    remote-server: 200-98-203-28-ords-rmais # 51594220666354169
+    url-path-prefix: teste/t
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: consuming_ws_rest_oracle_apex
+    pass-ecid: Y
+
+  data-profiles: 
+    id: 1822137823613668233
+    identification: 
+      name: consuming ws rest oracle apex
+
+    data-profile: 
+      format: JSON
+      row-selector: links
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: REL =========================================
+      id: 1822138044565668235
+      identification: 
+        column-name: REL
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: rel
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: HREF ========================================
+      id: 1822138325586668235
+      identification: 
+        column-name: HREF
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: href
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 1822138879850668238
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
