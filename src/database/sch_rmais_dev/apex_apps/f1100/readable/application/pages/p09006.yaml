@@ -1,0 +1,852 @@
+---
+# ====== Page: Review & Finish ===============================
+id: 9006
+identification: 
+  name: Review & Finish
+  alias: REVIEW-FINISH
+  title: Review & Finish
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Wizard Modal Dialog # 1813147560301082234
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  height: 400
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Wizard Progress =============================
+  id: 2330616639231516
+  identification: 
+    title: Wizard Progress
+    type: List
+
+  source: 
+    list: Create Client Credentials # 2315390428231538
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1813152766463082238
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      list-template: Wizard Progress # 1813220713968082266
+
+- # ====== Region: Review & Finish =============================
+  id: 2330686279231516
+  identification: 
+    title: Review & Finish
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1813152766463082238
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Buttons =====================================
+  id: 2330843340231516
+  identification: 
+    title: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 1813153815191082239
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Result ======================================
+  id: 2355410740890949
+  identification: 
+    title: Result
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      -- 1. ROLE
+      SELECT 
+          1 as ordem,
+          null as selection, 
+          null as actions, 
+          null as item_classes, 
+          null as icon_html,
+          'fa fa-shield' as icon_class, 
+          'Role' as title, 
+          c001 as description, 
+          'Security' as misc
+      FROM apex_collections WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD'
+      
+      UNION ALL
+      
+      -- 2. PRIVILEGE
+      SELECT 
+          2,
+          null, 
+          null, 
+          null, 
+          null,
+          'fa fa-key' as icon_class, 
+          'Privilege' as title, 
+          c003 || ' (' || c002 || ')' as description, 
+          'Access' as misc
+      FROM apex_collections WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD'
+      
+      UNION ALL
+      
+      -- 3. OAUTH (Módulo e Token)
+      SELECT 
+          3,
+          null, null, null, null,
+          'fa fa-share-alt' as icon_class, 
+          'Module (API)' as title, 
+          c005 as description, 
+          'OAuth' as misc
+      FROM apex_collections WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD'
+      UNION ALL
+      SELECT 
+          4,
+          null, 
+          null, 
+          null, 
+          null,
+          'fa fa-clock-o' as icon_class, 
+          'Token duration' as title, 
+          c009 || ' seconds' as description, 
+          'OAuth' as misc
+      FROM apex_collections WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD'
+      
+      UNION ALL
+      
+      -- 4. CLIENT / IDENTITY
+      SELECT 
+          5,
+          null, 
+          null, 
+          null, 
+          null,
+          'fa fa-id-card-o' as icon_class, 
+          'Client' as title, 
+          c006 as description, 
+          'Identity' as misc
+      FROM apex_collections WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD'
+      UNION ALL
+      SELECT 
+          6,
+          null, 
+          null, 
+          null, 
+          null,
+          'fa fa-envelope-o' as icon_class, 
+          'Support' as title, 
+          c008 as description, 
+          'Identity' as misc
+      FROM apex_collections WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD'
+      ORDER BY 1
+      
+
+  layout: 
+    sequence: 10
+    parent-region: Review & Finish # 2330686279231516
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1813181150176082248
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Content Row # 1813203679335082257
+      template-options: 
+      - '#DEFAULT#'
+      - t-ContentRow--styleCompact
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ICON_CLASS ==================================
+    id: 2356343397890958
+    identification: 
+      column-name: ICON_CLASS
+      type: Plain Text
+
+    heading: 
+      heading: Icon Class
+      alignment: start
+
+    layout: 
+      sequence: 10
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TITLE =======================================
+    id: 2356446854890959
+    identification: 
+      column-name: TITLE
+      type: Plain Text
+
+    heading: 
+      heading: Title
+      alignment: start
+
+    layout: 
+      sequence: 20
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: DESCRIPTION =================================
+    id: 2356505230890960
+    identification: 
+      column-name: DESCRIPTION
+      type: Plain Text
+
+    heading: 
+      heading: Description
+      alignment: start
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: MISC ========================================
+    id: 2356595651890961
+    identification: 
+      column-name: MISC
+      type: Plain Text
+
+    heading: 
+      heading: Misc
+      alignment: start
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: SELECTION ===================================
+    id: 2356703125890962
+    identification: 
+      column-name: SELECTION
+      type: Plain Text
+
+    heading: 
+      heading: Selection
+      alignment: start
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ACTIONS =====================================
+    id: 2356821179890963
+    identification: 
+      column-name: ACTIONS
+      type: Plain Text
+
+    heading: 
+      heading: Actions
+      alignment: start
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ITEM_CLASSES ================================
+    id: 2356909793890964
+    identification: 
+      column-name: ITEM_CLASSES
+      type: Plain Text
+
+    heading: 
+      heading: Item Classes
+      alignment: start
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ICON_HTML ===================================
+    id: 2357045901890965
+    identification: 
+      column-name: ICON_HTML
+      type: Plain Text
+
+    heading: 
+      heading: Icon Html
+      alignment: start
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ORDEM =======================================
+    id: 2357138787890966
+    identification: 
+      column-name: ORDEM
+      type: Plain Text
+
+    heading: 
+      heading: Ordem
+      alignment: end
+
+    layout: 
+      sequence: 90
+      column-alignment: end
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 2332306422231515
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 2330843340231516
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: FINISH ======================================
+  id: 2332399289231515
+  identification: 
+    button-name: FINISH
+    label: Finish
+
+  layout: 
+    sequence: 40
+    region: Buttons # 2330843340231516
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: PREVIOUS ====================================
+  id: 2332495316231515
+  identification: 
+    button-name: PREVIOUS
+    label: Previous
+
+  layout: 
+    sequence: 20
+    region: Buttons # 2330843340231516
+    position: PREVIOUS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 1813243000889082279
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-chevron-left
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 2332678103231515
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 2332306422231515
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 2333527550231514
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 2332678103231515
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Close Dialog ===============================
+  id: 2334974729231512
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: GenerateClientCredentials ==================
+  id: 2357221747890967
+  identification: 
+    name: GenerateClientCredentials
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_role_name_owa       owa.vc_arr;    
+          l_privilege_name      VARCHAR2(255);
+          l_privilege_label     VARCHAR2(255);
+          l_module_name         owa.vc_arr;
+          l_module_uri          owa.vc_arr;
+          l_client_name         VARCHAR2(255);
+          l_client_description  VARCHAR2(4000);
+          l_support_email       VARCHAR2(255);
+          l_token_duration      NUMBER;
+      BEGIN
+          SELECT
+              c001,
+              c002,
+              c003,
+              (select name from user_ords_modules where id = c004),
+              c005,
+              c006,
+              c007,
+              c008,
+              c009
+          INTO
+              l_role_name_owa(1),
+              l_privilege_name,
+              l_privilege_label,
+              l_module_name(1),
+              l_module_uri(1),
+              l_client_name,
+              l_client_description,
+              l_support_email,
+              l_token_duration
+          FROM apex_collections
+          WHERE collection_name = 'RMAIS_ORDS_OAUTH_WIZARD';
+          -------------------------------------------------
+          -- CREATE ROLE
+          -------------------------------------------------
+          ORDS.create_role(
+              p_role_name => l_role_name_owa(1)
+          );
+          -------------------------------------------------
+          -- CREATE PRIVILEGE
+          -------------------------------------------------
+          ORDS.define_privilege(
+              p_privilege_name => l_privilege_name,
+              p_roles          => l_role_name_owa,
+              p_patterns       => l_module_uri,
+              p_modules        => l_module_name,
+              p_label          => l_privilege_label,
+              p_description    => 'Provides access to '||l_module_name(1)
+          );
+          -------------------------------------------------
+          -- CREATE CLIENT
+          -------------------------------------------------
+          OAUTH.create_client(
+              p_name              => l_client_name,
+              p_grant_type        => 'client_credentials',
+              p_owner             => 'SCH_RMAIS_DEV',
+              p_description       => 'Client to consumer API '||l_module_uri(1),
+              p_support_email     => l_support_email,
+              p_privilege_names   => l_privilege_name
+            --  p_token_duration    => l_token_duration -- Apresentando ERRO embora de acordo com a documentação Oracle. Por default é 3600 sec
+          );
+      
+          -------------------------------------------------
+          -- GRANT ROLE
+          -------------------------------------------------
+          OAUTH.grant_client_role(
+              p_client_name => l_client_name,
+              p_role_name   => l_role_name_owa(1)
+          );
+      
+          COMMIT;
+          -------------------------------------------------
+          -- CLEAR COLLECTION
+          -------------------------------------------------
+          APEX_COLLECTION.DELETE_COLLECTION(
+              p_collection_name => 'RMAIS_ORDS_OAUTH_WIZARD'
+          );
+      
+      EXCEPTION
+          WHEN OTHERS THEN
+              ROLLBACK;
+              RAISE;
+      END;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+branches: 
+- # ====== Branch: Go To Page 9005 =============================
+  id: 2334217774231514
+  identification: 
+    name: Go To Page 9005
+
+  execution: 
+    sequence: 10
+    point: Validating
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:9005:&APP_SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 9005 # OAuth Client
+
+  server-side-condition: 
+    when-button-pressed: PREVIOUS # 2332495316231515
+

@@ -1,10 +1,10 @@
 ---
-# ====== Page: Cadastrar/Editar Grupo Usuário ================
-id: 11001
+# ====== Page: Criar/Editar Módulos ==========================
+id: 10903
 identification: 
-  name: Cadastrar/Editar Grupo Usuário
-  alias: CADASTRAR-EDITAR-GRUPO-USUÁRIO
-  title: Cadastrar/Editar Grupo Usuário
+  name: Criar/Editar Módulos
+  alias: CRIAR-EDITAR-MÓDULOS
+  title: Criar/Editar Módulos
 
 appearance: 
   page-mode: Modal Dialog
@@ -41,16 +41,93 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Módulos =====================================
-  id: 1888385953134052
+- # ====== Region: Tabs ========================================
+  id: 440472440769124
   identification: 
-    title: Módulos
+    title: Tabs
     type: Static Content
 
   layout: 
-    sequence: 70
-    parent-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    sequence: 10
+    parent-region: No Parent
     position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 1813187977337082251
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--fillLabels
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Páginas =====================================
+  id: 440036904769120
+  identification: 
+    title: Páginas
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 1813187977337082251
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Dados Módulo ================================
+  id: 439979967769119
+  identification: 
+    title: Dados Módulo
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Tabs # 440472440769124
+    position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -61,6 +138,7 @@ regions:
     template: Standard # 1813181150176082248
     template-options: 
     - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
     - t-Region--noBorder
     - t-Region--scrollBody
     render-components: Above Content
@@ -80,25 +158,26 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: MODULES =====================================
-  id: 1888506081134053
+- # ====== Region: Páginas =====================================
+  id: 439682961769116
   identification: 
-    title: MODULES
+    title: Páginas
     type: Interactive Grid
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: RMAIS_SEC_GROUP_MODULE_PERM
+    table-name: RMAIS_SEC_MODULE_PAGES
     include-rowid-column: false
-    where-clause: 'GROUP_ID = :P11001_GROUP_ID'
+    where-clause: 'MODULE_ID = :P10903_MODULE_ID'
+    order-by-clause: DISPLAY_ORDER
     page-items-to-submit: 
-    - P11001_GROUP_ID
+    - P10903_MODULE_ID
 
   layout: 
-    sequence: 10
-    parent-region: Módulos # 1888385953134052
+    sequence: 20
+    parent-region: Tabs # 440472440769124
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -123,7 +202,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1888659038134054
+    id: 439437209769114
     edit: 
       enabled: true
       allowed-operations: 
@@ -178,16 +257,16 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 1921694830612091
+      id: 1893639501127619
       identification: 
         name: Primary Report
-        alias: 383081
+        alias: 382800
 
   columns: 
-  - # ====== Column: GROUP_MODULE_PERM_ID ========================
-    id: 1888692194134055
+  - # ====== Column: MODULE_PAGE_ID ==============================
+    id: 439363417769113
     identification: 
-      column-name: GROUP_MODULE_PERM_ID
+      column-name: MODULE_PAGE_ID
       type: Hidden
 
     settings: 
@@ -201,7 +280,7 @@ regions:
 
     source: 
       type: Database Column
-      database-column: GROUP_MODULE_PERM_ID
+      database-column: MODULE_PAGE_ID
       data-type: NUMBER
       query-only: false
       primary-key: true
@@ -218,10 +297,10 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: GROUP_ID ====================================
-    id: 1888783152134056
+  - # ====== Column: MODULE_ID ===================================
+    id: 439262153769112
     identification: 
-      column-name: GROUP_ID
+      column-name: MODULE_ID
       type: Hidden
 
     settings: 
@@ -235,14 +314,14 @@ regions:
 
     source: 
       type: Database Column
-      database-column: GROUP_ID
+      database-column: MODULE_ID
       data-type: NUMBER
       query-only: false
       primary-key: false
 
     default: 
       type: Item
-      item: P11001_GROUP_ID
+      item: P10903_MODULE_ID
       duplicate-copies-existing-value: true
 
     session-state: 
@@ -254,29 +333,27 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: MODULE_ID ===================================
-    id: 1888910858134057
+  - # ====== Column: ACCESS_ID ===================================
+    id: 439135298769111
     identification: 
-      column-name: MODULE_ID
+      column-name: ACCESS_ID
       type: Popup LOV
 
     heading: 
-      heading: Módulo
+      heading: Página
       alignment: start
 
     settings: 
-      display-as: Modal Dialog
+      display-as: Inline Popup
       initial-fetch: Automatic
       multiple-values: false
       manual-entry: false
       search-as-you-type: false
-      popup-width: 800
-      popup-height: 600
 
     layout: 
       sequence: 50
       column-alignment: start
-      stretch: Always
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
@@ -286,13 +363,13 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_RMAIS_SEC_MODULES # 1935885438605068
+      list-of-values: LOV_ACCESS_PAGES # 1706871681201512
       display-extra-values: true
       display-null-value: true
 
     source: 
       type: Database Column
-      database-column: MODULE_ID
+      database-column: ACCESS_ID
       data-type: NUMBER
       query-only: false
       primary-key: false
@@ -319,24 +396,23 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: VIEW_FLAG ===================================
-    id: 1889067494134058
+  - # ====== Column: DISPLAY_ORDER ===============================
+    id: 439032015769110
     identification: 
-      column-name: VIEW_FLAG
-      type: Checkbox
+      column-name: DISPLAY_ORDER
+      type: Number Field
 
     heading: 
-      heading: View
-      alignment: center
+      heading: Display Order
+      alignment: end
 
     settings: 
-      use-defaults: false
-      checked-value: Y
-      unchecked-value: N
+      number-alignment: Start
+      virtual-keyboard: Decimal
 
     layout: 
       sequence: 60
-      column-alignment: center
+      column-alignment: end
       stretch: Use Report Setting
 
     accessibility: 
@@ -347,26 +423,17 @@ regions:
 
     source: 
       type: Database Column
-      database-column: VIEW_FLAG
-      data-type: VARCHAR2
+      database-column: DISPLAY_ORDER
+      data-type: NUMBER
       query-only: false
       primary-key: false
 
     default: 
-      type: Static
-      static-value: Y
       duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -376,20 +443,22 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: EDIT_FLAG ===================================
-    id: 1889114036134059
+  - # ====== Column: IS_DEFAULT ==================================
+    id: 438967196769109
     identification: 
-      column-name: EDIT_FLAG
-      type: Checkbox
+      column-name: IS_DEFAULT
+      type: Switch
 
     heading: 
-      heading: Edit
+      heading: Is Default
       alignment: center
 
     settings: 
       use-defaults: false
-      checked-value: Y
-      unchecked-value: N
+      on-value: Y
+      on-label: Sim
+      off-value: N
+      off-label: Não
 
     layout: 
       sequence: 70
@@ -404,14 +473,12 @@ regions:
 
     source: 
       type: Database Column
-      database-column: EDIT_FLAG
+      database-column: IS_DEFAULT
       data-type: VARCHAR2
       query-only: false
       primary-key: false
 
     default: 
-      type: Static
-      static-value: N
       duplicate-copies-existing-value: true
 
     column-filter: 
@@ -433,20 +500,22 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: PROCESS_FLAG ================================
-    id: 1889173749134060
+  - # ====== Column: SHOW_IN_MENU ================================
+    id: 438911490769108
     identification: 
-      column-name: PROCESS_FLAG
-      type: Checkbox
+      column-name: SHOW_IN_MENU
+      type: Switch
 
     heading: 
-      heading: Process
+      heading: Show In Menu
       alignment: center
 
     settings: 
       use-defaults: false
-      checked-value: Y
-      unchecked-value: N
+      on-value: Y
+      on-label: Sim
+      off-value: N
+      off-label: Não
 
     layout: 
       sequence: 80
@@ -461,185 +530,12 @@ regions:
 
     source: 
       type: Database Column
-      database-column: PROCESS_FLAG
+      database-column: SHOW_IN_MENU
       data-type: VARCHAR2
       query-only: false
       primary-key: false
 
     default: 
-      type: Static
-      static-value: N
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: DELETE_FLAG =================================
-    id: 1889291201134061
-    identification: 
-      column-name: DELETE_FLAG
-      type: Checkbox
-
-    heading: 
-      heading: Delete
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-      unchecked-value: N
-
-    layout: 
-      sequence: 90
-      column-alignment: center
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    source: 
-      type: Database Column
-      database-column: DELETE_FLAG
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Static
-      static-value: N
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: APPROVE_FLAG ================================
-    id: 1889428476134062
-    identification: 
-      column-name: APPROVE_FLAG
-      type: Checkbox
-
-    heading: 
-      heading: Approve
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-      unchecked-value: N
-
-    layout: 
-      sequence: 100
-      column-alignment: center
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    source: 
-      type: Database Column
-      database-column: APPROVE_FLAG
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Static
-      static-value: N
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: ADMIN_FLAG ==================================
-    id: 1889542431134063
-    identification: 
-      column-name: ADMIN_FLAG
-      type: Checkbox
-
-    heading: 
-      heading: Admin
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-      unchecked-value: N
-
-    layout: 
-      sequence: 110
-      column-alignment: center
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    source: 
-      type: Database Column
-      database-column: ADMIN_FLAG
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Static
-      static-value: N
       duplicate-copies-existing-value: true
 
     column-filter: 
@@ -662,7 +558,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS ======================================
-    id: 1889620078134064
+    id: 438752058769107
     identification: 
       column-name: STATUS
       type: Switch
@@ -679,7 +575,7 @@ regions:
       off-label: Inativo
 
     layout: 
-      sequence: 120
+      sequence: 90
       column-alignment: center
       stretch: Use Report Setting
 
@@ -697,8 +593,6 @@ regions:
       primary-key: false
 
     default: 
-      type: Static
-      static-value: Y
       duplicate-copies-existing-value: true
 
     column-filter: 
@@ -721,7 +615,7 @@ regions:
       hide: true
 
   - # ====== Column: CREATION_DATE ===============================
-    id: 1889683348134065
+    id: 438689408769106
     identification: 
       column-name: CREATION_DATE
       type: Hidden
@@ -730,7 +624,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 130
+      sequence: 100
 
     accessibility: 
       value-identifies-row: false
@@ -755,7 +649,7 @@ regions:
       sort: false
 
   - # ====== Column: CREATED_BY ==================================
-    id: 1889804947134066
+    id: 1887702687134045
     identification: 
       column-name: CREATED_BY
       type: Hidden
@@ -764,7 +658,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 140
+      sequence: 110
 
     accessibility: 
       value-identifies-row: false
@@ -792,7 +686,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_DATE ================================
-    id: 1889880624134067
+    id: 1887805822134046
     identification: 
       column-name: UPDATED_DATE
       type: Hidden
@@ -801,7 +695,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 150
+      sequence: 120
 
     accessibility: 
       value-identifies-row: false
@@ -826,7 +720,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 1890027256134068
+    id: 1887939053134047
     identification: 
       column-name: UPDATED_BY
       type: Hidden
@@ -835,7 +729,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 160
+      sequence: 130
 
     accessibility: 
       value-identifies-row: false
@@ -863,19 +757,29 @@ regions:
       sort: false
 
   - # ====== Column: INACTIVE_DATE ===============================
-    id: 1890110528134069
+    id: 1887972526134048
     identification: 
       column-name: INACTIVE_DATE
-      type: Hidden
+      type: Display Only
+
+    heading: 
+      heading: Inactive Date
+      alignment: start
 
     settings: 
-      value-protected: true
+      format: Plain Text
+      based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 140
+      column-alignment: start
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
+
+    appearance: 
+      format-mask: 'DD/MM/YYYY HH:MI:SS'
 
     source: 
       type: Database Column
@@ -890,14 +794,21 @@ regions:
     session-state: 
       data-type: VARCHAR2
 
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+      date-ranges: All
+
     export-/-printing: 
-      include-in-export-/-print: false
+      include-in-export-/-print: true
 
     enable-users-to: 
-      sort: false
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 1890251417134070
+    id: 1888073896134049
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -906,7 +817,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 1890300614134071
+    id: 1888260442134050
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -935,7 +846,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: MODULES
+      page-header-text: Páginas
 
     column-headings: 
       font: Helvetica
@@ -958,22 +869,22 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: Cadastrar/Editar Grupo Usuário ==============
-  id: 35930256522424744
+- # ====== Region: Criar/Editar Módulos ========================
+  id: 1718261269731657
   identification: 
-    title: Cadastrar/Editar Grupo Usuário
+    title: Criar/Editar Módulos
     type: Form
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: RMAIS_USER_GROUPS
+    table-name: RMAIS_SEC_MODULES
     include-rowid-column: false
 
   layout: 
     sequence: 10
-    parent-region: No Parent
+    parent-region: Dados Módulo # 439979967769119
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -1007,7 +918,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 35932757856424730
+  id: 1728877109731636
   identification: 
     title: Buttons
     type: Static Content
@@ -1044,68 +955,10 @@ regions:
       show-line-breaks: true
 
 page-items: 
-- # ====== Page Item: P11001_ACCESS_PAGES ======================
-  id: 443002468769149
+- # ====== Page Item: P10903_MODULE_ID =========================
+  id: 1718592764731653
   identification: 
-    name: P11001_ACCESS_PAGES
-    type: Shuttle
-
-  label: 
-    label: Acessos (Páginas)
-    alignment: Left
-
-  settings: 
-    show-controls: All
-
-  layout: 
-    sequence: 80
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 1813242570498082278
-    template-options: 
-    - '#DEFAULT#'
-    height: 10
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_ACCESS_PAGES # 1706871681201512
-    display-extra-values: true
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: SQL Query (return colon separated value)
-    sql-query: 'SELECT ACCESS_ID FROM RMAIS_USERS_GROUP_ACCESS WHERE GROUP_ID = :P11001_GROUP_ID'
-    used: Only when current value in session state is null
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  server-side-condition: 
-    type: Never
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P11001_GROUP_ID ==========================
-  id: 441847859769138
-  identification: 
-    name: P11001_GROUP_ID
+    name: P10903_MODULE_ID
     type: Hidden
 
   settings: 
@@ -1113,15 +966,15 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
-    column: GROUP_ID
+    form-region: Criar/Editar Módulos # 1718261269731657
+    column: MODULE_ID
     data-type: NUMBER
     query-only: false
     primary-key: true
@@ -1135,26 +988,26 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_GROUP_NAME ========================
-  id: 441811602769137
+- # ====== Page Item: P10903_MODULE_CODE =======================
+  id: 1718987080731647
   identification: 
-    name: P11001_GROUP_NAME
+    name: P10903_MODULE_CODE
     type: Text Field
 
   label: 
-    label: Nome Grupo
+    label: Module Code
     alignment: Left
 
   settings: 
     subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
+    trim-spaces: None
+    text-case: Upper
     submit-when-enter-pressed: false
     disabled: false
 
   layout: 
     sequence: 20
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1165,10 +1018,71 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 1813242570498082278
+    template: Required - Floating # 1813242829042082278
     template-options: 
     - '#DEFAULT#'
-    width: 30
+    icon: '&P10903_ICON_CLASS.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Módulos # 1718261269731657
+    column: MODULE_CODE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10903_MODULE_NAME =======================
+  id: 1719468124731645
+  identification: 
+    name: P10903_MODULE_NAME
+    type: Text Field
+
+  label: 
+    label: Module Name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Criar/Editar Módulos # 1718261269731657
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
 
   validation: 
     value-required: true
@@ -1178,8 +1092,8 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
-    column: GROUP_NAME
+    form-region: Criar/Editar Módulos # 1718261269731657
+    column: MODULE_NAME
     data-type: VARCHAR2
     query-only: false
     primary-key: false
@@ -1195,26 +1109,25 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_DESCRIPTION =======================
-  id: 441695314769136
+- # ====== Page Item: P10903_DESCRIPTION =======================
+  id: 1719866749731645
   identification: 
-    name: P11001_DESCRIPTION
-    type: Text Field
+    name: P10903_DESCRIPTION
+    type: Textarea
 
   label: 
-    label: Descrição
+    label: Description
     alignment: Left
 
   settings: 
-    subtype: Text
+    resizable: true
+    auto-height: false
+    character-counter: false
     trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
 
   layout: 
-    sequence: 30
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    sequence: 50
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1228,7 +1141,8 @@ page-items:
     template: Optional - Floating # 1813242570498082278
     template-options: 
     - '#DEFAULT#'
-    width: 30
+    width: 60
+    height: 2
 
   validation: 
     value-required: false
@@ -1238,13 +1152,14 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: DESCRIPTION
     data-type: VARCHAR2
     query-only: false
     primary-key: false
 
   session-state: 
+    data-type: VARCHAR2
     storage: Per Request (Memory Only)
 
   quick-picks: 
@@ -1255,10 +1170,10 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_STATUS ============================
-  id: 441561042769135
+- # ====== Page Item: P10903_STATUS ============================
+  id: 1720261220731643
   identification: 
-    name: P11001_STATUS
+    name: P10903_STATUS
     type: Switch
 
   label: 
@@ -1268,11 +1183,13 @@ page-items:
   settings: 
     use-defaults: false
     on-value: Y
+    on-label: Ativo
     off-value: N
+    off-label: Inativo
 
   layout: 
-    sequence: 40
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    sequence: 60
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1283,7 +1200,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 1813242570498082278
+    template: Required - Floating # 1813242829042082278
     template-options: 
     - '#DEFAULT#'
 
@@ -1294,7 +1211,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: STATUS
     data-type: VARCHAR2
     query-only: false
@@ -1312,14 +1229,199 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_CREATION_DATE =====================
-  id: 441429806769134
+- # ====== Page Item: P10903_DISPLAY_ORDER =====================
+  id: 1720621268731643
   identification: 
-    name: P11001_CREATION_DATE
+    name: P10903_DISPLAY_ORDER
+    type: Number Field
+
+  label: 
+    label: Display Order
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    maximum-value: 999
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 80
+    region: Criar/Editar Módulos # 1718261269731657
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 4
+
+  validation: 
+    value-required: true
+    maximum-length: 4
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Módulos # 1718261269731657
+    column: DISPLAY_ORDER
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10903_ICON_CLASS ========================
+  id: 1721060801731643
+  identification: 
+    name: P10903_ICON_CLASS
+    type: Popup LOV
+
+  label: 
+    label: Icon Class
+    alignment: Left
+
+  settings: 
+    display-as: Modal Dialog
+    initial-fetch: Automatic
+    multiple-values: false
+    manual-entry: false
+    search-as-you-type: false
+
+  layout: 
+    sequence: 90
+    region: Criar/Editar Módulos # 1718261269731657
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_APEX_ICONS # 1743728655674175
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Módulos # 1718261269731657
+    column: ICON_CLASS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10903_IS_SYSTEM =========================
+  id: 1721423652731642
+  identification: 
+    name: P10903_IS_SYSTEM
+    type: Switch
+
+  label: 
+    label: Is System
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: Y
+    off-value: N
+
+  layout: 
+    sequence: 30
+    region: Criar/Editar Módulos # 1718261269731657
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Módulos # 1718261269731657
+    column: IS_SYSTEM
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: Y
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  help: 
+    inline-help-text: Indica se o módulo controlado pelo sistema (Admin)
+
+- # ====== Page Item: P10903_CREATION_DATE =====================
+  id: 1721786426731642
+  identification: 
+    name: P10903_CREATION_DATE
     type: Display Only
 
   label: 
-    label: Data Criação
+    label: Creation Date
     alignment: Left
 
   settings: 
@@ -1330,7 +1432,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1341,7 +1443,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 1813242570498082278
+    template: Required - Floating # 1813242829042082278
     template-options: 
     - '#DEFAULT#'
     format-mask: 'DD/MM/YYYY HH:MI:SS'
@@ -1350,7 +1452,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: CREATION_DATE
     data-type: TIMESTAMP
     query-only: false
@@ -1365,14 +1467,14 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_CREATED_BY ========================
-  id: 441415254769133
+- # ====== Page Item: P10903_CREATED_BY ========================
+  id: 1722661653731640
   identification: 
-    name: P11001_CREATED_BY
+    name: P10903_CREATED_BY
     type: Display Only
 
   label: 
-    label: Criado por
+    label: Created By
     alignment: Left
 
   settings: 
@@ -1383,7 +1485,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1394,7 +1496,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 1813242570498082278
+    template: Required - Floating # 1813242829042082278
     template-options: 
     - '#DEFAULT#'
 
@@ -1402,7 +1504,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: CREATED_BY
     data-type: VARCHAR2
     query-only: false
@@ -1422,14 +1524,14 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_UPDATED_DATE ======================
-  id: 441253523769132
+- # ====== Page Item: P10903_UPDATED_DATE ======================
+  id: 1722995677731640
   identification: 
-    name: P11001_UPDATED_DATE
+    name: P10903_UPDATED_DATE
     type: Display Only
 
   label: 
-    label: Data Atualização
+    label: Updated Date
     alignment: Left
 
   settings: 
@@ -1440,7 +1542,7 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1451,7 +1553,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 1813242570498082278
+    template: Required - Floating # 1813242829042082278
     template-options: 
     - '#DEFAULT#'
     format-mask: 'DD/MM/YYYY HH:MI:SS'
@@ -1460,16 +1562,11 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: UPDATED_DATE
     data-type: TIMESTAMP
     query-only: false
     primary-key: false
-
-  default: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: sysdate
 
   session-state: 
     data-type: VARCHAR2
@@ -1480,14 +1577,14 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_UPDATED_BY ========================
-  id: 441216900769131
+- # ====== Page Item: P10903_UPDATED_BY ========================
+  id: 1723776419731640
   identification: 
-    name: P11001_UPDATED_BY
+    name: P10903_UPDATED_BY
     type: Display Only
 
   label: 
-    label: Atualizado por
+    label: Updated By
     alignment: Left
 
   settings: 
@@ -1498,7 +1595,7 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1509,7 +1606,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 1813242570498082278
+    template: Required - Floating # 1813242829042082278
     template-options: 
     - '#DEFAULT#'
 
@@ -1517,7 +1614,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: UPDATED_BY
     data-type: VARCHAR2
     query-only: false
@@ -1537,14 +1634,14 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_INACTIVE_DATE =====================
-  id: 441096647769130
+- # ====== Page Item: P10903_INACTIVE_DATE =====================
+  id: 1724246404731639
   identification: 
-    name: P11001_INACTIVE_DATE
+    name: P10903_INACTIVE_DATE
     type: Display Only
 
   label: 
-    label: Inativado em
+    label: Inactive Date
     alignment: Left
 
   settings: 
@@ -1554,8 +1651,8 @@ page-items:
     send-on-page-submit: true
 
   layout: 
-    sequence: 50
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    sequence: 70
+    region: Criar/Editar Módulos # 1718261269731657
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1575,7 +1672,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
     column: INACTIVE_DATE
     data-type: TIMESTAMP
     query-only: false
@@ -1590,137 +1687,16 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P11001_RMAIS_GROUP =======================
-  id: 440970391769129
-  identification: 
-    name: P11001_RMAIS_GROUP
-    type: Switch
-
-  label: 
-    label: Grupo RMAIS?
-    alignment: Left
-
-  settings: 
-    use-defaults: false
-    on-value: Y
-    off-value: N
-
-  layout: 
-    sequence: 60
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 1813242570498082278
-    template-options: 
-    - '#DEFAULT#'
-
-  validation: 
-    value-required: true
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
-    column: RMAIS_GROUP
-    data-type: VARCHAR2
-    query-only: false
-    primary-key: false
-
-  default: 
-    type: Static
-    static-value: N
-
-  session-state: 
-    storage: Per Request (Memory Only)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P11001_ACCESS_ACTIONS ====================
-  id: 440788590769127
-  identification: 
-    name: P11001_ACCESS_ACTIONS
-    type: Shuttle
-
-  label: 
-    label: Acessos (Botões)
-    alignment: Left
-
-  settings: 
-    show-controls: All
-
-  layout: 
-    sequence: 90
-    region: Cadastrar/Editar Grupo Usuário # 35930256522424744
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 1813242570498082278
-    template-options: 
-    - '#DEFAULT#'
-    height: 10
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_ACCESS_ACTIONS # 1705163563256257
-    display-extra-values: true
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: SQL Query (return colon separated value)
-    sql-query: |
-      SELECT btn.ACCESS_ID 
-      FROM RMAIS_USERS_ACCESS_ACTIONS btn,
-           RMAIS_USERS_GROUP_ACCESS_BTN group_btn    
-      WHERE group_btn.GROUP_ID = :P11001_GROUP_ID
-      AND group_btn.PAGE_ID = btn.PAGE_ID
-      AND group_btn.BUTTON_NAME = btn.BUTTON_NAME
-    used: Only when current value in session state is null
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  server-side-condition: 
-    type: Never
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
-    restricted-characters: All characters can be saved.
-
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 35933157348424730
+  id: 1729286511731635
   identification: 
     button-name: CANCEL
-    label: Cancelar
+    label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 35932757856424730
+    region: Buttons # 1728877109731636
     position: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -1739,14 +1715,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 35934579567424726
+  id: 1730737243731633
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 35932757856424730
+    region: Buttons # 1728877109731636
     position: DELETE
     start-new-layout: false
     start-new-row: true
@@ -1772,17 +1748,17 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P11001_GROUP_ID
+    item: P10903_MODULE_ID
 
 - # ====== Button: SAVE ========================================
-  id: 35934924532424725
+  id: 1731092129731632
   identification: 
     button-name: SAVE
-    label: Aplicar
+    label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 35932757856424730
+    region: Buttons # 1728877109731636
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1804,17 +1780,17 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P11001_GROUP_ID
+    item: P10903_MODULE_ID
 
 - # ====== Button: CREATE ======================================
-  id: 35935313205424725
+  id: 1731552775731632
   identification: 
     button-name: CREATE
-    label: Criar
+    label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 35932757856424730
+    region: Buttons # 1728877109731636
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1836,11 +1812,11 @@ buttons:
 
   server-side-condition: 
     type: Item is NULL
-    item: P11001_GROUP_ID
+    item: P10903_MODULE_ID
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 35933215061424730
+  id: 1729429018731635
   identification: 
     name: Cancel Dialog
 
@@ -1852,66 +1828,96 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 35933157348424730
+    button: CANCEL # 1729286511731635
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 35934024730424726
+    id: 1730178724731633
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 35933215061424730
+      event: Cancel Dialog # 1729429018731635
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-processes: 
-- # ====== Process: MODULES - Save Interactive Grid Data =======
-  id: 1890433862134072
+validations: 
+- # ====== Validation: P10903_CREATION_DATE must be timestamp ==
+  id: 1722355891731641
   identification: 
-    name: MODULES - Save Interactive Grid Data
-    type: Interactive Grid - Automatic Row Processing (DML)
-    execution-chain: None
-    editable-region: MODULES # 1888506081134053
-
-  settings: 
-    target-type: Region Source
-    prevent-lost-updates: true
-    lock-row: Yes
-    return-primary-key(s)-after-insert: true
+    name: P10903_CREATION_DATE must be timestamp
 
   execution: 
-    sequence: 50
-    point: Processing
-    run-process: Once Per Page Visit (default)
+    sequence: 80
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P10903_CREATION_DATE
+    always-execute: false
 
   error: 
-    display-location: Inline in Notification
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P10903_CREATION_DATE # 1721786426731642
 
-  server-side-condition: 
-    execution-scope: For Created and Modified Rows
-
-- # ====== Process: Initialize form Cadastrar/Editar Grupo Usuár
-  id: 35935789316424724
+- # ====== Validation: P10903_UPDATED_DATE must be timestamp ===
+  id: 1723533591731640
   identification: 
-    name: Initialize form Cadastrar/Editar Grupo Usuário
+    name: P10903_UPDATED_DATE must be timestamp
+
+  execution: 
+    sequence: 100
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P10903_UPDATED_DATE
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P10903_UPDATED_DATE # 1722995677731640
+
+- # ====== Validation: P10903_INACTIVE_DATE must be timestamp ==
+  id: 1724686879731639
+  identification: 
+    name: P10903_INACTIVE_DATE must be timestamp
+
+  execution: 
+    sequence: 120
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P10903_INACTIVE_DATE
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P10903_INACTIVE_DATE # 1724246404731639
+
+processes: 
+- # ====== Process: Initialize form Criar/Editar Módulos =======
+  id: 1731906694731631
+  identification: 
+    name: Initialize form Criar/Editar Módulos
     type: Form - Initialization
     execution-chain: None
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
 
   execution: 
     sequence: 10
     point: Before Header
     run-process: Once Per Page Visit (default)
 
-- # ====== Process: Process form Cadastrar/Editar Grupo Usuário 
-  id: 35936116149424723
+- # ====== Process: Process form Criar/Editar Módulos ==========
+  id: 1732335423731631
   identification: 
-    name: Process form Cadastrar/Editar Grupo Usuário
+    name: Process form Criar/Editar Módulos
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Cadastrar/Editar Grupo Usuário # 35930256522424744
+    form-region: Criar/Editar Módulos # 1718261269731657
 
   settings: 
     target-type: Region Source
@@ -1928,7 +1934,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 35936515453424723
+  id: 1732746595731630
   identification: 
     name: Close Dialog
     type: Close Dialog
@@ -1938,7 +1944,7 @@ processes:
     show-success-messages: true
 
   execution: 
-    sequence: 40
+    sequence: 30
     point: Processing
     run-process: Once Per Page Visit (default)
 
@@ -1948,4 +1954,29 @@ processes:
   server-side-condition: 
     type: Request is contained in Value
     value: CREATE,SAVE,DELETE
+
+- # ====== Process: Páginas - Save Interactive Grid Data =======
+  id: 1888363122134051
+  identification: 
+    name: Páginas - Save Interactive Grid Data
+    type: Interactive Grid - Automatic Row Processing (DML)
+    execution-chain: None
+    editable-region: Páginas # 439682961769116
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
 

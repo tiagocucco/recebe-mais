@@ -60,6 +60,7 @@ html-header:
     <!--div class="pdf-PageInfoContainer"></div-->
 
 security: 
+  authorization-scheme: RMAIS_PAGE_ACCESS # 2996380755171800
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Unrestricted

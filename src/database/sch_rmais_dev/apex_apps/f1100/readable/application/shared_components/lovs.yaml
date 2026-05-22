@@ -1,4 +1,255 @@
 ---
+- # ====== List of Values: LOV_APEX_PAGES ======================
+  id: 1578441309780149
+  identification: 
+    name: LOV_APEX_PAGES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select PAGE_NAME || ' (ID '||PAGE_ID||')' AS PAGE_NAME, PAGE_ID
+       from  APEX_APPLICATION_PAGES 
+      where  application_id = :APP_ID
+
+  column-mapping: 
+    return: PAGE_ID
+    display: PAGE_NAME
+    default-sort: PAGE_ID
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_ACCESS_ACTIONS ==================
+  id: 1705163563256257
+  identification: 
+    name: LOV_ACCESS_ACTIONS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT BUTTON_LABEL ||' (Page ID:'||PAGE_ID||')' AS display, ACCESS_ID as return_value
+      FROM RMAIS_USERS_ACCESS_ACTIONS
+      ORDER BY PAGE_ID
+
+  column-mapping: 
+    return: RETURN_VALUE
+    display: DISPLAY
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_ACCESS_PAGES ====================
+  id: 1706871681201512
+  identification: 
+    name: LOV_ACCESS_PAGES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT DESCRIPTION, ACCESS_ID
+      FROM RMAIS_USERS_ACCESS
+      ORDER BY PAGE_ID
+
+  column-mapping: 
+    return: ACCESS_ID
+    display: DESCRIPTION
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_APEX_ICONS ======================
+  id: 1743728655674175
+  identification: 
+    name: LOV_APEX_ICONS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT icon_name as display_value,
+             icon_name as return_value,
+             'fa '|| icon_name as icon
+      FROM APEX_DG_BUILTIN_FONTAPEX
+      ORDER BY icon_name
+
+  column-mapping: 
+    return: RETURN_VALUE
+    display: DISPLAY_VALUE
+    default-sort: Use Order By from Query
+    icon: ICON
+
+  columns: 
+  - # ====== Column: RETURN_VALUE ================================
+    id: 1747170626568970
+    identification: 
+      column-name: RETURN_VALUE
+      show: false
+
+    layout: 
+      sequence: 10
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: false
+
+  - # ====== Column: DISPLAY_VALUE ===============================
+    id: 1747533358568968
+    identification: 
+      column-name: DISPLAY_VALUE
+      show: true
+
+    heading: 
+      heading: Display Value
+
+    layout: 
+      sequence: 20
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+  - # ====== Column: ICON ========================================
+    id: 1747880311568968
+    identification: 
+      column-name: ICON
+      show: true
+
+    heading: 
+      heading: Icon
+
+    layout: 
+      sequence: 30
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+- # ====== List of Values: LOV_RMAIS_SEC_MODULES ===============
+  id: 1935885438605068
+  identification: 
+    name: LOV_RMAIS_SEC_MODULES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: RMAIS_SEC_MODULES
+    where-clause: STATUS = 'Y'
+
+  column-mapping: 
+    return: MODULE_ID
+    display: MODULE_NAME
+    default-sort: Use Order By from Query
+    icon: ICON_CLASS
+
+  columns: 
+  - # ====== Column: ICON_CLASS ==================================
+    id: 1936429295589464
+    identification: 
+      column-name: ICON_CLASS
+      show: true
+
+    heading: 
+      heading: Icon Class
+
+    layout: 
+      sequence: 10
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+  - # ====== Column: MODULE_ID ===================================
+    id: 1936774245589463
+    identification: 
+      column-name: MODULE_ID
+      show: false
+
+    layout: 
+      sequence: 20
+
+    source: 
+      data-type: NUMBER
+
+    advanced: 
+      searchable: false
+
+  - # ====== Column: MODULE_CODE =================================
+    id: 1937239255589463
+    identification: 
+      column-name: MODULE_CODE
+      show: true
+
+    heading: 
+      heading: Module Code
+
+    layout: 
+      sequence: 30
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+  - # ====== Column: MODULE_NAME =================================
+    id: 1937604522589463
+    identification: 
+      column-name: MODULE_NAME
+      show: true
+
+    heading: 
+      heading: Module Name
+
+    layout: 
+      sequence: 40
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+  - # ====== Column: IS_SYSTEM ===================================
+    id: 1937980082589463
+    identification: 
+      column-name: IS_SYSTEM
+      show: true
+
+    heading: 
+      heading: Is System
+
+    layout: 
+      sequence: 50
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+- # ====== List of Values: LOV_USERS_GROUPS ====================
+  id: 2207998820944580
+  identification: 
+    name: LOV_USERS_GROUPS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: RMAIS_USER_GROUPS
+
+  column-mapping: 
+    return: GROUP_ID
+    display: GROUP_NAME
+    default-sort: GROUP_NAME
+    sort-direction: Ascending (Nulls Last)
+
 - # ====== List of Values: LST_STATUS_DOCS =====================
   id: 821008237490400143
   identification: 

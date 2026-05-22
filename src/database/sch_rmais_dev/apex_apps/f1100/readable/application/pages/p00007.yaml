@@ -1588,7 +1588,6 @@ regions:
         
 
     security: 
-      authorization-scheme: MODEL.LOV.NOT_W_ARGUMENT # 1657503650306334710
       escape-special-characters: true
 
   - # ====== Column: ITEM_CODE ===================================
@@ -15275,9 +15274,6 @@ buttons:
     language: PL/SQL
     pl/sql-function-body: "return :P7_DOCUMENT_STATUS = 'W';"
 
-  security: 
-    authorization-scheme: user_admin # 1903390112961645939
-
 - # ====== Button: SEND_BOL ====================================
   id: 299172962195520299
   identification: 
@@ -15363,7 +15359,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: 2
-    alignment: Right
+    alignment: Left center
 
   appearance: 
     button-template: Text # 1813243693728082280
@@ -15382,9 +15378,6 @@ buttons:
     type: Item = Value
     item: P7_DOCUMENT_STATUS
     value: CE
-
-  security: 
-    authorization-scheme: user_admin # 1903390112961645939
 
 - # ====== Button: CANCEL_ERROR ================================
   id: 419689064700945327
@@ -15672,9 +15665,6 @@ buttons:
     item: P7_DOCUMENT_STATUS
     list: 'T:R:RW:UP:AC:W:AI:Y'
 
-  security: 
-    authorization-scheme: MODEL.LOV.NOT_W_ARGUMENT # 1657503650306334710
-
 - # ====== Button: Submeter ====================================
   id: 1819845300675156399
   identification: 
@@ -15714,9 +15704,6 @@ buttons:
               :P7_DEFINE_DET_ENTRY_TYPE = 'find_text_po' and
               :P7_DOCUMENT_STATUS not in ('T','R','RW','UP','AC','Y')
           );
-
-  security: 
-    authorization-scheme: MODEL.LOV.NOT_W_ARGUMENT # 1657503650306334710
 
 - # ====== Button: reprocessar =================================
   id: 1822552560253885034
@@ -15759,9 +15746,6 @@ buttons:
         return false;
       end if;
       --return false;
-
-  security: 
-    authorization-scheme: admin # 1814323466997240516
 
 - # ====== Button: Anexos ======================================
   id: 1869538733098519126

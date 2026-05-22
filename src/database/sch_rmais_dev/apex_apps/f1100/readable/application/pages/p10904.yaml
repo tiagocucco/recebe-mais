@@ -1,10 +1,10 @@
 ---
-# ====== Page: Gerenciar Grupos Usuários =====================
-id: 11000
+# ====== Page: Gerenciar Usuários ============================
+id: 10904
 identification: 
-  name: Gerenciar Grupos Usuários
-  alias: GERENCIAR-GRUPOS-USUÁRIOS
-  title: Gerenciar Grupos Usuários
+  name: Gerenciar Usuários
+  alias: GERENCIAR-USUÁRIOS
+  title: Gerenciar Usuários
 
 appearance: 
   page-mode: Normal
@@ -37,34 +37,18 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Gerenciar Grupos Usuários ===================
-  id: 35937559566424719
+- # ====== Region: Gerenciar Usuários ==========================
+  id: 1978266232984518
   identification: 
-    title: Gerenciar Grupos Usuários
+    title: Gerenciar Usuários
     type: Interactive Report
 
   source: 
     location: Local Database
-    type: SQL Query
-    sql-query: |
-      select GROUP_ID,
-             GROUP_NAME,
-             DESCRIPTION,
-             CASE 
-              WHEN STATUS = 'Y' THEN '<i class="fa fa-check-circle" style="color:green;"></i>' 
-              ELSE '<i class="fa fa-times-circle" style="color:red;"> </i>' 
-             END AS STATUS,
-             CASE 
-              WHEN RMAIS_GROUP = 'Y' THEN '<i class="fa fa-check-circle" style="color:green;"></i>' 
-              ELSE '<i class="fa fa-times-circle" style="color:red;"> </i>' 
-             END AS RMAIS_GROUP,
-             CREATION_DATE,
-             CREATED_BY,
-             UPDATED_DATE,
-             UPDATED_BY,
-             INACTIVE_DATE
-      
-        from RMAIS_USER_GROUPS
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: RMAIS_USERS
+    include-rowid-column: false
 
   layout: 
     sequence: 10
@@ -93,15 +77,15 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 35937628858424719
+    id: 1978345232984518
     link: 
       link-column: Link to Custom Target
       target: 
-        url: 'f?p=&APP_ID.:11001:&SESSION.::&DEBUG.:RP,11001:P11001_GROUP_ID:#GROUP_ID##ID_GRUPO_USUARIO#\'
-        page: 11001 # Cadastrar/Editar Grupo Usuário
-        clear-cache: RP,11001
+        url: 'f?p=&APP_ID.:10905:&SESSION.::&DEBUG.:RP,10905:P10905_USER_ID:\#USER_ID#\'
+        page: 10905 # Criar/Editar Usuários
+        clear-cache: RP,10905
         values: 
-          p11001_group_id: '#GROUP_ID##ID_GRUPO_USUARIO#\'
+          p10905_user_id: '#USER_ID#'
 
       link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
 
@@ -163,68 +147,27 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 35941755456420359
+      id: 1995971760827108
       identification: 
         name: Primary Report
-        alias: 359418
+        alias: 383823
 
     columns: 
-    - # ====== Column: GROUP_ID ====================================
-      id: 442861679769148
+    - # ====== Column: EMAIL =======================================
+      id: 1890600112134074
       identification: 
-        column-name: GROUP_ID
+        column-name: EMAIL
         type: Plain Text
 
       heading: 
-        heading: Group Id
-        alignment: end
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 10
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      source: 
-        primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: GROUP_NAME ==================================
-      id: 442740928769147
-      identification: 
-        column-name: GROUP_NAME
-        type: Plain Text
-
-      heading: 
-        heading: Nome Grupo
+        heading: Email
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 20
+        sequence: 32
         column-alignment: start
 
       accessibility: 
@@ -251,21 +194,198 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: DESCRIPTION =================================
-      id: 442722744769146
+    - # ====== Column: PHONE =======================================
+      id: 1890709918134075
       identification: 
-        column-name: DESCRIPTION
+        column-name: PHONE
         type: Plain Text
 
       heading: 
-        heading: Descrição
+        heading: Phone
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 42
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PASSWORD ====================================
+      id: 1890798635134076
+      identification: 
+        column-name: PASSWORD
+        type: Hidden Column
+
+      heading: 
+        heading: Password
+
+      layout: 
+        sequence: 122
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CHANGE_PWD_FLAG =============================
+      id: 1890878328134077
+      identification: 
+        column-name: CHANGE_PWD_FLAG
+        type: Hidden Column
+
+      heading: 
+        heading: Change Pwd Flag
+
+      layout: 
+        sequence: 132
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FIRST_NAME ==================================
+      id: 1891766449134085
+      identification: 
+        column-name: FIRST_NAME
+        type: Plain Text
+
+      heading: 
+        heading: First Name
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 30
+        sequence: 12
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LAST_NAME ===================================
+      id: 1891807584134086
+      identification: 
+        column-name: LAST_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Last Name
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 22
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: USER_ID =====================================
+      id: 1978760421984512
+      identification: 
+        column-name: USER_ID
+        type: Hidden Column
+
+      heading: 
+        heading: User ID
+
+      layout: 
+        sequence: 0
+
+      source: 
+        primary-key: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: USER_NAME ===================================
+      id: 1979120898984511
+      identification: 
+        column-name: USER_NAME
+        type: Plain Text
+
+      heading: 
+        heading: User Name
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
         column-alignment: start
 
       accessibility: 
@@ -293,7 +413,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STATUS ======================================
-      id: 442571629769145
+      id: 1979881878984510
       identification: 
         column-name: STATUS
         type: Plain Text
@@ -306,7 +426,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 40
+        sequence: 52
         column-alignment: center
 
       accessibility: 
@@ -331,64 +451,23 @@ regions:
         pivot: true
 
       security: 
-        escape-special-characters: false
-
-    - # ====== Column: RMAIS_GROUP =================================
-      id: 442464564769144
-      identification: 
-        column-name: RMAIS_GROUP
-        type: Plain Text
-
-      heading: 
-        heading: Grupo RMAIS?
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 50
-        column-alignment: center
-
-      accessibility: 
-        value-identifies-row: false
-
-      source: 
-        primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: false
+        escape-special-characters: true
 
     - # ====== Column: CREATION_DATE ===============================
-      id: 442334158769143
+      id: 1980361492984510
       identification: 
         column-name: CREATION_DATE
         type: Plain Text
 
       heading: 
-        heading: Data Criação
+        heading: Creation Date
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 60
+        sequence: 72
         column-alignment: start
 
       accessibility: 
@@ -420,20 +499,20 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREATED_BY ==================================
-      id: 442284355769142
+      id: 1980736121984510
       identification: 
         column-name: CREATED_BY
         type: Plain Text
 
       heading: 
-        heading: Criado por
+        heading: Created By
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 70
+        sequence: 82
         column-alignment: start
 
       accessibility: 
@@ -461,20 +540,20 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: UPDATED_DATE ================================
-      id: 442151334769141
+      id: 1981077222984510
       identification: 
         column-name: UPDATED_DATE
         type: Plain Text
 
       heading: 
-        heading: Data Atualização
+        heading: Updated Date
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 80
+        sequence: 92
         column-alignment: start
 
       accessibility: 
@@ -506,20 +585,20 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: UPDATED_BY ==================================
-      id: 442120731769140
+      id: 1981473990984509
       identification: 
         column-name: UPDATED_BY
         type: Plain Text
 
       heading: 
-        heading: Atualizado por
+        heading: Updated By
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 90
+        sequence: 102
         column-alignment: start
 
       accessibility: 
@@ -547,20 +626,20 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INACTIVE_DATE ===============================
-      id: 441983182769139
+      id: 1981877401984509
       identification: 
         column-name: INACTIVE_DATE
         type: Plain Text
 
       heading: 
-        heading: Inativado em
+        heading: Inactive Date
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 100
+        sequence: 62
         column-alignment: start
 
       accessibility: 
@@ -607,7 +686,7 @@ regions:
         font-size: 12
         font-color: '#000000'
         alignment: center
-        page-header-text: Gerenciar Grupos Usuários
+        page-header-text: Gerenciar Usuários
 
       column-headings: 
         font: Helvetica
@@ -631,7 +710,7 @@ regions:
         alignment: center
 
 - # ====== Region: Breadcrumb ==================================
-  id: 35940937842424711
+  id: 1984011305984505
   identification: 
     title: Breadcrumb
     type: Breadcrumb
@@ -674,14 +753,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 35939342091424713
+  id: 1982378042984508
   identification: 
     button-name: CREATE
-    label: Criar
+    label: Create
 
   layout: 
     sequence: 10
-    region: Gerenciar Grupos Usuários # 35937559566424719
+    region: Gerenciar Usuários # 1978266232984518
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -698,15 +777,15 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:11001:&APP_SESSION.::&DEBUG.:11001::'
-      page: 11001 # Cadastrar/Editar Grupo Usuário
-      clear-cache: 11001
+      url: 'f?p=&APP_ID.:10905:&APP_SESSION.::&DEBUG.:10905::'
+      page: 10905 # Criar/Editar Usuários
+      clear-cache: 10905
 
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 35939637901424713
+  id: 1982694476984508
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -718,21 +797,21 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: Gerenciar Grupos Usuários # 35937559566424719
+    region: Gerenciar Usuários # 1978266232984518
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 35940164271424712
+    id: 1983199901984507
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Gerenciar Grupos Usuários # 35937559566424719
+      region: Gerenciar Usuários # 1978266232984518
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 35939637901424713
+      event: Edit Report - Dialog Closed # 1982694476984508
       fire-when-event-result-is: True
       fire-on-initialization: false
 

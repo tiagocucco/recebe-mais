@@ -1,0 +1,1188 @@
+---
+# ====== Page: View Client Credentials =======================
+id: 9007
+identification: 
+  name: View Client Credentials
+  alias: VIEW-CLIENT-CREDENTIALS
+  title: View Client Credentials
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer # 647330903153851670
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: View Client Credentials =====================
+  id: 2403883440155080
+  identification: 
+    title: View Client Credentials
+    type: Form
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT
+          c.id,
+          c.name                                      AS client_name,
+          c.description,
+          c.client_id,
+          c.client_secret,
+          SUBSTR(c.client_secret,1,6) || '******' AS client_secret_masked,
+          c.auth_flow,
+          CASE
+              WHEN c.auth_flow = 'client_credentials'
+              THEN 'u-success-text'
+              ELSE 'u-warning-text'
+          END                                         AS auth_flow_class,
+          nvl(c.token_duration,'360') as token_duration,
+          c.support_email,
+          cr.role_name,
+          m.uri_prefix,
+          c.created_by,
+          c.created_on
+      
+      FROM user_ords_clients c
+      
+      LEFT JOIN user_ords_client_roles cr
+             ON cr.client_name = c.name
+      
+      LEFT JOIN user_ords_roles r
+             ON r.id = cr.role_id
+      
+      LEFT JOIN user_ords_privilege_roles pr
+             ON pr.role_id = r.id              
+      
+      LEFT JOIN user_ords_privileges p
+             ON p.id = pr.privilege_id
+      
+      LEFT JOIN user_ords_privilege_modules pm
+             ON pm.privilege_id = p.id
+      
+      LEFT JOIN user_ords_modules m
+             ON m.id = pm.module_id
+      
+      WHERE c.id = :P9007_ID       
+      
+      ORDER BY c.created_on DESC;
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1813152766463082238
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  read-only: 
+    type: Always
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: Buttons =====================================
+  id: 2414147551155061
+  identification: 
+    title: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 1813153815191082239
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+page-items: 
+- # ====== Page Item: P9007_ID =================================
+  id: 2404351855155078
+  identification: 
+    name: P9007_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_CLIENT_NAME ========================
+  id: 2404708067155074
+  identification: 
+    name: P9007_CLIENT_NAME
+    type: Text Field
+
+  label: 
+    label: Client Name
+    alignment: Right
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: CLIENT_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_DESCRIPTION ========================
+  id: 2405107702155072
+  identification: 
+    name: P9007_DESCRIPTION
+    type: Text Field
+
+  label: 
+    label: Description
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 4000
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: DESCRIPTION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_CLIENT_ID ==========================
+  id: 2405548116155072
+  identification: 
+    name: P9007_CLIENT_ID
+    type: Text Field
+
+  label: 
+    label: Client Id
+    alignment: Right
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 32
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: CLIENT_ID
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_CLIENT_SECRET ======================
+  id: 2405913679155071
+  identification: 
+    name: P9007_CLIENT_SECRET
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: CLIENT_SECRET
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_CLIENT_SECRET_MASKED ===============
+  id: 2406361354155071
+  identification: 
+    name: P9007_CLIENT_SECRET_MASKED
+    type: Text Field
+
+  label: 
+    label: Client Secret Masked
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 5
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 30
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: CLIENT_SECRET_MASKED
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_AUTH_FLOW ==========================
+  id: 2406759847155071
+  identification: 
+    name: P9007_AUTH_FLOW
+    type: Text Field
+
+  label: 
+    label: Auth Flow
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 30
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: AUTH_FLOW
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_AUTH_FLOW_CLASS ====================
+  id: 2407146954155071
+  identification: 
+    name: P9007_AUTH_FLOW_CLASS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 100
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: AUTH_FLOW_CLASS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_TOKEN_DURATION =====================
+  id: 2407531049155071
+  identification: 
+    name: P9007_TOKEN_DURATION
+    type: Number Field
+
+  label: 
+    label: Token Duration
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 110
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 14
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: TOKEN_DURATION
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_SUPPORT_EMAIL ======================
+  id: 2407952173155070
+  identification: 
+    name: P9007_SUPPORT_EMAIL
+    type: Text Field
+
+  label: 
+    label: Support Email
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 120
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: SUPPORT_EMAIL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_ROLE_NAME ==========================
+  id: 2408365258155069
+  identification: 
+    name: P9007_ROLE_NAME
+    type: Text Field
+
+  label: 
+    label: Role Name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 130
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: ROLE_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_URI_PREFIX =========================
+  id: 2408754922155069
+  identification: 
+    name: P9007_URI_PREFIX
+    type: Text Field
+
+  label: 
+    label: Uri Prefix
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 140
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: URI_PREFIX
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_CREATED_BY =========================
+  id: 2409149250155069
+  identification: 
+    name: P9007_CREATED_BY
+    type: Text Field
+
+  label: 
+    label: Created By
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 150
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: CREATED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9007_CREATED_ON =========================
+  id: 2409507549155068
+  identification: 
+    name: P9007_CREATED_ON
+    type: Date Picker
+
+  label: 
+    label: Created On
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 160
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: View Client Credentials # 2403883440155080
+    column: CREATED_ON
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: VIEW_CLIENT_SECRET ==========================
+  id: 2357349921890968
+  identification: 
+    button-name: VIEW_CLIENT_SECRET
+    label: Copy to clipboard
+
+  layout: 
+    sequence: 80
+    region: View Client Credentials # 2403883440155080
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 1
+    alignment: Left center
+
+  appearance: 
+    button-template: Icon # 1813243000889082279
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapTop
+    icon: fa-copy
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: CANCEL ======================================
+  id: 2414522622155061
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 2414147551155061
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 2415900985155058
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: Buttons # 2414147551155061
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9007_ID
+
+- # ====== Button: SAVE ========================================
+  id: 2416278290155058
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Buttons # 2414147551155061
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9007_ID
+
+- # ====== Button: CREATE ======================================
+  id: 2416698441155058
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: Buttons # 2414147551155061
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P9007_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Click ===============================
+  id: 2357377263890969
+  identification: 
+    name: Click
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: VIEW_CLIENT_SECRET # 2357349921890968
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 2357549460890970
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // Dynamic Action: Click no botão VIEW_CLIENT_SECRET
+        // Action: Execute JavaScript Code
+        
+        var clientId = document.getElementById("P9007_CLIENT_ID").value;
+        var clientSecret = document.getElementById("P9007_CLIENT_SECRET").value;
+        
+        var textToCopy = "Client Id: " + clientId + "\nClient Secret: " + clientSecret;
+        
+        navigator.clipboard.writeText(textToCopy).then(function() {
+          apex.message.showPageSuccess("✓ Credenciais copiadas para o clipboard!");
+        }).catch(function(err) {
+          apex.message.showPageError("Erro ao copiar: " + err);
+        });
+
+    execution: 
+      sequence: 10
+      event: Click # 2357377263890969
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 2414651464155061
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 2414522622155061
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 2415456681155059
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 2414651464155061
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Initialize form View Client Credentials ====
+  id: 2417101872155055
+  identification: 
+    name: Initialize form View Client Credentials
+    type: Form - Initialization
+    execution-chain: None
+    form-region: View Client Credentials # 2403883440155080
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Close Dialog ===============================
+  id: 2417954424155053
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+

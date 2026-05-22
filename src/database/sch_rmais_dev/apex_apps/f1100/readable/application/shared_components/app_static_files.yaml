@@ -1,4 +1,49 @@
 ---
+- # ====== Static Application File: recebemais-integrations-docu
+  id: 2261119184159630
+  identification: 
+    file-name: recebemais-integrations-documents-1.0.0.json
+
+  attributes: 
+    mime-type: application/json
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: swagger-ui-bundle.js =======
+  id: 2263606775085127
+  identification: 
+    file-name: swagger-ui-bundle.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: swagger-ui.css =============
+  id: 2263955561084308
+  identification: 
+    file-name: swagger-ui.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: swagger-ui.min.css =========
+  id: 2264373644083827
+  identification: 
+    file-name: swagger-ui.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: index_swagger.html =========
+  id: 2267446231921436
+  identification: 
+    file-name: index_swagger.html
+
+  attributes: 
+    mime-type: text/html
+    file-character-set: Unicode UTF-8
+
 - # ====== Static Application File: logo_hdi.svg ===============
   id: 849179509805850745
   identification: 

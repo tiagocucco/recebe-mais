@@ -37,6 +37,792 @@ server-cache:
   caching: Disabled
 
 regions: 
+- # ====== Region: Acessos recentes ============================
+  id: 1891891441134087
+  identification: 
+    title: Acessos recentes
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: 1
+    new-column: true
+    column-span: 2
+
+  appearance: 
+    template: Hero # 1813171574356082245
+    template-options: 
+    - '#DEFAULT#'
+    - t-HeroRegion--noPadding
+    - t-HeroRegion--featured
+    - t-HeroRegion--hideIcon
+    - t-HeroRegion--headingFontAlt
+    icon: fa-clock-o
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Card Modules ================================
+  id: 1892075566134089
+  identification: 
+    title: Card Modules
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT DISTINCT
+             sm.module_id,
+             sm.module_name AS card_title,
+             sm.description AS card_link,
+             sm.icon_class AS card_icon,
+             NULL AS card_text,
+             (
+               SELECT COUNT(*)
+                 FROM rmais_sec_module_pages smp
+                WHERE smp.module_id = sm.module_id
+                  AND smp.status = 'Y'
+                  AND EXISTS (
+                        SELECT 1
+                          FROM rmais_users_access ua
+                         WHERE ua.access_id = smp.access_id
+                           AND ua.status = 'Y'
+                      )
+             ) || ' páginas disponíveis' AS card_subtext
+        FROM rmais_sec_modules sm
+        JOIN rmais_sec_group_module_perm gmp
+          ON gmp.module_id = sm.module_id
+         AND gmp.status = 'Y'
+         AND gmp.view_flag = 'Y'
+        JOIN rmais_users_user_groups uug
+          ON uug.group_id = gmp.group_id
+         AND uug.status = 'Y'
+        JOIN rmais_users u
+          ON u.user_id = uug.user_id
+         AND u.status = 'Y'
+       WHERE sm.status = 'Y'
+         AND UPPER(u.user_name) = UPPER(:APP_USER)
+       ORDER BY sm.module_name
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: 3
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container # 1813156012867082240
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Cards # 1813197123214082255
+      template-options: 
+      - '#DEFAULT#'
+      - u-colors
+      - t-Cards--featured t-Cards--block force-fa-lg
+      - t-Cards--displayIcons
+      - t-Cards--5cols
+      - t-Cards--animRaiseCard
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: MODULE_ID ===================================
+    id: 1892245128134090
+    identification: 
+      column-name: MODULE_ID
+      type: Plain Text
+
+    heading: 
+      heading: Module Id
+      alignment: end
+
+    layout: 
+      sequence: 10
+      column-alignment: end
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_TITLE ==================================
+    id: 2017808172882850
+    identification: 
+      column-name: CARD_TITLE
+      type: Plain Text
+
+    heading: 
+      heading: Card Title
+      alignment: start
+
+    layout: 
+      sequence: 110
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_ICON ===================================
+    id: 2017928771882851
+    identification: 
+      column-name: CARD_ICON
+      type: Plain Text
+
+    heading: 
+      heading: Card Icon
+      alignment: start
+
+    layout: 
+      sequence: 120
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_LINK ===================================
+    id: 2018036785882852
+    identification: 
+      column-name: CARD_LINK
+      type: Plain Text
+
+    heading: 
+      heading: Card Link
+      alignment: start
+
+    layout: 
+      sequence: 130
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_TEXT ===================================
+    id: 2018152102882853
+    identification: 
+      column-name: CARD_TEXT
+      type: Plain Text
+
+    heading: 
+      heading: Card Text
+      alignment: start
+
+    layout: 
+      sequence: 140
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_SUBTEXT ================================
+    id: 2018238105882854
+    identification: 
+      column-name: CARD_SUBTEXT
+      type: Plain Text
+
+    heading: 
+      heading: Card Subtext
+      alignment: start
+
+    layout: 
+      sequence: 150
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Links =======================================
+  id: 2018387881882856
+  identification: 
+    title: Links
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH allowed_pages AS (
+          SELECT DISTINCT
+                 smp.access_id,
+                 ua.page_id,
+                 ua.description page_name,
+                 sm.module_name,
+                 'fa ' || sm.icon_class AS icon_class,
+                 smp.display_order,
+                 smp.is_default
+            FROM rmais_users u
+            JOIN rmais_users_user_groups uug
+              ON uug.user_id = u.user_id
+             AND uug.status = 'Y'
+            JOIN rmais_sec_group_module_perm gmp
+              ON gmp.group_id = uug.group_id
+             AND gmp.status = 'Y'
+             AND gmp.view_flag = 'Y'
+            JOIN rmais_sec_modules sm
+              ON sm.module_id = gmp.module_id
+             AND sm.status = 'Y'
+            JOIN rmais_sec_module_pages smp
+              ON smp.module_id = sm.module_id
+             AND smp.status = 'Y'
+            JOIN rmais_users_access ua
+              ON ua.access_id = smp.access_id
+             AND ua.status = 'Y'
+           WHERE UPPER(u.user_name) = UPPER(:APP_USER)
+      ),
+      usage_stats AS (
+          SELECT
+              step_id page_id,
+              COUNT(*) access_count,
+              MAX(time_stamp) last_access
+            FROM apex_activity_log
+           WHERE flow_id = :APP_ID
+             AND userid_lc = LOWER(:APP_USER)
+           GROUP BY step_id
+      ),
+      ranked_pages AS (
+          SELECT
+              ap.page_name AS title,
+              ap.module_name AS description,
+              NULL AS icon_html,
+              NULL AS actions,
+              NULL AS item_classes,
+              NULL AS selection,
+              NULL AS misc,
+              ap.icon_class,
+              ap.page_id,
+              NVL(us.access_count, 0) AS access_count,
+              us.last_access,
+              ap.is_default,
+              ap.display_order
+          FROM allowed_pages ap
+          LEFT JOIN usage_stats us
+            ON us.page_id = ap.page_id
+      ),
+      deduplicated_pages AS (
+          SELECT rp.*,
+                 ROW_NUMBER() OVER (
+                     PARTITION BY rp.page_id
+                     ORDER BY
+                         rp.last_access DESC NULLS LAST,
+                         rp.access_count DESC,
+                         CASE WHEN rp.is_default = 'Y' THEN 0 ELSE 1 END,
+                         rp.display_order,
+                         rp.description
+                 ) AS rn
+            FROM ranked_pages rp
+           WHERE rp.page_id NOT IN (1, 9999)
+      )
+      SELECT
+          title,
+          description,
+          icon_html,
+          actions,
+          item_classes,
+          selection,
+          misc,
+          icon_class,
+          page_id
+      FROM deduplicated_pages
+      WHERE rn = 1
+      ORDER BY
+          last_access DESC NULLS LAST,
+          access_count DESC,
+          CASE WHEN is_default = 'Y' THEN 0 ELSE 1 END,
+          display_order
+      FETCH FIRST 8 ROWS ONLY
+
+  layout: 
+    sequence: 10
+    parent-region: Acessos recentes # 1891891441134087
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 1813181150176082248
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Content Row # 1813203679335082257
+      template-options: 
+      - '#DEFAULT#'
+      - t-ContentRow--styleCompact
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: PAGE_ID =====================================
+    id: 2018596211882858
+    identification: 
+      column-name: PAGE_ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 20
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TITLE =======================================
+    id: 2018851269882860
+    identification: 
+      column-name: TITLE
+      type: Link
+
+    heading: 
+      heading: Title
+      alignment: start
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:#PAGE_ID#:&SESSION.::&DEBUG.:::'
+        page: '#PAGE_ID#'
+
+      link-text: '#TITLE#'
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: DESCRIPTION =================================
+    id: 2018942330882861
+    identification: 
+      column-name: DESCRIPTION
+      type: Plain Text
+
+    heading: 
+      heading: Description
+      alignment: start
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ICON_HTML ===================================
+    id: 2018993071882862
+    identification: 
+      column-name: ICON_HTML
+      type: Plain Text
+
+    heading: 
+      heading: Icon Html
+      alignment: start
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ACTIONS =====================================
+    id: 2019122150882863
+    identification: 
+      column-name: ACTIONS
+      type: Plain Text
+
+    heading: 
+      heading: Actions
+      alignment: start
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ICON_CLASS ==================================
+    id: 2019226203882864
+    identification: 
+      column-name: ICON_CLASS
+      type: Plain Text
+
+    heading: 
+      heading: Icon Class
+      alignment: start
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ITEM_CLASSES ================================
+    id: 2019311538882865
+    identification: 
+      column-name: ITEM_CLASSES
+      type: Plain Text
+
+    heading: 
+      heading: Item Classes
+      alignment: start
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: SELECTION ===================================
+    id: 2019436647882866
+    identification: 
+      column-name: SELECTION
+      type: Plain Text
+
+    heading: 
+      heading: Selection
+      alignment: start
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: MISC ========================================
+    id: 2019511154882867
+    identification: 
+      column-name: MISC
+      type: Plain Text
+
+    heading: 
+      heading: Misc
+      alignment: start
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
 - # ====== Region: <p><img src="#APP_FILES#logo_hdi.svg" width="
   id: 1813277030550082382
   identification: 
@@ -57,7 +843,7 @@ regions:
     template: Hero # 1813171574356082245
     template-options: 
     - '#DEFAULT#'
-    - t-HeroRegion--hideIcon
+    - t-HeroRegion--headingFontAlt
     icon: fa-home
     render-components: Above Content
 

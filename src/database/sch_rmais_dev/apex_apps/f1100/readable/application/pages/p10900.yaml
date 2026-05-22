@@ -1,10 +1,10 @@
 ---
-# ====== Page: cnpj_org_report ===============================
-id: 4
+# ====== Page: Gerenciar Acessos (Páginas) ===================
+id: 10900
 identification: 
-  name: cnpj_org_report
-  alias: CNPJ-ORG-REPORT1
-  title: CNPJ´s
+  name: Gerenciar Acessos (Páginas)
+  alias: GERENCIAR-ACESSOS-PÁGINAS
+  title: Gerenciar Acessos (Páginas)
 
 appearance: 
   page-mode: Normal
@@ -20,7 +20,6 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: admin # 1814323466997240516
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -38,28 +37,28 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Report 1 ====================================
-  id: 1816330674053207294
+- # ====== Region: Gerenciar Acessos (Páginas) =================
+  id: 1653067693980776
   identification: 
-    title: Report 1
+    title: Gerenciar Acessos (Páginas)
     type: Interactive Report
 
   source: 
     location: Local Database
     type: SQL Query
     sql-query: |
-      select org.ID,
-             sup.nome CLIENTE_ID,
-             org.NOME,
-             org.CNPJ,
-             org.ENDERECO,
-             org.cep,
-            org.bu_code
-      
-      
-        from RMAIS_ORGANIZATIONS org
-             ,rmais_suppliers sup
-        WHERE org.cliente_id = sup.id(+)
+      select ACCESS_ID,
+             DESCRIPTION,
+             PAGE_ID,
+             CASE 
+              WHEN STATUS = 'Y' THEN '<i class="fa fa-check-circle" style="color:green;"></i>' 
+              ELSE '<i class="fa fa-times-circle" style="color:red;"> </i>' 
+             END AS STATUS,
+             CREATION_DATE,
+             CREATED_BY,
+             UPDATED_DATE,
+             UPDATED_BY
+        from RMAIS_USERS_ACCESS
 
   layout: 
     sequence: 10
@@ -88,14 +87,15 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1816525170343231316
+    id: 1653100099980776
     link: 
       link-column: Link to Custom Target
       target: 
-        url: 'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::P5_ID:#ID#'
-        page: 5 # cnpj_org_forms
+        url: 'f?p=&APP_ID.:10901:&APP_SESSION.::&DEBUG.:RP:P10901_ACCESS_ID:\#ACCESS_ID#\'
+        page: 10901 # Criar/Editar Acessos (Páginas)
+        clear-cache: RP
         values: 
-          p5_id: '#ID#'
+          p10901_access_id: '#ACCESS_ID#'
 
       link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
 
@@ -105,20 +105,23 @@ regions:
 
     performance: 
       lazy-loading: false
-      maximum-rows-to-process: 1000000
+
+    messages: 
+      when-no-data-found: No data found.
+      when-more-data-found: 'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
 
     search-bar: 
       include-search-bar: true
       search-field: true
       finder-drop-down: true
       reports-select-list: true
-      rows-per-page-selector: true
+      rows-per-page-selector: false
 
     actions-menu: 
       include-actions-menu: true
       filter: true
       select-columns: true
-      rows-per-page: false
+      rows-per-page: true
       sort: true
       control-break: true
       highlight: true
@@ -129,7 +132,7 @@ regions:
       pivot: true
       flashback: true
       save-report: true
-      save-public-report: true
+      save-public-report: false
       reset: true
       help: true
       download: true
@@ -154,127 +157,210 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 1816649094198349370
+      id: 1660073002965369
       identification: 
         name: Primary Report
-        alias: 71345
+        alias: 380465
 
     columns: 
-    - # ====== Column: BU_CODE =====================================
-      id: 860891988761636035
+    - # ====== Column: ACCESS_ID ===================================
+      id: 1653555036980772
       identification: 
-        column-name: BU_CODE
-        type: Plain Text
-
-      heading: 
-        heading: Bu Code
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 70
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      source: 
-        primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: CEP =========================================
-      id: 1672517350687542694
-      identification: 
-        column-name: CEP
-        type: Plain Text
-
-      heading: 
-        heading: Cep
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 60
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      source: 
-        primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: ID ==========================================
-      id: 1816525321191231317
-      identification: 
-        column-name: ID
+        column-name: ACCESS_ID
         type: Hidden Column
 
       heading: 
-        heading: Id
+        heading: Access ID
 
       layout: 
-        sequence: 10
+        sequence: 0
+
+      source: 
+        primary-key: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DESCRIPTION =================================
+      id: 1653903928980770
+      identification: 
+        column-name: DESCRIPTION
+        type: Plain Text
+
+      heading: 
+        heading: Descrição
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
 
       source: 
         primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PAGE_ID =====================================
+      id: 1654302618980769
+      identification: 
+        column-name: PAGE_ID
+        type: Plain Text
+
+      heading: 
+        heading: Page ID
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 3
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: STATUS ======================================
+      id: 1654682799980769
+      identification: 
+        column-name: STATUS
+        type: Plain Text
+
+      heading: 
+        heading: Status
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 4
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
 
       security: 
         escape-special-characters: false
 
-    - # ====== Column: CLIENTE_ID ==================================
-      id: 1816525383930231318
+    - # ====== Column: CREATION_DATE ===============================
+      id: 1655092684980769
       identification: 
-        column-name: CLIENTE_ID
+        column-name: CREATION_DATE
         type: Plain Text
 
       heading: 
-        heading: Cliente
-        alignment: center
+        heading: Data Criação
+        alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 20
+        sequence: 5
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREATED_BY ==================================
+      id: 1655562504980769
+      identification: 
+        column-name: CREATED_BY
+        type: Plain Text
+
+      heading: 
+        heading: Criado por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 6
         column-alignment: start
 
       accessibility: 
@@ -301,31 +387,35 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: NOME ========================================
-      id: 1816525427593231319
+    - # ====== Column: UPDATED_DATE ================================
+      id: 1655929152980769
       identification: 
-        column-name: NOME
+        column-name: UPDATED_DATE
         type: Plain Text
 
       heading: 
-        heading: Empresa
-        alignment: center
+        heading: Data Atualização
+        alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 30
+        sequence: 7
         column-alignment: start
 
       accessibility: 
         value-identifies-row: false
+
+      appearance: 
+        format-mask: 'DD/MM/YYYY HH:MI:SS'
 
       source: 
         primary-key: false
 
       column-filter: 
         type: Default Based on Column Type
+        date-ranges: All
 
       enable-users-to: 
         hide: true
@@ -342,62 +432,21 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: CNPJ ========================================
-      id: 1816525545928231320
+    - # ====== Column: UPDATED_BY ==================================
+      id: 1656305118980768
       identification: 
-        column-name: CNPJ
+        column-name: UPDATED_BY
         type: Plain Text
 
       heading: 
-        heading: Cnpj
-        alignment: center
+        heading: Atualizado por
+        alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 40
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      source: 
-        primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: ENDERECO ====================================
-      id: 1816525699824231321
-      identification: 
-        column-name: ENDERECO
-        type: Plain Text
-
-      heading: 
-        heading: Endereço
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 50
+        sequence: 8
         column-alignment: start
 
       accessibility: 
@@ -443,7 +492,7 @@ regions:
         font-size: 12
         font-color: '#000000'
         alignment: center
-        page-header-text: Report 1
+        page-header-text: Gerenciar Acessos (Páginas)
 
       column-headings: 
         font: Helvetica
@@ -466,44 +515,58 @@ regions:
         font-color: '#000000'
         alignment: center
 
-buttons: 
-- # ====== Button: get_erp =====================================
-  id: 860891838051636033
+- # ====== Region: Breadcrumb ==================================
+  id: 1658425178980766
   identification: 
-    button-name: get_erp
-    label: Buscar Setup ERP
+    title: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 1813126195946082218
 
   layout: 
     sequence: 10
-    region: Report 1 # 1816330674053207294
-    position: BODY
+    parent-region: No Parent
+    position: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Right
 
   appearance: 
-    button-template: Text # 1813243693728082280
-    hot: false
+    template: Title Bar # 1813190541212082251
     template-options: 
     - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
 
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
 
-- # ====== Button: CREATE ======================================
-  id: 1816334007613207305
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 1813245036397082281
+      template-options: 
+      - '#DEFAULT#'
+
+buttons: 
+- # ====== Button: BTN_CREATE ==================================
+  id: 1656775265980768
   identification: 
-    button-name: CREATE
-    label: Create
+    button-name: BTN_CREATE
+    label: Criar
 
   layout: 
-    sequence: 30
-    region: Report 1 # 1816330674053207294
+    sequence: 10
+    region: Gerenciar Acessos (Páginas) # 1653067693980776
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -520,33 +583,41 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:5:&SESSION.::&DEBUG.:5'
-      page: 5 # cnpj_org_forms
-      clear-cache: 5
+      url: 'f?p=&APP_ID.:10901:&APP_SESSION.::&DEBUG.:10901::'
+      page: 10901 # Criar/Editar Acessos (Páginas)
+      clear-cache: 10901
 
     warn-on-unsaved-changes: Do Not Check
 
-processes: 
-- # ====== Process: Executar busca de setup ORACLE =============
-  id: 860891976973636034
+dynamic-actions: 
+- # ====== Dynamic Action: Edit Report - Dialog Closed =========
+  id: 1657152845980768
   identification: 
-    name: Executar busca de setup ORACLE
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: xxrmais_util_v2_pkg.get_cnpjs_erp;
+    name: Edit Report - Dialog Closed
 
   execution: 
     sequence: 10
-    point: Processing
-    run-process: Once Per Page Visit (default)
+    event-scope: Static
+    type: Immediate
 
-  error: 
-    display-location: Inline in Notification
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: Region
+    region: Gerenciar Acessos (Páginas) # 1653067693980776
 
-  server-side-condition: 
-    when-button-pressed: get_erp # 860891838051636033
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 1657624941980767
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Gerenciar Acessos (Páginas) # 1653067693980776
+
+    execution: 
+      sequence: 10
+      event: Edit Report - Dialog Closed # 1657152845980768
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 

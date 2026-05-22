@@ -5,6 +5,76 @@
     name: Breadcrumb
 
   entries: 
+  - # ====== Entry: Gerenciar Acessos (Páginas) ==================
+    id: 1658297515980766
+    identification: 
+      name: Gerenciar Acessos (Páginas)
+      page-number: 10900
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10900:&APP_SESSION.::&DEBUG.:::'
+        page: 10900 # Gerenciar Acessos (Páginas)
+
+  - # ====== Entry: Gerenciar Módulos ============================
+    id: 1741015204731613
+    identification: 
+      name: Gerenciar Módulos
+      page-number: 10902
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10902:&APP_SESSION.::&DEBUG.:::'
+        page: 10902 # Gerenciar Módulos
+
+  - # ====== Entry: Gerenciar Usuários ===========================
+    id: 1983882729984505
+    identification: 
+      name: Gerenciar Usuários
+      page-number: 10904
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10904:&APP_SESSION.::&DEBUG.:::'
+        page: 10904 # Gerenciar Usuários
+
+  - # ====== Entry: Integrations Swagger =========================
+    id: 2259815349176268
+    identification: 
+      name: Integrations Swagger
+      page-number: 9001
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9001:&APP_SESSION.::&DEBUG.:::'
+        page: 9001 # Integrations Swagger
+
+  - # ====== Entry: Manage WS Credentials ========================
+    id: 2302803149512174
+    identification: 
+      name: Manage WS Credentials
+      page-number: 9002
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9002:&APP_SESSION.::&DEBUG.:::'
+        page: 9002 # Manage WS Credentials
+
   - # ====== Entry: Gerenciar Grupos Usuários ====================
     id: 35940860247424711
     identification: 

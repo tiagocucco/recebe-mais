@@ -363,29 +363,34 @@ buttons:
   advanced: 
     static-id: BTN_LOGIN
 
-validations: 
-- # ====== Validation: Usuario_existente =======================
-  id: 194348802926278441
+processes: 
+- # ====== Process: LoadSecurityAccess =========================
+  id: 2357718558890972
   identification: 
-    name: Usuario_existente
+    name: LoadSecurityAccess
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      rmais_pkg_security.load_user_security(
+          p_user_name => :P9999_USERNAME
+      );
+         
 
   execution: 
-    sequence: 10
-
-  validation: 
-    type: Rows returned
-    sql-query: 'select * from APEX_APPL_ACL_USERS where APPLICATION_ID = :APP_ID and USER_NAME = UPPER(:P9999_USERNAME)'
-    always-execute: false
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
 
   error: 
-    error-message: Usuário não localizado.
-    display-location: Inline with Field
-    associated-item: P9999_USERNAME # 1813270774661082367
+    display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: FORGOT_PASSWORD # 194348858664278442
+    when-button-pressed: LOGIN # 1813273040847082373
 
-processes: 
 - # ====== Process: New ========================================
   id: 194348982876278443
   identification: 
@@ -402,7 +407,7 @@ processes:
       end;
 
   execution: 
-    sequence: 40
+    sequence: 50
     point: Processing
     run-process: Once Per Page Visit (default)
 
@@ -429,6 +434,8 @@ processes:
       apex_authentication.login(
           p_username => :P9999_USERNAME,
           p_password => :P9999_PASSWORD );
+      
+         
 
   execution: 
     sequence: 20
@@ -497,7 +504,7 @@ processes:
     type: Clear all Items on the Current Page
 
   execution: 
-    sequence: 30
+    sequence: 40
     point: Processing
     run-process: Once Per Page Visit (default)
 

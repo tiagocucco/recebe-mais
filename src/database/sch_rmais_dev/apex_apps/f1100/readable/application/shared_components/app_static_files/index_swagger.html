@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentação API</title>
+    <!-- Usamos ./ para indicar que o arquivo está na mesma pasta -->
+    <link rel="stylesheet" href="./swagger-ui.css">
+</head>
+<body>
+    <div id="swagger-ui"></div>
+    <script src="./swagger-ui-bundle.js"></script>
+    <script>
+        window.onload = () => {
+            window.ui = SwaggerUIBundle({
+                url: "./recebemais-integrations-documents-1.0.0.json",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIBundle.presets.standalone
+                ],
+                layout: "BaseLayout"
+            });
+        };
+    </script>
+</body>
+</html>

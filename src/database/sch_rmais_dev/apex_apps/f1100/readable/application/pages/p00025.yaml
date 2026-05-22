@@ -91,7 +91,7 @@ regions:
       add-row-if-empty: true
 
     edit-authorization: 
-      delete: user_admin # 1903390112961645939
+      delete: 1903390112961645939
 
     performance: 
       lazy-loading: false

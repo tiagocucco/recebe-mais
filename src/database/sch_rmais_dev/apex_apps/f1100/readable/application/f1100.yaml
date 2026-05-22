@@ -1,10 +1,10 @@
 ---
-# ====== Application: Recebe Mais V1.9 =======================
+# ====== Application: Recebe Mais V2.0 =======================
 id: 100
 identification: 
-  name: Recebe Mais V1.9
+  name: Recebe Mais V2.0
   alias: RECEBE-MAIS-DEV
-  version: Release 1.9
+  version: Release 2.0
 
 row-search: 
   tokenize: false
@@ -29,7 +29,7 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: Application Express Accounts # 1813125855405082217
+  authentication-scheme: Custom Auth RMAIS # 2798537375095018
 
 authorization: 
   source-for-role-or-group-schemes: Access Control User Role Assignments
@@ -81,8 +81,8 @@ progressive-web-app:
 
 navigation: 
   home-url: 
-    url: 'f?p=&APP_ID.:6:&SESSION.'
-    page: 6 # Nf´s
+    url: 'f?p=&APP_ID.:1:&SESSION.'
+    page: 1 # Home
 
   login-url: 
     url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
@@ -93,10 +93,10 @@ navigation-menu:
   template-options: 
   - '#DEFAULT#'
   - js-defaultCollapsed
-  - js-navCollapsed--hidden
+  - js-navCollapsed--default
   - t-TreeNav--styleA
   list-position: Side
-  list: Desktop Navigation Menu # 1813126628002082219
+  list: Custom Nav Menu # 3392168170671941
 
 navigation-bar: 
   implementation: List

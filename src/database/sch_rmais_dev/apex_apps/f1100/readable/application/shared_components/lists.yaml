@@ -1,4 +1,129 @@
 ---
+- # ====== List: Create Client Credentials =====================
+  id: 2315390428231538
+  identification: 
+    name: Create Client Credentials
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Role =========================================
+    id: 2316797918231535
+    label: 
+      label: Role
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9003:&APP_SESSION.::&DEBUG.:::'
+        page: 9003 # Role
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Privilege ====================================
+    id: 2321171118231524
+    label: 
+      label: Privilege
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9004:&APP_SESSION.::&DEBUG.:::'
+        page: 9004 # Privilege
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: OAuth Client =================================
+    id: 2326131838231520
+    label: 
+      label: OAuth Client
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9005:&APP_SESSION.::&DEBUG.:::'
+        page: 9005 # OAuth Client
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Review &amp; Finish ==========================
+    id: 2331152794231516
+    label: 
+      label: Review &amp; Finish
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9006:&APP_SESSION.::&DEBUG.:::'
+        page: 9006 # Review & Finish
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Custom Nav Menu ===============================
+  id: 3392168170671941
+  identification: 
+    name: Custom Nav Menu
+
+  source: 
+    type: SQL Query
+    sql-query: |
+      SELECT 
+          LEVEL                 AS lvl,           -- Controla a identação hierárquica nativa do APEX
+          c.c002                AS label,         -- Rótulo do menu (ENTRY_TEXT)
+          c.c003                AS target,        -- URL de destino (ENTRY_TARGET)
+          'YES'                 AS is_current,    -- Permite que o APEX gerencie o estado ativo automaticamente
+          c.c006                AS image          -- Ícone FontAwesome do menu (ENTRY_IMAGE)
+      FROM 
+          apex_collections c
+      WHERE 
+          c.collection_name = 'RMAIS_ALLOWED_MENUS'
+      -- Reconstrói dinamicamente os níveis de Menu Pai e Submenu com base nos IDs salvos
+      START WITH 
+          c.c005 IS NULL OR c.c005 = '0'
+      CONNECT BY 
+          PRIOR c.c004 = c.c005
+      -- Mantém a ordenação exata estipulada no desenvolvimento da aplicação
+      ORDER SIBLINGS BY 
+          c.n001;
+      
+
 - # ====== List: Desktop Navigation Menu =======================
   id: 1813126628002082219
   identification: 
@@ -8,6 +133,176 @@
     type: Static Values
 
   entries: 
+  - # ====== Entry: Gerenciar Acessos (Páginas) ==================
+    id: 1652620526980777
+    label: 
+      label: Gerenciar Acessos (Páginas)
+
+    icon: 
+      image/icon-css-classes: fa-desktop
+
+    layout: 
+      sequence: 210
+      parent-entry: Setup & Manutenção # 1821229317629940928
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 10900
+      - 10901
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10900:&APP_SESSION.::&DEBUG.:::'
+        page: 10900 # Gerenciar Acessos (Páginas)
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Gerenciar Módulos ============================
+    id: 1733339885731630
+    label: 
+      label: Gerenciar Módulos
+
+    icon: 
+      image/icon-css-classes: fa-desktop
+
+    layout: 
+      sequence: 220
+      parent-entry: Setup & Manutenção # 1821229317629940928
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 10902
+      - 10903
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10902:&APP_SESSION.::&DEBUG.:::'
+        page: 10902 # Gerenciar Módulos
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Gerenciar Usuários ===========================
+    id: 1977808656984522
+    label: 
+      label: Gerenciar Usuários
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 230
+      parent-entry: Setup & Manutenção # 1821229317629940928
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 10904
+      - 10905
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10904:&APP_SESSION.::&DEBUG.:::'
+        page: 10904 # Gerenciar Usuários
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Integrations Swagger =========================
+    id: 2258895625176285
+    label: 
+      label: Integrations Swagger
+
+    icon: 
+      image/icon-css-classes: fa-code
+
+    layout: 
+      sequence: 240
+      parent-entry: Setup & Manutenção # 1821229317629940928
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9001
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9001:&APP_SESSION.::&DEBUG.:::'
+        page: 9001 # Integrations Swagger
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Manage WS Credentials ========================
+    id: 2301915249512189
+    label: 
+      label: Manage WS Credentials
+
+    icon: 
+      image/icon-css-classes: fa-cloud-wrench
+
+    layout: 
+      sequence: 250
+      parent-entry: Setup & Manutenção # 1821229317629940928
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9002
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9002:&APP_SESSION.::&DEBUG.:::'
+        page: 9002 # Manage WS Credentials
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Create Client Credentials ====================
+    id: 2315911134231535
+    label: 
+      label: Create Client Credentials
+
+    icon: 
+      image/icon-css-classes: fa-magic
+
+    layout: 
+      sequence: 260
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9003
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9003:&APP_SESSION.::&DEBUG.:::'
+        page: 9003 # Role
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
   - # ====== Entry: Gerenciar Grupos Usuários ====================
     id: 35937153274424722
     label: 
@@ -18,7 +313,7 @@
 
     layout: 
       sequence: 200
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -97,7 +392,7 @@
 
     layout: 
       sequence: 180
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -125,7 +420,7 @@
 
     layout: 
       sequence: 190
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -143,9 +438,6 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: admin # 1814323466997240516
-
   - # ====== Entry: Setup de definição (PO/NA) ===================
     id: 846057360923622282
     label: 
@@ -156,7 +448,7 @@
 
     layout: 
       sequence: 140
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -208,7 +500,7 @@
 
     layout: 
       sequence: 130
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -258,7 +550,7 @@
 
     layout: 
       sequence: 20
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Target Page
@@ -275,9 +567,6 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: admin # 1814323466997240516
-
   - # ====== Entry: Cadastro CNPJ ================================
     id: 1816333191967207302
     label: 
@@ -285,7 +574,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -303,9 +592,6 @@
 
     user-defined-attributes: 
       translatable: false
-
-    security: 
-      authorization-scheme: admin # 1814323466997240516
 
   - # ====== Entry: Nf´s =========================================
     id: 1817934462136887604
@@ -333,13 +619,10 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: user # 1814323291559237567
-
-  - # ====== Entry: Administração Admin ==========================
+  - # ====== Entry: Setup & Manutenção ===========================
     id: 1821229317629940928
     label: 
-      label: Administração Admin
+      label: Setup & Manutenção
 
     icon: 
       image/icon-css-classes: fa-key
@@ -360,9 +643,6 @@
 
     user-defined-attributes: 
       translatable: false
-
-    security: 
-      authorization-scheme: admin # 1814323466997240516
 
   - # ====== Entry: Período de entrada ===========================
     id: 1821321625821679568
@@ -389,9 +669,6 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: admin # 1814323466997240516
-
   - # ====== Entry: Dashboards ===================================
     id: 1830614659613367673
     label: 
@@ -415,6 +692,14 @@
 
     user-defined-attributes: 
       translatable: false
+
+    server-side-condition: 
+      type: Function Body
+      language: PL/SQL
+      pl/sql-function-body: |
+        begin
+          return RMAIS_PKG_SECURITY.fn_has_page_access(31);
+        end;
 
   - # ====== Entry: Lançamentos NFs ==============================
     id: 1832265932644451945
@@ -442,9 +727,6 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: admin # 1814323466997240516
-
   - # ====== Entry: Cadastro cod. Serviço ========================
     id: 1835437048270015028
     label: 
@@ -471,9 +753,6 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: admin # 1814323466997240516
-
   - # ====== Entry: Cfops Cadastrados ============================
     id: 1855111844394431286
     label: 
@@ -481,7 +760,7 @@
 
     layout: 
       sequence: 70
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Target Page
@@ -519,9 +798,6 @@
     user-defined-attributes: 
       translatable: false
 
-    security: 
-      authorization-scheme: user_admin # 1903390112961645939
-
   - # ====== Entry: Cfop X Utilização ============================
     id: 1908192041284253896
     label: 
@@ -552,7 +828,7 @@
 
     layout: 
       sequence: 90
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages
@@ -577,7 +853,7 @@
 
     layout: 
       sequence: 80
-      parent-entry: Administração Admin # 1821229317629940928
+      parent-entry: Setup & Manutenção # 1821229317629940928
 
     is-current: 
       type: Pages

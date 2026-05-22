@@ -1,0 +1,372 @@
+---
+# ====== Page: Role ==========================================
+id: 9003
+identification: 
+  name: Role
+  alias: ROLE
+  title: Role
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Wizard Modal Dialog # 1813147560301082234
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  height: 400
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Wizard Progress =============================
+  id: 2316343918231535
+  identification: 
+    title: Wizard Progress
+    type: List
+
+  source: 
+    list: Create Client Credentials # 2315390428231538
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1813152766463082238
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      list-template: Wizard Progress # 1813220713968082266
+
+- # ====== Region: Role ========================================
+  id: 2316450884231535
+  identification: 
+    title: Role
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1813152766463082238
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Buttons =====================================
+  id: 2316552536231535
+  identification: 
+    title: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 1813153815191082239
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P9003_ROLE_NAME ==========================
+  id: 2020268827882874
+  identification: 
+    name: P9003_ROLE_NAME
+    type: Text Field
+
+  label: 
+    label: Role Name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: Lower
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Role # 2316450884231535
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: 2
+    new-column: true
+    column-span: 10
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    value-placeholder: integration_name_role
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 2318047030231532
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 2316552536231535
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: NEXT ========================================
+  id: 2318352740231532
+  identification: 
+    button-name: NEXT
+    label: Next
+
+  layout: 
+    sequence: 30
+    region: Buttons # 2316552536231535
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 1813243735170082280
+    hot: true
+    template-options: 
+    - t-Button--iconRight
+    icon: fa-chevron-right
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 2318408831231531
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 2318047030231532
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 2319198426231526
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 2318408831231531
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: SaveRole ===================================
+  id: 2020312984882875
+  identification: 
+    name: SaveRole
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          APEX_COLLECTION.ADD_MEMBER(
+              p_collection_name => 'RMAIS_ORDS_OAUTH_WIZARD',
+              p_c001            => :P9003_ROLE_NAME
+          );
+      END;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: CreateCollection ===========================
+  id: 2020436408882876
+  identification: 
+    name: CreateCollection
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+      /*
+          IF NOT APEX_COLLECTION.COLLECTION_EXISTS('RMAIS_ORDS_OAUTH_WIZARD') THEN
+              APEX_COLLECTION.CREATE_COLLECTION(
+                  p_collection_name => 'RMAIS_ORDS_OAUTH_WIZARD'
+              );
+          END IF;
+          */
+          APEX_COLLECTION.CREATE_OR_TRUNCATE_COLLECTION(
+              p_collection_name => 'RMAIS_ORDS_OAUTH_WIZARD'
+          );
+      END;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+branches: 
+- # ====== Branch: Go To Page 9004 =============================
+  id: 2319892142231525
+  identification: 
+    name: Go To Page 9004
+
+  execution: 
+    sequence: 20
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:9004:&APP_SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 9004 # Privilege
+
+  server-side-condition: 
+    when-button-pressed: NEXT # 2318352740231532
+

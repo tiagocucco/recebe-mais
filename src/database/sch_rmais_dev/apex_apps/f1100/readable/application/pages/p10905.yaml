@@ -1,0 +1,1364 @@
+---
+# ====== Page: Criar/Editar Usuários =========================
+id: 10905
+identification: 
+  name: Criar/Editar Usuários
+  alias: CRIAR-EDITAR-USUÁRIOS
+  title: Criar/Editar Usuários
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Criar/Editar Usuáriois ======================
+  id: 1965567610984557
+  identification: 
+    title: Criar/Editar Usuáriois
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: RMAIS_USERS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 1813152766463082238
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 1973380974984533
+  identification: 
+    title: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 1813153815191082239
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+page-items: 
+- # ====== Page Item: P10905_EMAIL =============================
+  id: 1891018388134078
+  identification: 
+    name: P10905_EMAIL
+    type: Text Field
+
+  label: 
+    label: Email
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    value-placeholder: email.usuario@empresa.com
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: EMAIL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_PHONE =============================
+  id: 1891086864134079
+  identification: 
+    name: P10905_PHONE
+    type: Number Field
+
+  label: 
+    label: Phone
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 60
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    value-placeholder: 5548999991234
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: PHONE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_PASSWORD ==========================
+  id: 1891250228134080
+  identification: 
+    name: P10905_PASSWORD
+    type: Password
+
+  label: 
+    label: Password
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: false
+
+  layout: 
+    sequence: 70
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: PASSWORD
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_CHANGE_PWD_FLAG ===================
+  id: 1891284671134081
+  identification: 
+    name: P10905_CHANGE_PWD_FLAG
+    type: Switch
+
+  label: 
+    label: Alterar Senha no Login
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: Y
+    on-label: Sim
+    off-value: N
+    off-label: Não
+
+  layout: 
+    sequence: 110
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: CHANGE_PWD_FLAG
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: N
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_FIRST_NAME ========================
+  id: 1891469239134082
+  identification: 
+    name: P10905_FIRST_NAME
+    type: Text Field
+
+  label: 
+    label: First Name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 55
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: FIRST_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_LAST_NAME =========================
+  id: 1891493027134083
+  identification: 
+    name: P10905_LAST_NAME
+    type: Text Field
+
+  label: 
+    label: Last Name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 55
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: LAST_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_CONFIRM_PASSWORD ==================
+  id: 1891638832134084
+  identification: 
+    name: P10905_CONFIRM_PASSWORD
+    type: Password
+
+  label: 
+    label: Confirm Password
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: false
+
+  layout: 
+    sequence: 80
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_USER_ID ===========================
+  id: 1965903025984555
+  identification: 
+    name: P10905_USER_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: USER_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_USER_NAME =========================
+  id: 1966315730984548
+  identification: 
+    name: P10905_USER_NAME
+    type: Text Field
+
+  label: 
+    label: Nome Usuário
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: USER_NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_STATUS ============================
+  id: 1967098731984541
+  identification: 
+    name: P10905_STATUS
+    type: Switch
+
+  label: 
+    label: Status
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: Y
+    on-label: Ativo
+    off-value: N
+    off-label: Inativo
+
+  layout: 
+    sequence: 90
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: STATUS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: Y
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_CREATION_DATE =====================
+  id: 1967526704984541
+  identification: 
+    name: P10905_CREATION_DATE
+    type: Display Only
+
+  label: 
+    label: Creation Date
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 130
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 'DD/MM/YYYY HH:MI:SS'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: CREATION_DATE
+    data-type: TIMESTAMP
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_CREATED_BY ========================
+  id: 1968283235984537
+  identification: 
+    name: P10905_CREATED_BY
+    type: Display Only
+
+  label: 
+    label: Created By
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 140
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: CREATED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: 'lower(:APP_USER)'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_UPDATED_DATE ======================
+  id: 1968746847984537
+  identification: 
+    name: P10905_UPDATED_DATE
+    type: Display Only
+
+  label: 
+    label: Updated Date
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 150
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 'DD/MM/YYYY HH:MI:SS'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: UPDATED_DATE
+    data-type: TIMESTAMP
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_UPDATED_BY ========================
+  id: 1969542414984536
+  identification: 
+    name: P10905_UPDATED_BY
+    type: Display Only
+
+  label: 
+    label: Updated By
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 160
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 1813242829042082278
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: UPDATED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: 'lower(:APP_USER)'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_INACTIVE_DATE =====================
+  id: 1969877205984536
+  identification: 
+    name: P10905_INACTIVE_DATE
+    type: Display Only
+
+  label: 
+    label: Inativado em
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 100
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 'DD/MM/YYYY HH:MI:SS'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+    column: INACTIVE_DATE
+    data-type: TIMESTAMP
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10905_GROUPS ============================
+  id: 2019633334882868
+  identification: 
+    name: P10905_GROUPS
+    type: Shuttle
+
+  label: 
+    label: Grupos de Usuário
+    alignment: Left
+
+  settings: 
+    show-controls: All
+
+  layout: 
+    sequence: 120
+    region: Criar/Editar Usuáriois # 1965567610984557
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 1813242570498082278
+    template-options: 
+    - '#DEFAULT#'
+    height: 5
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_USERS_GROUPS # 2207998820944580
+    display-extra-values: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return colon separated value)
+    sql-query: |
+      SELECT GROUP_ID
+      FROM RMAIS_USERS_USER_GROUPS
+      WHERE USER_ID = :P10905_USER_ID
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 1973822056984533
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 1973380974984533
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 1975265400984528
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: Buttons # 1973380974984533
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P10905_USER_ID
+
+- # ====== Button: SAVE ========================================
+  id: 1975647011984527
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Buttons # 1973380974984533
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P10905_USER_ID
+
+- # ====== Button: CREATE ======================================
+  id: 1976060312984527
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: Buttons # 1973380974984533
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 1813243693728082280
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P10905_USER_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 1973970386984533
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 1973822056984533
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 1974697493984529
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 1973970386984533
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: P10905_CREATION_DATE must be timestamp ==
+  id: 1968009835984538
+  identification: 
+    name: P10905_CREATION_DATE must be timestamp
+
+  execution: 
+    sequence: 40
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P10905_CREATION_DATE
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P10905_CREATION_DATE # 1967526704984541
+
+- # ====== Validation: P10905_UPDATED_DATE must be timestamp ===
+  id: 1969219013984537
+  identification: 
+    name: P10905_UPDATED_DATE must be timestamp
+
+  execution: 
+    sequence: 60
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P10905_UPDATED_DATE
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P10905_UPDATED_DATE # 1968746847984537
+
+- # ====== Validation: P10905_INACTIVE_DATE must be timestamp ==
+  id: 1970394552984536
+  identification: 
+    name: P10905_INACTIVE_DATE must be timestamp
+
+  execution: 
+    sequence: 80
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P10905_INACTIVE_DATE
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P10905_INACTIVE_DATE # 1969877205984536
+
+processes: 
+- # ====== Process: Initialize form Criar/Editar Usuáriois =====
+  id: 1976406403984526
+  identification: 
+    name: Initialize form Criar/Editar Usuáriois
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Criar/Editar Usuáriois ========
+  id: 1976827646984525
+  identification: 
+    name: Process form Criar/Editar Usuáriois
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Criar/Editar Usuáriois # 1965567610984557
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 1977183751984524
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
+- # ====== Process: Save Users Groups ==========================
+  id: 2019735853882869
+  identification: 
+    name: Save Users Groups
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_selected_groups apex_t_varchar2;
+      BEGIN
+          -- 1. Converte a string do Shuttle (ex: '10:20:30') em uma coleção (array)
+          l_selected_groups := apex_string.split(:P10905_GROUPS, ':');
+      
+          -- 2. Remove os grupos
+          DELETE FROM RMAIS_USERS_USER_GROUPS
+          WHERE USER_ID = :P10905_USER_ID;
+      
+          -- 3. Insere os grupos selecionados
+          FOR i IN 1..l_selected_groups.count LOOP
+                  INSERT INTO RMAIS_USERS_USER_GROUPS(
+                      USER_ID, 
+                      GROUP_ID, 
+                      STATUS, 
+                      CREATION_DATE, 
+                      CREATED_BY, 
+                      UPDATED_DATE, 
+                      UPDATED_BY
+                  )
+                  VALUES (
+                      :P10905_USER_ID, 
+                      l_selected_groups(i), 
+                      'Y', 
+                      SYSDATE, 
+                      lower(:APP_USER), 
+                      SYSDATE, 
+                      lower(:APP_USER)
+                  );
+          END LOOP;
+      END;
+      
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: ValidateUpdatePasswordHash =================
+  id: 2357793118890973
+  identification: 
+    name: ValidateUpdatePasswordHash
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+          if :P10905_PASSWORD != :P10905_CONFIRM_PASSWORD then
+              APEX_ERROR.ADD_ERROR(
+                  p_message          => 'Campos de Password não conferem! Ajuste e salve novamente.',
+                  p_display_location => APEX_ERROR.C_INLINE_IN_NOTIFICATION
+                  );
+          end if;
+      
+          SELECT STANDARD_HASH(:P10905_PASSWORD, 'SHA256')
+          INTO :P10905_PASSWORD
+          FROM DUAL;
+      
+      end;    
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

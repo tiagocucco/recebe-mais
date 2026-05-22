@@ -1,4 +1,23 @@
 ---
+- # ====== Authentication: Custom Auth RMAIS ===================
+  id: 2798537375095018
+  identification: 
+    name: Custom Auth RMAIS
+
+  settings: 
+    type: Custom
+    authentication-function-name: RMAIS_PKG_AUTH.FN_AUTHENTICATE
+    enable-legacy-authentication-attributes: false
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
 - # ====== Authentication: Application Express Accounts ========
   id: 1813125855405082217
   identification: 

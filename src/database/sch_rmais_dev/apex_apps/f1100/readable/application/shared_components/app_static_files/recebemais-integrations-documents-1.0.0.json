@@ -1,0 +1,351 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RecebeMais API para integração de documentos eletrônicos",
+    "description": "Para utilizar esta API, siga os passos de autenticação:\n1. Solicite o **client_id** e **client_secret** à equipe de integrações do RecebeMais.\n2. Obtenha o token de acesso (Bearer Token) enviando as credenciais para:\n   `https://hdi-test.rm.digital:8443/ords/rmais_dev/oauth/token`\n3. Utilize o token recebido no cabeçalho de todas as requisições: \n   `Authorization: Bearer <seu_token>`\n",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://hdi-test.rm.digital:8443/ords/rmais_dev/v1/integrations/"
+    }
+  ],
+  "paths": {
+    "/documents": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "description": "Endpoint para envio de **documentos eletrônicos** a serem importados no sistema **RecebeMais**",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1.integrations_ITEM"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Documento criado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccess"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor ou regra de negócio.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "v1.integrations_ITEM": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "organization": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "mime_type": {
+            "type": "string"
+          },
+          "base64": {
+            "type": "string"
+          },
+          "numero_nff": {
+            "type": "string"
+          },
+          "codigoverificacao": {
+            "type": "string"
+          },
+          "dataemissao": {
+            "type": "string"
+          },
+          "outrasinformacoes": {
+            "type": "string"
+          },
+          "valorliquidonfse": {
+            "type": "number"
+          },
+          "valorcredito": {
+            "type": "number"
+          },
+          "inscricaomunicipal_emi": {
+            "type": "string"
+          },
+          "razaosocial_emi": {
+            "type": "string"
+          },
+          "nomefantasia_emi": {
+            "type": "string"
+          },
+          "endereco_emi": {
+            "type": "string"
+          },
+          "numero_emi": {
+            "type": "string"
+          },
+          "bairro_emi": {
+            "type": "string"
+          },
+          "uf_emi": {
+            "type": "string"
+          },
+          "cep_emi": {
+            "type": "string"
+          },
+          "codigomuniciplo_emi": {
+            "type": "string"
+          },
+          "valorservicos": {
+            "type": "number"
+          },
+          "valortotalrecebido": {
+            "type": "number"
+          },
+          "valordeducoes": {
+            "type": "number"
+          },
+          "valorpis": {
+            "type": "number"
+          },
+          "valorcofins": {
+            "type": "number"
+          },
+          "valorinss_servico": {
+            "type": "number"
+          },
+          "valorir": {
+            "type": "number"
+          },
+          "valorcsll": {
+            "type": "number"
+          },
+          "outrasretencoes": {
+            "type": "number"
+          },
+          "valoriss": {
+            "type": "number"
+          },
+          "aliquota_iss": {
+            "type": "number"
+          },
+          "vlrissretido": {
+            "type": "number"
+          },
+          "descontoincondicionado": {
+            "type": "number"
+          },
+          "descontocondicionado": {
+            "type": "number"
+          },
+          "issretido_flag": {
+            "type": "string"
+          },
+          "codigomunicipio_toma": {
+            "type": "string"
+          },
+          "cnpj_emit": {
+            "type": "string"
+          },
+          "cpf_emi": {
+            "type": "string",
+            "nullable": true
+          },
+          "inscricaomunicipal_dest": {
+            "type": "string"
+          },
+          "cnpj_dest": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "razaosocial_dest": {
+            "type": "string"
+          },
+          "endereco_dest": {
+            "type": "string"
+          },
+          "numero_dest": {
+            "type": "string"
+          },
+          "uf_dest": {
+            "type": "string"
+          },
+          "email_dest": {
+            "type": "string"
+          },
+          "xnomeestabtomador": {
+            "type": "string"
+          },
+          "optantesimplesnacional": {
+            "type": "string"
+          },
+          "serv_list": {
+            "type": "string"
+          },
+          "serv_descr": {
+            "type": "string"
+          },
+          "valor_carga": {
+            "type": "number"
+          },
+          "percentual_carga": {
+            "type": "number"
+          },
+          "fonte": {
+            "type": "string"
+          },
+          "discriminacao_nf": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "source": "SEFAZ",
+          "organization": "Sua Empresa S.A",
+          "filename": "NFSe_12345_20250210.pdf",
+          "mime_type": "application/pdf",
+          "base64": "JVBERi0xLjQKJb/3ov4KMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPj4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUgL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA1OTUgODQyXQovQ29udGVudHMgNCAwIFIKPj4KZW5kb2JqCjQgMCBvYmoKPDwvTGVuZ3RoIDQ3Pj4Kc3RyZWFtCkJUIAovRm9udCA8PCAvRjEgNSAwIFIgPj4KL1RkIDAgVGYKMTAgNzAwIFRkCihFeGVtcGxvIGRlIE5GKSBUagplbmRzdHJlYW0KZW5kb2JqCjUgMCBvYmoKPDwKL1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvSGVsdmV0aWNhCj4+CmVuZG9iagoKc3RhcnR4cmVmCjYxNQolJUVPRgo=",
+          "numero_nff": "12345",
+          "codigoverificacao": "ABCD-1234-EFGH-5678",
+          "dataemissao": "04/03/2026",
+          "outrasinformacoes": "Serviços de consultoria prestados no mês de janeiro/2025.",
+          "valorliquidonfse": 9500.75,
+          "valorcredito": 500,
+          "inscricaomunicipal_emi": "123456",
+          "razaosocial_emi": "Empresa Prestadora de Serviços LTDA",
+          "nomefantasia_emi": "PrestServ",
+          "endereco_emi": "Av. Paulista",
+          "numero_emi": "1000",
+          "bairro_emi": "Bela Vista",
+          "uf_emi": "SP",
+          "cep_emi": "01310000",
+          "codigomuniciplo_emi": "3550308",
+          "valorservicos": 10000.75,
+          "valortotalrecebido": 10000.75,
+          "valordeducoes": 0,
+          "valorpis": 150,
+          "valorcofins": 300,
+          "valorinss_servico": 0,
+          "valorir": 275,
+          "valorcsll": 170,
+          "outrasretencoes": 0,
+          "valoriss": 500,
+          "aliquota_iss": 0.05,
+          "vlrissretido": 0,
+          "descontoincondicionado": 0,
+          "descontocondicionado": 0,
+          "issretido_flag": "N",
+          "codigomunicipio_toma": "3304557",
+          "cnpj_emit": "12345678000190",
+          "inscricaomunicipal_dest": "654321",
+          "cnpj_dest": "29980999005116",
+          "razaosocial_dest": "Cliente Tomador de Serviços S.A.",
+          "endereco_dest": "Rua das Flores",
+          "numero_dest": "200",
+          "uf_dest": "RJ",
+          "email_dest": "fiscal@cliente.com.br",
+          "xnomeestabtomador": "Cliente Rio de Janeiro",
+          "optantesimplesnacional": "N",
+          "serv_list": "14.01",
+          "serv_descr": "Administração de bens e negócios de terceiros",
+          "valor_carga": 3400.25,
+          "percentual_carga": 0.34,
+          "fonte": "Legislação municipal vigente",
+          "discriminacao_nf": "Administração de contratos e suporte técnico conforme contrato nº 2026/001."
+        }
+      },
+      "ResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success"
+          },
+          "code": {
+            "type": "integer",
+            "example": 201
+          },
+          "message": {
+            "type": "string",
+            "example": "Id: 20260506094829257118 generated. Document Id 2335756 generated. Details: Documento Criado"
+          },
+          "request_id": {
+            "type": "string",
+            "example": "5126949D6E2106D1E063A600000A3C5E"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-05-06T09:48:29.418Z"
+          }
+        }
+      },
+      "ResponseError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "error"
+          },
+          "code": {
+            "type": "integer",
+            "example": 500
+          },
+          "message": {
+            "type": "string",
+            "example": "Error: Cadastro da Organização não encontrado. Entre em contato com a equipe técnica."
+          },
+          "request_id": {
+            "type": "string",
+            "example": "5126949D6E2206D1E063A600000A3C5E"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "description": "Informe o token obtido via OAuth2 Client Credentials.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://hdi-test.rm.digital:8443/ords/rmais_dev/oauth/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

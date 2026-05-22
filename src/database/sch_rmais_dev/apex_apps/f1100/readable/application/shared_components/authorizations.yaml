@@ -1,4 +1,24 @@
 ---
+- # ====== Authorization: RMAIS_PAGE_ACCESS ====================
+  id: 2996380755171800
+  identification: 
+    name: RMAIS_PAGE_ACCESS
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN rmais_pkg_security.fn_has_page_access(
+                 p_page_id => :APP_PAGE_ID
+             );
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Acesso negado! Verifique suas permissões com o time de acessos
+
 - # ====== Authorization: DEVELOPER ============================
   id: 268433734293148688
   identification: 
@@ -17,28 +37,6 @@
   error: 
     error-message: Sem permissão
 
-- # ====== Authorization: user_only_read =======================
-  id: 1657503650306334710
-  identification: 
-    name: user_only_read
-
-  authorization-scheme: 
-    type: PL/SQL Function Returning Boolean
-
-  settings: 
-    pl/sql-function-body: |
-      if :AZ_USER_ONLY_READ =  'Y' then
-      return true;
-      else
-      return false;
-      end if;
-
-  server-cache: 
-    evaluation-point: Once per Session
-
-  error: 
-    error-message: Usuário sem permisão
-
 - # ====== Authorization: Administration Rights ================
   id: 1813268904390082347
   identification: 
@@ -55,24 +53,6 @@
 
   error: 
     error-message: Insufficient privileges, user is not an Administrator
-
-- # ====== Authorization: user =================================
-  id: 1814323291559237567
-  identification: 
-    name: user
-
-  authorization-scheme: 
-    type: Is In Role or Group
-
-  settings: 
-    type: Application Role
-    name(s): user
-
-  server-cache: 
-    evaluation-point: Once per Session
-
-  error: 
-    error-message: Acesso Negado!
 
 - # ====== Authorization: admin ================================
   id: 1814323466997240516
@@ -91,40 +71,4 @@
 
   error: 
     error-message: Acesso Negado!
-
-- # ====== Authorization: lancamento ===========================
-  id: 1834724779470331313
-  identification: 
-    name: lancamento
-
-  authorization-scheme: 
-    type: Is In Role or Group
-
-  settings: 
-    type: Application Role
-    name(s): lancamento
-
-  server-cache: 
-    evaluation-point: Once per Session
-
-  error: 
-    error-message: Permissão não valida para página
-
-- # ====== Authorization: user_admin ===========================
-  id: 1903390112961645939
-  identification: 
-    name: user_admin
-
-  authorization-scheme: 
-    type: Is In Role or Group
-
-  settings: 
-    type: Application Role
-    name(s): user_admin
-
-  server-cache: 
-    evaluation-point: Once per Session
-
-  error: 
-    error-message: Acesso negado
 

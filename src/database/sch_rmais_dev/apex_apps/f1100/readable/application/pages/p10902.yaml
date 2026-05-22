@@ -1,10 +1,10 @@
 ---
-# ====== Page: Gerenciar Grupos Usuários =====================
-id: 11000
+# ====== Page: Gerenciar Módulos =============================
+id: 10902
 identification: 
-  name: Gerenciar Grupos Usuários
-  alias: GERENCIAR-GRUPOS-USUÁRIOS
-  title: Gerenciar Grupos Usuários
+  name: Gerenciar Módulos
+  alias: GERENCIAR-MÓDULOS
+  title: Gerenciar Módulos
 
 appearance: 
   page-mode: Normal
@@ -37,34 +37,43 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Gerenciar Grupos Usuários ===================
-  id: 35937559566424719
+- # ====== Region: Gerenciar Módulos ===========================
+  id: 1733681841731628
   identification: 
-    title: Gerenciar Grupos Usuários
+    title: Gerenciar Módulos
     type: Interactive Report
 
   source: 
     location: Local Database
     type: SQL Query
     sql-query: |
-      select GROUP_ID,
-             GROUP_NAME,
+      select MODULE_ID,
+             MODULE_CODE,
+             MODULE_NAME,
              DESCRIPTION,
-             CASE 
-              WHEN STATUS = 'Y' THEN '<i class="fa fa-check-circle" style="color:green;"></i>' 
-              ELSE '<i class="fa fa-times-circle" style="color:red;"> </i>' 
-             END AS STATUS,
-             CASE 
-              WHEN RMAIS_GROUP = 'Y' THEN '<i class="fa fa-check-circle" style="color:green;"></i>' 
-              ELSE '<i class="fa fa-times-circle" style="color:red;"> </i>' 
-             END AS RMAIS_GROUP,
+             STATUS,
+             '<label class="a-Switch"> 
+              <input type="checkbox" 
+                     class="my-row-switch" 
+                     data-id="' || MODULE_ID || '" ' || 
+                     CASE WHEN STATUS = 'Y' THEN 'checked' ELSE '' END || '> 
+              <span class="a-Switch-toggle"></span> 
+              </label>' AS STATUS_TOGGLE,
+             DISPLAY_ORDER,
+             '<i class="fa ' || ICON_CLASS || '"> </i>' AS ICON_CLASS,
+             '<label class="a-Switch"> 
+              <input type="checkbox" 
+                     class="my-row-switch" 
+                     data-id="' || MODULE_ID || '" ' || 
+                     CASE WHEN IS_SYSTEM = 'Y' THEN 'checked' ELSE '' END || '> 
+              <span class="a-Switch-toggle"></span> 
+              </label>' AS IS_SYSTEM,
              CREATION_DATE,
              CREATED_BY,
              UPDATED_DATE,
              UPDATED_BY,
              INACTIVE_DATE
-      
-        from RMAIS_USER_GROUPS
+        from RMAIS_SEC_MODULES
 
   layout: 
     sequence: 10
@@ -93,15 +102,15 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 35937628858424719
+    id: 1733814651731628
     link: 
       link-column: Link to Custom Target
       target: 
-        url: 'f?p=&APP_ID.:11001:&SESSION.::&DEBUG.:RP,11001:P11001_GROUP_ID:#GROUP_ID##ID_GRUPO_USUARIO#\'
-        page: 11001 # Cadastrar/Editar Grupo Usuário
-        clear-cache: RP,11001
+        url: 'f?p=&APP_ID.:10903:&APP_SESSION.::&DEBUG.:RP:P10903_MODULE_ID:\#MODULE_ID#\'
+        page: 10903 # Criar/Editar Módulos
+        clear-cache: RP
         values: 
-          p11001_group_id: '#GROUP_ID##ID_GRUPO_USUARIO#\'
+          p10903_module_id: '#MODULE_ID#'
 
       link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
 
@@ -163,28 +172,87 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 35941755456420359
+      id: 1741871541727118
       identification: 
         name: Primary Report
-        alias: 359418
+        alias: 381282
 
     columns: 
-    - # ====== Column: GROUP_ID ====================================
-      id: 442861679769148
+    - # ====== Column: STATUS_TOGGLE ===============================
+      id: 439574687769115
       identification: 
-        column-name: GROUP_ID
+        column-name: STATUS_TOGGLE
         type: Plain Text
 
       heading: 
-        heading: Group Id
-        alignment: end
+        heading: Status
+        alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 10
-        column-alignment: end
+        sequence: 15
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: MODULE_ID ===================================
+      id: 1734224193731624
+      identification: 
+        column-name: MODULE_ID
+        type: Hidden Column
+
+      heading: 
+        heading: Module ID
+
+      layout: 
+        sequence: 0
+
+      source: 
+        primary-key: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODULE_CODE =================================
+      id: 1734657586731623
+      identification: 
+        column-name: MODULE_CODE
+        type: Plain Text
+
+      heading: 
+        heading: Cód. Módulo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: start
 
       accessibility: 
         value-identifies-row: false
@@ -210,21 +278,21 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: GROUP_NAME ==================================
-      id: 442740928769147
+    - # ====== Column: MODULE_NAME =================================
+      id: 1734983216731622
       identification: 
-        column-name: GROUP_NAME
+        column-name: MODULE_NAME
         type: Plain Text
 
       heading: 
-        heading: Nome Grupo
+        heading: Nome Módulo
         alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 20
+        sequence: 3
         column-alignment: start
 
       accessibility: 
@@ -252,7 +320,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DESCRIPTION =================================
-      id: 442722744769146
+      id: 1735439965731620
       identification: 
         column-name: DESCRIPTION
         type: Plain Text
@@ -265,7 +333,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 30
+        sequence: 4
         column-alignment: start
 
       accessibility: 
@@ -293,20 +361,109 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STATUS ======================================
-      id: 442571629769145
+      id: 1735856291731620
       identification: 
         column-name: STATUS
         type: Plain Text
 
       heading: 
         heading: Status
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 5
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-formatting: 
+        html-expression: |
+          <label class="a-Switch">
+              <input type="checkbox" class="my-row-switch" data-id="#STATUS#" #Y#>
+              <span class="a-Switch-toggle"></span>
+          </label>
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DISPLAY_ORDER ===============================
+      id: 1736175176731620
+      identification: 
+        column-name: DISPLAY_ORDER
+        type: Plain Text
+
+      heading: 
+        heading: Ordem
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 25
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ICON_CLASS ==================================
+      id: 1736629148731620
+      identification: 
+        column-name: ICON_CLASS
+        type: Plain Text
+
+      heading: 
+        heading: Icon Class
         alignment: center
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 40
+        sequence: 35
         column-alignment: center
 
       accessibility: 
@@ -333,22 +490,22 @@ regions:
       security: 
         escape-special-characters: false
 
-    - # ====== Column: RMAIS_GROUP =================================
-      id: 442464564769144
+    - # ====== Column: IS_SYSTEM ===================================
+      id: 1736995125731619
       identification: 
-        column-name: RMAIS_GROUP
+        column-name: IS_SYSTEM
         type: Plain Text
 
       heading: 
-        heading: Grupo RMAIS?
-        alignment: center
+        heading: Is System
+        alignment: start
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
-        sequence: 50
-        column-alignment: center
+        sequence: 45
+        column-alignment: start
 
       accessibility: 
         value-identifies-row: false
@@ -375,7 +532,7 @@ regions:
         escape-special-characters: false
 
     - # ====== Column: CREATION_DATE ===============================
-      id: 442334158769143
+      id: 1737427084731619
       identification: 
         column-name: CREATION_DATE
         type: Plain Text
@@ -388,14 +545,11 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 60
+        sequence: 55
         column-alignment: start
 
       accessibility: 
         value-identifies-row: false
-
-      appearance: 
-        format-mask: 'DD/MM/YYYY HH:MI:SS'
 
       source: 
         primary-key: false
@@ -420,7 +574,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREATED_BY ==================================
-      id: 442284355769142
+      id: 1737833424731619
       identification: 
         column-name: CREATED_BY
         type: Plain Text
@@ -433,7 +587,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 70
+        sequence: 65
         column-alignment: start
 
       accessibility: 
@@ -461,7 +615,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: UPDATED_DATE ================================
-      id: 442151334769141
+      id: 1738179138731619
       identification: 
         column-name: UPDATED_DATE
         type: Plain Text
@@ -474,14 +628,14 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 80
+        sequence: 75
         column-alignment: start
 
       accessibility: 
         value-identifies-row: false
 
       appearance: 
-        format-mask: 'DD/MM/YYYY HH:MI:SS'
+        format-mask: SINCE
 
       source: 
         primary-key: false
@@ -506,7 +660,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: UPDATED_BY ==================================
-      id: 442120731769140
+      id: 1738581814731619
       identification: 
         column-name: UPDATED_BY
         type: Plain Text
@@ -519,7 +673,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 90
+        sequence: 85
         column-alignment: start
 
       accessibility: 
@@ -547,7 +701,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INACTIVE_DATE ===============================
-      id: 441983182769139
+      id: 1738988464731618
       identification: 
         column-name: INACTIVE_DATE
         type: Plain Text
@@ -560,7 +714,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 100
+        sequence: 95
         column-alignment: start
 
       accessibility: 
@@ -607,7 +761,7 @@ regions:
         font-size: 12
         font-color: '#000000'
         alignment: center
-        page-header-text: Gerenciar Grupos Usuários
+        page-header-text: Gerenciar Módulos
 
       column-headings: 
         font: Helvetica
@@ -631,7 +785,7 @@ regions:
         alignment: center
 
 - # ====== Region: Breadcrumb ==================================
-  id: 35940937842424711
+  id: 1741073884731613
   identification: 
     title: Breadcrumb
     type: Breadcrumb
@@ -674,14 +828,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 35939342091424713
+  id: 1739518219731618
   identification: 
     button-name: CREATE
-    label: Criar
+    label: Criar Módulo
 
   layout: 
     sequence: 10
-    region: Gerenciar Grupos Usuários # 35937559566424719
+    region: Gerenciar Módulos # 1733681841731628
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -698,15 +852,15 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:11001:&APP_SESSION.::&DEBUG.:11001::'
-      page: 11001 # Cadastrar/Editar Grupo Usuário
-      clear-cache: 11001
+      url: 'f?p=&APP_ID.:10903:&APP_SESSION.::&DEBUG.:10903::'
+      page: 10903 # Criar/Editar Módulos
+      clear-cache: 10903
 
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 35939637901424713
+  id: 1739863389731618
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -718,21 +872,21 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: Gerenciar Grupos Usuários # 35937559566424719
+    region: Gerenciar Módulos # 1733681841731628
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 35940164271424712
+    id: 1740305060731615
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Gerenciar Grupos Usuários # 35937559566424719
+      region: Gerenciar Módulos # 1733681841731628
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 35939637901424713
+      event: Edit Report - Dialog Closed # 1739863389731618
       fire-when-event-result-is: True
       fire-on-initialization: false
 
